@@ -74,24 +74,30 @@
     <a href="/register" class="bg-primary text-white px-6 py-3 rounded text-lg font-semibold hover:bg-primary-dark">
         Get Started Free
     </a>
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+        <svg class="relative block w-full h-24" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#f9fafb" d="M0,160 C480,280 960,40 1440,160 L1440,320 L0,320 Z"></path>
+        </svg>
+    </div>
 </section>
 
-<section class="max-w-6xl mx-auto py-16 px-4 grid md:grid-cols-2 gap-10 items-center">
-    <div>
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 font-heading">Why My Prospect Tracker?</h2>
-        <p class="text-gray-700 mb-4">
-            Most CRMs are built for teams. This one’s for <strong>you</strong> — the busy, growing network marketer who needs one place to track prospects, know what to do, and stay focused on conversations that move your business forward.
-        </p>
-        <ul class="list-disc pl-5 text-gray-600 space-y-2">
-            <li>Smart reminders and streaks to build daily habits</li>
-            <li>Simple, non-distracting layout — no fluff</li>
-            <li>Shows you who to follow up with next — automatically</li>
-            <li>Customisable statuses, pain points, and notes</li>
-            <li>Works on all devices, no downloads needed</li>
-        </ul>
-    </div>
-    <div>
-        <img src="/images/dashboard-preview.png" alt="App dashboard preview" class="rounded shadow">
+<section class="bg-white py-20 px-4">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
+        <div>
+            <h3 class="text-2xl font-bold mb-4">Why My Prospect Tracker?</h3>
+            <p class="text-gray-700 mb-4">
+                Most CRMs are built for teams. This one’s for <strong>you</strong> — the busy, growing network marketer who needs one place to track prospects and stay focused.
+            </p>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+                <li>Smart reminders and streaks</li>
+                <li>Distraction-free dashboard</li>
+                <li>Auto-generated follow-up plans</li>
+                <li>Encrypted prospect data</li>
+            </ul>
+        </div>
+        <div>
+            <img src="/images/dashboard-preview.png" alt="App dashboard preview" class="rounded shadow">
+        </div>
     </div>
 </section>
 
@@ -142,8 +148,8 @@
 </section>
 
 <section class="py-16 px-4 text-center bg-primary text-white">
-    <h3 class="text-3xl font-bold mb-4">Join the Waitlist for Premium Features</h3>
-    <p class="text-lg mb-6">Be the first to try team sharing, advanced analytics, and automated SMS reminders.</p>
+    <h3 class="text-3xl font-bold mb-4">Join the Waitlist for My Prospect Tracker</h3>
+    <p class="text-lg mb-6">Be the first to try My Prospect Tracker and start organising your network marketing business.</p>
     <form action="/waitlist" method="POST" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
         @csrf
         <input type="email" name="email" required placeholder="Your email" class="flex-1 px-4 py-2 rounded text-gray-800">
