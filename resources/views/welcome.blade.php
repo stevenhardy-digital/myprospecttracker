@@ -63,8 +63,7 @@
     </div>
 </header>
 
-<!-- Hero -->
-<section class="text-center py-20 bg-gray-50">
+<section class="text-center pt-20 bg-gray-50 relative">
     <h1 class="text-4xl md:text-5xl font-extrabold leading-tight max-w-3xl mx-auto mb-4 text-gray-900 font-heading">
         The Prospect Tracker That Works While You Focus
     </h1>
@@ -74,10 +73,12 @@
     <a href="/register" class="bg-primary text-white px-6 py-3 rounded text-lg font-semibold hover:bg-primary-dark">
         Get Started Free
     </a>
-    <div class="relative w-full h-64 overflow-hidden leading-none">
+
+    <!-- Wave Divider -->
+    <div class="absolute bottom-0 left-0 w-full h-32 overflow-hidden leading-none">
         <svg class="absolute bottom-0 w-full h-full" viewBox="0 0 900 601" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 480L21.5 491.8C43 503.7 86 527.3 128.8 535.8C171.7 544.3 214.3 537.7 257.2 525.3C300 513 343 495 385.8 484.8C428.7 474.7 471.3 472.3 514.2 482.2C557 492 600 514 642.8 520C685.7 526 728.3 516 771.2 518.2C814 520.3 857 534.7 878.5 541.8L900 549L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z"
-                  fill="#2563eb" />
+                  fill="#2563eb"></path>
         </svg>
     </div>
 </section>
