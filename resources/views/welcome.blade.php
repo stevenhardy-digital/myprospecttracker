@@ -88,44 +88,67 @@
             <p class="text-gray-700 mb-4">
                 Most CRMs are built for teams. This one’s for <strong>you</strong> — the busy, growing network marketer who needs one place to track prospects and stay focused.
             </p>
-            <ul class="list-disc list-inside text-gray-600 space-y-2">
-                <li>Smart reminders and streaks</li>
-                <li>Distraction-free dashboard</li>
-                <li>Auto-generated follow-up plans</li>
-                <li>Encrypted prospect data</li>
+            <ul class="text-gray-600 space-y-3">
+                <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Smart reminders and streaks</li>
+                <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Distraction-free dashboard</li>
+                <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Auto-generated follow-up plans</li>
+                <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Encrypted prospect data</li>
             </ul>
         </div>
-        <div>
-            <img src="/images/dashboard-preview.png" alt="App dashboard preview" class="rounded shadow">
+        <div class="relative">
+            <img src="/images/dashboard-preview.png" alt="App dashboard preview" class="rounded shadow relative z-10">
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-0">
+                <svg class="relative block w-full h-16" viewBox="0 0 1440 320" preserveAspectRatio="none">
+                    <path fill="#f0f9ff" d="M0,64 C480,160 960,0 1440,64 L1440,320 L0,320 Z"></path>
+                </svg>
+            </div>
         </div>
     </div>
 </section>
-
 <section class="bg-white py-16 px-4">
     <div class="max-w-6xl mx-auto text-center">
         <h2 class="text-2xl font-bold mb-6">Everything You Need — Nothing You Don’t</h2>
-        <div class="grid md:grid-cols-3 gap-8 text-left">
-            <div>
+        <div class="grid md:grid-cols-3 gap-10 text-left">
+            <div class="text-center">
+                <div class="mb-4 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
                 <h3 class="text-lg font-semibold text-primary">Encrypted Prospect Storage</h3>
                 <p class="text-gray-600 text-sm">Your data is safe. Names, emails, and notes are fully encrypted at rest.</p>
             </div>
-            <div>
+            <div class="text-center">
+                <div class="mb-4 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 8v4l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
                 <h3 class="text-lg font-semibold text-primary">Distraction-Free Dashboard</h3>
                 <p class="text-gray-600 text-sm">See exactly what to do today — no scrolling, no clutter, no distractions.</p>
             </div>
-            <div>
+            <div class="text-center">
+                <div class="mb-4 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
                 <h3 class="text-lg font-semibold text-primary">Smart Follow-Up Flow</h3>
                 <p class="text-gray-600 text-sm">Each contact has a next step. Automatically scheduled and tracked.</p>
             </div>
-            <div>
+            <!-- Additional cards -->
+            <div class="text-center">
+                <div class="mb-4 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M13 16h-1v-4h-1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
                 <h3 class="text-lg font-semibold text-primary">Progress Streaks</h3>
                 <p class="text-gray-600 text-sm">Get gamified motivation to keep showing up — and growing your biz.</p>
             </div>
-            <div>
+            <div class="text-center">
+                <div class="mb-4 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 17v-2a4 4 0 014-4h4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
                 <h3 class="text-lg font-semibold text-primary">Mobile-First Design</h3>
                 <p class="text-gray-600 text-sm">Built to work on your phone, so you can update prospects on the go.</p>
             </div>
-            <div>
+            <div class="text-center">
+                <div class="mb-4 text-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 4v16m8-8H4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
                 <h3 class="text-lg font-semibold text-primary">Customisable Statuses</h3>
                 <p class="text-gray-600 text-sm">Edit and manage pipeline stages to match your personal sales flow.</p>
             </div>
