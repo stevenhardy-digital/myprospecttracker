@@ -12,6 +12,13 @@
     <link rel="canonical" href="https://myprospecttracker.com/" />
     <link rel="icon" href="/favicon.ico" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
+        .bg-primary { background-color: #2563eb; }
+        .text-primary { color: #2563eb; }
+        .hover\:bg-primary-dark:hover { background-color: #1e40af; }
+    </style>
     <script type="application/ld+json">
         {
           "@context": "https://schema.org",
