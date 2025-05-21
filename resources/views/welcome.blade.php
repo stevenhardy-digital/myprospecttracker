@@ -75,7 +75,14 @@
         Get Started Free
     </a>
 </section>
-
+<div class="relative">
+    <svg class="w-full h-28" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#e0f2fe" fill-opacity="1" d="M0,160L80,165.3C160,171,320,181,480,170.7C640,160,800,128,960,112C1120,96,1280,96,1360,96L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+    </svg>
+    <svg class="absolute top-0 w-full h-28 opacity-50" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#bae6fd" fill-opacity="1" d="M0,192L80,176C160,160,320,128,480,128C640,128,800,160,960,186.7C1120,213,1280,235,1360,245.3L1440,256L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+    </svg>
+</div>
 <section class="max-w-6xl mx-auto py-16 px-4 grid md:grid-cols-2 gap-10 items-center">
     <div>
         <h2 class="text-3xl font-bold mb-4 text-gray-900 font-heading">Why My Prospect Tracker?</h2>
@@ -130,6 +137,9 @@
         </div>
     </div>
 </section>
+<svg class="w-full h-32" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="#f9fafb" d="M0,192L80,165.3C160,139,320,85,480,74.7C640,64,800,96,960,117.3C1120,139,1280,149,1360,154.7L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+</svg>
 <section class="bg-gray-100 py-16 px-4 text-center">
     <h3 class="text-2xl font-bold mb-6">Built for Trust and Simplicity</h3>
     <div class="max-w-3xl mx-auto text-gray-700">
@@ -144,6 +154,9 @@
     <p class="text-gray-700 max-w-xl mx-auto mb-6">My Prospect Tracker gives you momentum — without the mental load.</p>
     <img src="/images/streak-preview.png" alt="App preview" class="mx-auto rounded-lg shadow max-w-md">
 </section>
+<svg class="w-full h-12" viewBox="0 0 10 1" preserveAspectRatio="none">
+    <polygon fill="#f3f4f6" points="0,1 10,0 10,1" />
+</svg>
 
 <section class="py-16 px-4 text-center bg-primary text-white">
     <h3 class="text-3xl font-bold mb-4">Join the Waitlist for Premium Features</h3>
