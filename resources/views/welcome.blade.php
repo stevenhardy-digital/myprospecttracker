@@ -94,7 +94,11 @@
         <img src="/images/dashboard-preview.png" alt="App dashboard preview" class="rounded shadow">
     </div>
 </section>
-
+<div class="relative">
+    <svg class="absolute top-0 left-0 w-full h-20" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#2563eb" fill-opacity="1" d="M0,96L80,117.3C160,139,320,181,480,202.7C640,224,800,224,960,197.3C1120,171,1280,117,1360,90.7L1440,64V0H0Z"></path>
+    </svg>
+</div>
 <section class="bg-white py-16 px-4">
     <div class="max-w-6xl mx-auto text-center">
         <h2 class="text-2xl font-bold mb-6">Everything You Need — Nothing You Don’t</h2>
