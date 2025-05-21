@@ -75,39 +75,6 @@
         Get Started Free
     </a>
 </section>
-<section class="relative bg-white py-24 px-4">
-    <!-- Background Shapes -->
-    <div class="absolute inset-0 overflow-hidden">
-        <svg class="absolute left-0 top-0 transform -translate-x-1/2 -translate-y-1/2 opacity-10 w-[600px] h-[600px] text-blue-100" fill="none" viewBox="0 0 600 600">
-            <circle cx="300" cy="300" r="300" fill="currentColor" />
-        </svg>
-        <svg class="absolute right-0 bottom-0 transform translate-x-1/2 translate-y-1/2 opacity-10 w-[400px] h-[400px] text-yellow-100" fill="none" viewBox="0 0 400 400">
-            <rect width="400" height="400" rx="100" fill="currentColor" />
-        </svg>
-    </div>
-
-    <!-- Content -->
-    <div class="relative max-w-6xl mx-auto text-center">
-        <h2 class="text-3xl font-bold mb-4 text-gray-900 font-heading">Packed With What You Need</h2>
-        <p class="text-gray-600 max-w-2xl mx-auto mb-10">Built for modern social sellers, creators, and network marketers — with everything you need to grow consistently.</p>
-
-        <div class="grid md:grid-cols-3 gap-8 text-left">
-            <div>
-                <h3 class="text-lg font-semibold text-primary">Instant Follow-Up Flow</h3>
-                <p class="text-gray-600 text-sm">Click. Update. Auto-schedule. Follow-ups have never been this smooth.</p>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold text-primary">Built-In Pipeline Guidance</h3>
-                <p class="text-gray-600 text-sm">We guide your contacts through each step — from cold to close.</p>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold text-primary">Motivational Dashboard</h3>
-                <p class="text-gray-600 text-sm">Daily focus zone, goal reminders, and streaks keep you moving.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
 
 <section class="max-w-6xl mx-auto py-16 px-4 grid md:grid-cols-2 gap-10 items-center">
     <div>
