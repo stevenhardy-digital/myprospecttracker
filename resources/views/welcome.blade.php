@@ -74,9 +74,9 @@
     <a href="/register" class="bg-primary text-white px-6 py-3 rounded text-lg font-semibold hover:bg-primary-dark">
         Get Started Free
     </a>
-    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-        <svg class="relative block w-full h-24" viewBox="0 0 1440 320" preserveAspectRatio="none">
-            <path fill="#f9fafb" d="M0,160 C480,280 960,40 1440,160 L1440,320 L0,320 Z"></path>
+    <div class="relative w-full overflow-hidden leading-[0]">
+        <svg class="w-full h-32" viewBox="0 0 900 601" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 480L21.5 491.8C43 503.7 86 527.3 128.8 535.8C171.7 544.3 214.3 537.7 257.2 525.3C300 513 343 495 385.8 484.8C428.7 474.7 471.3 472.3 514.2 482.2C557 492 600 514 642.8 520C685.7 526 728.3 516 771.2 518.2C814 520.3 857 534.7 878.5 541.8L900 549L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z" fill="#2563eb" />
         </svg>
     </div>
 </section>
@@ -111,7 +111,7 @@
         <div class="grid md:grid-cols-3 gap-10 text-left">
             <div class="text-center">
                 <div class="mb-4 text-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 12l2 2 4-4" stroke-width="2" stroke-l inecap="round" stroke-linejoin="round"/></svg>
                 </div>
                 <h3 class="text-lg font-semibold text-primary">Encrypted Prospect Storage</h3>
                 <p class="text-gray-600 text-sm">Your data is safe. Names, emails, and notes are fully encrypted at rest.</p>
@@ -154,6 +154,11 @@
             </div>
         </div>
     </div>
+    <div class="relative w-full overflow-hidden leading-[0]">
+        <svg class="w-full h-32" viewBox="0 0 900 601" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 480L21.5 491.8C43 503.7 86 527.3 128.8 535.8C171.7 544.3 214.3 537.7 257.2 525.3C300 513 343 495 385.8 484.8C428.7 474.7 471.3 472.3 514.2 482.2C557 492 600 514 642.8 520C685.7 526 728.3 516 771.2 518.2C814 520.3 857 534.7 878.5 541.8L900 549L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z" fill="#2563eb" />
+        </svg>
+    </div>
 </section>
 <section class="bg-gray-100 py-16 px-4 text-center">
     <h3 class="text-2xl font-bold mb-6">Built for Trust and Simplicity</h3>
@@ -171,6 +176,12 @@
 </section>
 
 <section class="py-16 px-4 text-center bg-primary text-white">
+    <!-- Wave Divider -->
+    <div class="relative w-full overflow-hidden leading-[0]">
+        <svg class="w-full h-32 rotate-180" viewBox="0 0 900 601" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 480L21.5 491.8C43 503.7 86 527.3 128.8 535.8C171.7 544.3 214.3 537.7 257.2 525.3C300 513 343 495 385.8 484.8C428.7 474.7 471.3 472.3 514.2 482.2C557 492 600 514 642.8 520C685.7 526 728.3 516 771.2 518.2C814 520.3 857 534.7 878.5 541.8L900 549L900 601L878.5 601C857 601 814 601 771.2 601C728.3 601 685.7 601 642.8 601C600 601 557 601 514.2 601C471.3 601 428.7 601 385.8 601C343 601 300 601 257.2 601C214.3 601 171.7 601 128.8 601C86 601 43 601 21.5 601L0 601Z" fill="#2563eb" />
+        </svg>
+    </div>
     <h3 class="text-3xl font-bold mb-4">Join the Waitlist for My Prospect Tracker</h3>
     <p class="text-lg mb-6">Be the first to try My Prospect Tracker and start organising your network marketing business.</p>
     <form action="/waitlist" method="POST" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
