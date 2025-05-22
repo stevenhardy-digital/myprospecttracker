@@ -1,33 +1,31 @@
 <header class="main-header home-12">
     <div class="outer-container">
         <div class="container">
-            <div class="main-box clearfix">
-                <div class="logo-box d-flex align-items-center">
-                    <a href="/" class="navbar-brand fw-bold text-primary h5 m-0">My Prospect Tracker</a>
-                </div>
-                <div class="menu-area pull-right clearfix">
-                    <!--Mobile Navigation Toggler-->
-                    <div class="mobile-nav-toggler">
-                        <i class="icon-bar"></i>
-                        <i class="icon-bar"></i>
-                        <i class="icon-bar"></i>
-                    </div>
+            <div class="main-box">
+                <nav class="navbar navbar-expand-md navbar-light bg-white">
+                    <div class="container d-flex justify-content-between align-items-center">
 
-                    <nav class="main-menu navbar-expand-md navbar-light">
-                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                <li class="current"><a href="/">Home</a></li>
-                                <li><a href="#features">Features</a></li>
-                                <li><a href="#pricing">Pricing</a></li>
-                                <li><a href="#contact">Contact</a></li>
+                        <!-- Logo -->
+                        <a href="/" class="navbar-brand fw-bold text-primary">My Prospect Tracker</a>
+
+                        <!-- Mobile Toggler -->
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <!-- Navigation + Button -->
+                        <div class="collapse navbar-collapse justify-content-end align-items-center" id="mainNavbar">
+                            <ul class="navbar-nav me-3 mb-2 mb-md-0">
+                                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                             </ul>
+                            <a href="/register" class="btn btn-outline-primary rounded-pill px-4">Get Started</a>
                         </div>
-                    </nav>
 
-                    <div class="btn-box">
-                        <a href="/register">Get Started</a>
                     </div>
-                </div>
+                </nav>
             </div>
         </div>
     </div>
