@@ -4,9 +4,13 @@
             <div class="col-lg-6 col-md-12 col-sm-12 content-column">
                 <div id="content_block_33">
                     <div class="content-box">
-                        <h2>Streamline your design workflow and unify your team.</h2>
-                        <div class="text">From conception to presentation with one online solution.</div>
-                        <a href="#">Get Started</a>
+                        <h2>Join the Waitlist for My Prospect Tracker</h2>
+                        <div class="text">Be the first to try My Prospect Tracker and start organising your network marketing business.</div>
+                        <form action="/waitlist" method="POST" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
+                            @csrf
+                            <input type="email" name="email" required placeholder="Your email" class="flex-1 px-4 py-2 rounded text-gray-800">
+                            <button type="submit" class="bg-white text-primary px-4 py-2 rounded font-semibold hover:bg-gray-100">Join Now</button>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -3,8 +3,7 @@
     <div class="container">
         <!-- Section Heading -->
         <div class="sec-title center">
-            <h2>A flexible design solution that<br />adapts to your workflow.</h2>
-            <p class="text-muted">Built for the way network marketers actually work — quick check-ins, mobile-first updates, and automated reminders that make sense.</p>
+            <h2>Built for the way network marketers actually work</h2>
         </div>
         <div class="inner-content">
             <!-- Box 1: Built for Trust -->
