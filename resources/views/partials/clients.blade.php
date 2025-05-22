@@ -1,15 +1,14 @@
 <section class="clients-section home-12">
     <div class="container">
         <div class="sec-title">
-            <h2>Trusted By Companies</h2>
-            <p>Trusted by over 400,000 Webmasters worldwide to Research, Monitor<br />& Drive traffic to their websites.</p>
+            <h2>Why My Prospect Tracker?</h2>
+            <p>Most CRMs are built for teams. This one’s for <strong>you</strong> — the busy, growing network marketer who needs one place to track prospects and stay focused.</p>
         </div>
-        <div class="clients-carousel owl-carousel owl-theme owl-dots-none">
-            @foreach (range(1, 4) as $i)
-                @for ($j = 0; $j < 3; $j++)
-                    <figure class="image-box"><a href="#"><img src="{{ asset("images/clients/client-$i.png") }}" alt=""></a></figure>
-                @endfor
-            @endforeach
-        </div>
+        <ul class="text-gray-600 space-y-3">
+            <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Smart reminders and streaks</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Distraction-free dashboard</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Auto-generated follow-up plans</li>
+            <li class="flex items-start"><span class="text-green-500 mr-2">&#10003;</span> Encrypted prospect data</li>
+        </ul>
     </div>
 </section>
