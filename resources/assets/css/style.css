@@ -1,4 +1,4 @@
- 
+
 /* Css For Appway */
 
 /************ TABLE OF CONTENTS ***************
@@ -74,7 +74,7 @@
 
 
 
-/*** 
+/***
 
 ====================================================================
   Reset
@@ -89,7 +89,7 @@
 }
 
 
-/*** 
+/***
 
 ====================================================================
   Global Settings
@@ -172,7 +172,7 @@ input,button,select,textarea{
 ul,li{
   list-style:none;
   padding:0px;
-  margin:0px; 
+  margin:0px;
 }
 
 input{
@@ -430,7 +430,7 @@ img {
 }
 
 .preloader{
-  position: fixed; 
+  position: fixed;
   left:0px;
   top:0px;
   height:100%;
@@ -477,7 +477,7 @@ img {
   from {
     -webkit-mask-position: 150%;
   }
-  
+
   to {
     -webkit-mask-position: -50%;
   }
@@ -564,7 +564,7 @@ img {
 }
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-One
@@ -734,7 +734,7 @@ img {
 
 .main-menu .navigation > li > ul.from-right{
   left:auto;
-  right:0px;  
+  right:0px;
 }
 
 .main-menu .navigation > li > ul > li{
@@ -744,7 +744,7 @@ img {
 }
 
 .main-menu .navigation > li > ul > li:last-child{
-  border-bottom:none; 
+  border-bottom:none;
 }
 
 .main-menu .navigation > li > ul > li > a{
@@ -779,7 +779,7 @@ img {
   font-size:16px;
   font-weight:800;
   text-align:center;
-  z-index:5;  
+  z-index:5;
 }
 
 .main-menu .navigation > li > ul > li > ul{
@@ -805,7 +805,7 @@ img {
 
 .main-menu .navigation > li > ul > li > ul.from-right{
   left:auto;
-  right:0px;  
+  right:0px;
 }
 
 .main-menu .navigation > li > ul > li > ul > li{
@@ -815,11 +815,11 @@ img {
 }
 
 .main-menu .navigation > li > ul > li > ul > li:last-child{
-  border-bottom:none; 
+  border-bottom:none;
 }
 
 .main-menu .navigation > li > ul > li > ul > li:last-child{
-  border-bottom:none; 
+  border-bottom:none;
 }
 
 .main-menu .navigation > li > ul > li > ul > li > a{
@@ -853,7 +853,7 @@ img {
   line-height:24px;
   font-size:16px;
   font-weight:900;
-  z-index:5;  
+  z-index:5;
 }
 
 .main-menu .navigation > li.dropdown:hover > ul{
@@ -883,7 +883,7 @@ img {
   -moz-transition:all 300ms ease;
   -webkit-transition:all 500ms ease;
   -ms-transition:all 300ms ease;
-  -o-transition:all 300ms ease; 
+  -o-transition:all 300ms ease;
 }
 
 .main-menu .navigation li.dropdown .dropdown-btn{
@@ -989,13 +989,13 @@ img {
 }
 
 .mobile-menu .navbar-collapse{
-  display:block !important; 
+  display:block !important;
 }
 
 .mobile-menu .nav-logo{
   position:relative;
   padding:30px 25px;
-  text-align:left;  
+  text-align:left;
 }
 
 .mobile-menu-visible{
@@ -1135,7 +1135,7 @@ img {
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
 }
 
 .mobile-menu .navigation li ul li > a{
@@ -1155,12 +1155,12 @@ img {
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
 }
 
 .mobile-menu .navigation li.current > a,
 .mobile-menu .navigation li > a:hover{
-  color:#4527a4;  
+  color:#4527a4;
 }
 
 .mobile-menu .navigation li.current > a:before{
@@ -1184,15 +1184,15 @@ img {
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
   z-index:5;
 }
 
 .mobile-menu .navigation li.dropdown .dropdown-btn.open{
-  background:#4527a4; 
+  background:#4527a4;
   -webkit-transform:rotate(90deg);
   -ms-transform:rotate(90deg);
-  transform:rotate(90deg);  
+  transform:rotate(90deg);
 }
 
 .mobile-menu .navigation li > ul,
@@ -1220,11 +1220,11 @@ img {
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
   -o-transition: all 500ms ease;
-  transition: all 500ms ease; 
+  transition: all 500ms ease;
 }
 
 .mobile-menu .social-links li a:hover{
-  color:#00aeef;  
+  color:#00aeef;
 }
 
 div#mCSB_1_container{
@@ -2044,7 +2044,7 @@ div#mCSB_1_container{
 }
 
 .tabs-box .tab.active-tab{
-  display:block;  
+  display:block;
 }
 
 .tabs-box .tab{
@@ -2907,7 +2907,7 @@ div#mCSB_1_container{
   -o-transition:all .4s ease-in .8s;
   transition:all .4s ease-in .8s;
   cursor:url(../images/icons/cross-out.png),
-  pointer; 
+  pointer;
   z-index: 999999;
 }
 
@@ -3044,7 +3044,7 @@ div#mCSB_1_container{
 
 .sidebar-info-contents .content-inner .logo img{
   display:inline-block;
-  max-width:100%; 
+  max-width:100%;
 }
 
 .sidebar-info-contents .content-inner .content-box{
@@ -3822,7 +3822,7 @@ div#mCSB_1_container{
 }
 
 .management-section .tabs-box .tab.active-tab{
-  display:block;  
+  display:block;
 }
 
 .management-section .tabs-box .tab{
@@ -4081,7 +4081,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Three
@@ -4726,7 +4726,7 @@ div#mCSB_1_container{
   top: 200px;
   -webkit-animation: zoom-fade 2s infinite linear;
   animation: zoom-fade 2s infinite linear;
-} 
+}
 
 .testimonial-style-three .thumb-box .image-2{
   left: 350px;
@@ -4956,7 +4956,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Four
@@ -5529,13 +5529,13 @@ div#mCSB_1_container{
   opacity: 1;
 }
 
-.pricing-style-three .tab .pricing-block-two:first-child .pricing-table .table-header .title, 
-.pricing-style-three .tab .pricing-block-two:first-child .pricing-table .table-header .price, 
+.pricing-style-three .tab .pricing-block-two:first-child .pricing-table .table-header .title,
+.pricing-style-three .tab .pricing-block-two:first-child .pricing-table .table-header .price,
 .pricing-style-three .tab .pricing-block-two:first-child .pricing-table .table-header .price:before {
   color: #111;
 }
 
-.pricing-style-three .tab .pricing-block-two:first-child .pricing-table .table-header .text, 
+.pricing-style-three .tab .pricing-block-two:first-child .pricing-table .table-header .text,
 .pricing-style-three .tab .pricing-block-two:first-child .pricing-table .table-content li {
   color: #777;
 }
@@ -5642,7 +5642,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Five
@@ -5806,7 +5806,7 @@ div#mCSB_1_container{
   z-index: -1;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top center; 
+  background-position: top center;
   animation-name: slideInRight;
   animation-duration: 2s;
   animation-iteration-count: 1;
@@ -6412,7 +6412,7 @@ div#mCSB_1_container{
 }
 
 #image_block_17 .image-box .image-1 img{
-  width: 100%; 
+  width: 100%;
 }
 
 #image_block_17 .image-box .image-1{
@@ -6607,7 +6607,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Six
@@ -6663,7 +6663,7 @@ div#mCSB_1_container{
   z-index: -1;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: top center; 
+  background-position: top center;
   animation-name: slideInRight;
   animation-duration: 2s;
   animation-iteration-count: 1;
@@ -7521,7 +7521,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Seven
@@ -8019,7 +8019,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Eight
@@ -8507,7 +8507,7 @@ div#mCSB_1_container{
   display: none;
 }
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Nine
@@ -8855,7 +8855,7 @@ div#mCSB_1_container{
   display: block;
   font-size: 16px;
   margin-bottom: 24px;
-} 
+}
 
 .testimonial-style-eight .testimonial-content .inner-box .author-info .image-box{
   position: relative;
@@ -9034,7 +9034,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-Ten
@@ -9798,7 +9798,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-11
@@ -10058,12 +10058,12 @@ div#mCSB_1_container{
   transition: all 600ms ease;
 }
 
-.organization-section .single-item:hover .inner-box .left-layer:before, 
+.organization-section .single-item:hover .inner-box .left-layer:before,
 .organization-section .single-item:hover .inner-box .left-layer:after {
   height: 100%;
 }
 
-.organization-section .single-item:hover .inner-box .right-layer:before, 
+.organization-section .single-item:hover .inner-box .right-layer:before,
 .organization-section .single-item:hover .inner-box .right-layer:after {
   height: 100%;
 }
@@ -10711,7 +10711,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-12
@@ -10985,47 +10985,7 @@ div#mCSB_1_container{
   z-index: -1;
 }
 
-.designe-process .single-column:nth-child(2) .single-item .inner-box .icon-box:before{
-  background: #34c700;
-}
-
-.designe-process .single-column:nth-child(2) .single-item .inner-box .icon-box:after{
-  border-color: #34c700;
-}
-
-.designe-process .single-column:nth-child(3) .single-item .inner-box .icon-box:before{
-  background: #ff0000;
-}
-
-.designe-process .single-column:nth-child(3) .single-item .inner-box .icon-box:after{
-  border-color: #ff0000;
-}
-
-.designe-process .single-column:nth-child(4) .single-item .inner-box .icon-box:before{
-  background: #ff8500;
-}
-
-.designe-process .single-column:nth-child(4) .single-item .inner-box .icon-box:after{
-  border-color: #ff8500;
-}
-
-.designe-process .single-column:nth-child(5) .single-item .inner-box .icon-box:before{
-  background: #ff00ff;
-}
-
-.designe-process .single-column:nth-child(5) .single-item .inner-box .icon-box:after{
-  border-color: #ff00ff;
-}
-
-.designe-process .single-column:last-child .single-item .inner-box .icon-box:before{
-  background: #00aeef;
-}
-
-.designe-process .single-column:last-child .single-item .inner-box .icon-box:after{
-  border-color: #00aeef;
-}
-
-.designe-process .single-item .inner-box .icon-box i{
+.designe-process .single-item .inner-box .icon-box svg{
   position: relative;
   display: inline-block;
   font-size: 20px;
@@ -11146,12 +11106,12 @@ div#mCSB_1_container{
   transition: all 600ms ease;
 }
 
-.designe-process .single-item:hover .inner-box .left-layer:before, 
+.designe-process .single-item:hover .inner-box .left-layer:before,
 .designe-process .single-item:hover .inner-box .left-layer:after {
   height: 100%;
 }
 
-.designe-process .single-item:hover .inner-box .right-layer:before, 
+.designe-process .single-item:hover .inner-box .right-layer:before,
 .designe-process .single-item:hover .inner-box .right-layer:after {
   height: 100%;
 }
@@ -11553,7 +11513,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-13
@@ -12333,7 +12293,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-14
@@ -13126,7 +13086,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-15
@@ -14212,7 +14172,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-16
@@ -15410,7 +15370,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-17
@@ -16101,7 +16061,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-18
@@ -16680,7 +16640,7 @@ div#mCSB_1_container{
   position: relative;
   border: 1px solid #f5f5f5;
 }
- 
+
 .domain-prices .domain-name li,
 .domain-prices .pricing-inner .pricing-table li{
   position: relative;
@@ -16986,14 +16946,14 @@ div#mCSB_1_container{
   color: #4527a4;
 }
 
-.testimonial-style-nine.home-18 .owl-nav .owl-prev, 
+.testimonial-style-nine.home-18 .owl-nav .owl-prev,
 .testimonial-style-nine.home-18 .owl-nav .owl-next{
   background: transparent;
   border: 1px solid #4527a4;
   color: #4527a4;
 }
 
-.testimonial-style-nine.home-18 .owl-nav .owl-prev:hover, 
+.testimonial-style-nine.home-18 .owl-nav .owl-prev:hover,
 .testimonial-style-nine.home-18 .owl-nav .owl-next:hover{
   color: #fff;
   background: #4527a4;
@@ -17095,7 +17055,7 @@ div#mCSB_1_container{
 .donate-form-area h4 {
   font-size: 24px;
   color: #444444;
-  font-weight: 400; 
+  font-weight: 400;
   margin-bottom: 18px;
   text-transform: capitalize;
 }
@@ -17230,7 +17190,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Home-Page-19
@@ -18800,7 +18760,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         About-Page
@@ -19075,7 +19035,7 @@ div#mCSB_1_container{
 }
 
 
-/*** 
+/***
 
 ====================================================================
                         Faq-Page
@@ -19176,13 +19136,13 @@ div#mCSB_1_container{
 
 .faq-section .accordion-box .block .acc-content{
   position:relative;
-  display:none; 
+  display:none;
   padding-top: 6px;
   padding-bottom: 27px;
 }
 
 .faq-section .accordion-box .block .acc-content.current{
-  display:block;  
+  display:block;
 }
 
 .faq-section .accordion-box .block .content .text{
@@ -19293,7 +19253,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Error-Page
@@ -19354,7 +19314,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Blog-Page
@@ -20116,8 +20076,8 @@ div#mCSB_1_container{
   padding-top: 10px;
 }
 
-.sidebar-page-container .blog-single-content .comments-form-area .form-group input[type='text'], 
-.sidebar-page-container .blog-single-content .comments-form-area .form-group input[type='email'], 
+.sidebar-page-container .blog-single-content .comments-form-area .form-group input[type='text'],
+.sidebar-page-container .blog-single-content .comments-form-area .form-group input[type='email'],
 .sidebar-page-container .blog-single-content .comments-form-area .form-group textarea {
   position: relative;
   width: 100%;
@@ -20148,7 +20108,7 @@ div#mCSB_1_container{
 }
 
 
-/*** 
+/***
 
 ====================================================================
                         Contact-Page
@@ -20240,11 +20200,11 @@ div#mCSB_1_container{
   background: #fff;
   padding: 10px 60px 10px 30px;
   font-size: 14px;
-  font-weight: 500; 
-  border-radius: 30px; 
+  font-weight: 500;
+  border-radius: 30px;
   border: 3px solid #fff;
-  box-shadow: 0 0px 20px 0px rgba(0, 0, 0, 0.1);  
-  transition: all 500ms ease;                                                                             
+  box-shadow: 0 0px 20px 0px rgba(0, 0, 0, 0.1);
+  transition: all 500ms ease;
 }
 
 .contact-section .contact-form-area .form-inner .form-group textarea{
@@ -20290,7 +20250,7 @@ div#mCSB_1_container{
 }
 
 
-/*** 
+/***
 
 ====================================================================
                         Element-Page
@@ -20398,7 +20358,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Team-Page
@@ -20639,7 +20599,7 @@ div#mCSB_1_container{
 
 
 
-/*** 
+/***
 
 ====================================================================
                         Service-Details
@@ -20810,7 +20770,7 @@ div#mCSB_1_container{
 }
 
 
-/*** 
+/***
 
 ====================================================================
                         Portfolio-Page
