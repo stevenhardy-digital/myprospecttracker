@@ -1,10 +1,9 @@
-<!-- Footer -->
 <footer class="main-footer bg-light pt-5 pb-3 border-top">
     <div class="container">
-        <div class="row align-items-start">
+        <div class="row">
 
-            <!-- Logo + Description -->
-            <div class="col-md-6 mb-4">
+            <!-- Logo & Description -->
+            <div class="col-md-6">
                 <a href="/" class="d-inline-block mb-2">
                     <img src="images/footer-logo.png" alt="My Prospect Tracker" style="max-height: 40px;">
                 </a>
@@ -14,8 +13,8 @@
                 </p>
             </div>
 
-            <!-- Quick Links -->
-            <div class="col-md-3 mb-4">
+            <!-- Quick Links aligned to the right -->
+            <div class="col-md-4 offset-md-2 text-md-end mt-4 mt-md-0">
                 <h6 class="fw-bold mb-3">Quick Links</h6>
                 <ul class="list-unstyled small">
                     <li><a href="/" class="text-muted text-decoration-none">Home</a></li>
