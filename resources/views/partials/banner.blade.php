@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-lg-6 content-column">
                 <div class="content-box">
-                    <h1>Shape Your Ideas. Prove Your Concept.</h1>
-                    <div class="text">A streamlined web app that helps you create and collaborate in real-time on wireframes, mockups, diagrams and prototypes.</div>
+                    <h1> The Prospect Tracker That Works While You Focus</h1>
+                    <div class="text">Grow your network marketing business with smart follow-ups, a distraction-free dashboard, and motivational streaks that help you stay consistent — all in one simple tool.</div>
                     <div class="btn-box">
-                        <a href="#" class="btn-one"><i class="fas fa-envelope"></i>Sign up with Email</a>
-                        <a href="#" class="btn-two">Try Now Free</a>
+                        <a href="#" class="btn-one">
+                            Get Started Free</a>
                     </div>
                 </div>
             </div>
