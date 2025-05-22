@@ -19,15 +19,7 @@
 
     <!-- Compiled CSS (Laravel Mix) -->
     <link rel="stylesheet" href="{{ mix('css/all.css') }}">
-
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2, h3 { font-family: 'Poppins', sans-serif; }
-        .bg-primary { background-color: #2563eb; }
-        .text-primary { color: #2563eb; }
-        .hover\:bg-primary-dark:hover { background-color: #1e40af; }
-    </style>
-
+    
     <!-- SEO Structured Data -->
     <script type="application/ld+json">
         {
