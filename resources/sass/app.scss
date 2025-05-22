@@ -13,3 +13,9 @@ a {
 .max-w-500 {
     max-width: 500px;
 }
+
+.sticky-header {
+    .logo-box {
+        margin-bottom: 0 !important;
+    }
+}
