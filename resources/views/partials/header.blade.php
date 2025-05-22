@@ -3,9 +3,7 @@
         <div class="container">
             <div class="main-box clearfix">
                 <div class="logo-box pull-left">
-                    <figure class="logo">
-                        <a href="/"><img src="images/logo-5.png" alt="Logo" /></a>
-                    </figure>
+                    <a href="/">My Prospect Tracker</a>
                 </div>
 
                 <div class="menu-area pull-right clearfix">

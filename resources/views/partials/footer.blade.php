@@ -5,7 +5,7 @@
                 <!-- Logo & Description -->
                 <div class="col-md-6">
                     <a href="/" class="d-inline-block mb-2">
-                        <img src="images/footer-logo.png" alt="My Prospect Tracker" style="max-height: 40px;">
+                        My Prospect Tracker
                     </a>
                     <p class="small text-muted mb-0">
                         A smarter way to manage your follow-ups.<br>
