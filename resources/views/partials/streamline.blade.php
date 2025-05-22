@@ -16,7 +16,7 @@
                                    style="padding: 0.75rem 1rem; border-radius: 0.375rem; border: 1px solid #ccc; color: #1f2937;">
 
                             <button type="submit"
-                                    class="btn btn-primary"
+                                    class="btn btn-outline-primary custom-outline-primary"
                                     style="
                 background-color: #2563eb;
                 border: none;

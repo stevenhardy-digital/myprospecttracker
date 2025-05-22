@@ -19,3 +19,23 @@ a {
         margin-bottom: 0 !important;
     }
 }
+
+.custom-outline-primary {
+    color: #2563eb;
+    border-color: #2563eb;
+    background-color: #ffffff;
+    transition: 0.3s ease;
+
+    &:hover,
+    &:focus {
+        color: #ffffff;
+        background-color: #2563eb;
+        border-color: #2563eb;
+        box-shadow: 0 0.5rem 1rem rgba(37, 99, 235, 0.15);
+    }
+
+    &:active {
+        background-color: #1e40af !important;
+        border-color: #1e40af !important;
+    }
+}
