@@ -1,4 +1,4 @@
-<footer class="main-footer bg-light pb-3 border-top mt-0 mt-md-5">
+<footer class="main-footer bg-light pt-5 pb-3 border-top mt-0 mt-md-5">
     <div class="container">
             <div class="row">
 
