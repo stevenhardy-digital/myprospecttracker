@@ -2,10 +2,9 @@
     <div class="outer-container">
         <div class="container">
             <div class="main-box clearfix">
-                <div class="logo-box pull-left">
-                    <a href="/">My Prospect Tracker</a>
+                <div class="logo-box d-flex align-items-center">
+                    <a href="/" class="navbar-brand fw-bold text-primary h5 m-0">My Prospect Tracker</a>
                 </div>
-
                 <div class="menu-area pull-right clearfix">
                     <!--Mobile Navigation Toggler-->
                     <div class="mobile-nav-toggler">

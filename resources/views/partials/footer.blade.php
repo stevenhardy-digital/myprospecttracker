@@ -4,9 +4,7 @@
 
                 <!-- Logo & Description -->
                 <div class="col-md-6">
-                    <a href="/" class="d-inline-block mb-2">
-                        My Prospect Tracker
-                    </a>
+                    <a href="/" class="navbar-brand fw-bold text-primary h5 m-0">My Prospect Tracker</a>
                     <p class="small text-muted mb-0">
                         A smarter way to manage your follow-ups.<br>
                         Built for focus, flow, and freedom.
