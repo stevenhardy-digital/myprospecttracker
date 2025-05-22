@@ -65,10 +65,6 @@
 
 <!-- Header -->
 @include('partials.header')
-
-<!-- Mobile Menu -->
-@include('partials.mobile-menu')
-
 <!-- Page Content -->
 @yield('content')
 
