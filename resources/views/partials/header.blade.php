@@ -15,21 +15,6 @@
                         <i class="icon-bar"></i>
                         <i class="icon-bar"></i>
                     </div>
-
-                    <nav class="main-menu navbar-expand-md navbar-light">
-                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                            <ul class="navigation clearfix">
-                                <li class="current"><a href="/">Home</a></li>
-                                <li><a href="#features">Features</a></li>
-                                <li><a href="#pricing">Pricing</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-
-                    <div class="btn-box">
-                        <a href="/register">Get Started</a>
-                    </div>
                 </div>
             </div>
         </div>
