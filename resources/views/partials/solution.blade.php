@@ -1,14 +1,13 @@
 <!-- solution-section -->
 <section class="solution-section">
     <div class="container">
-
+        <!-- Section Heading -->
         <div class="sec-title center">
             <h2>A flexible design solution that<br />adapts to your workflow.</h2>
+            <p class="text-muted">Built for the way network marketers actually work — quick check-ins, mobile-first updates, and automated reminders that make sense.</p>
         </div>
-
         <div class="inner-content">
-
-            <!-- First Box: Built for Trust and Simplicity -->
+            <!-- Box 1: Built for Trust -->
             <div class="inner-box">
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-12 col-sm-12 image-column">
@@ -22,15 +21,15 @@
                                 <h2>Built for Trust and Simplicity</h2>
                             </div>
                             <div class="text">
-                                <p>We take your data seriously. Every contact you add is encrypted. We never share your information.</p>
-                                <p class="mt-3">Be one of the first to use My Prospect Tracker to simplify your follow-ups and stay consistent.</p>
+                                <p>We understand how important privacy is in your business. That’s why every contact you add is encrypted and protected — always.</p>
+                                <p class="mt-3">You focus on building relationships. We’ll handle the data. No selling, no tracking, no shady stuff.</p>
+                                <p class="mt-3">Be among the first to experience the peace of mind that comes with My Prospect Tracker — a simple, secure place to grow your business.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Second Box: Designed to Keep You Moving -->
+            <!-- Box 2: Keep You Moving -->
             <div class="inner-box">
                 <div class="row align-items-center">
                     <div class="col-lg-5 col-md-12 col-sm-12 content-column">
@@ -39,20 +38,21 @@
                                 <h2>Designed to Keep You Moving</h2>
                             </div>
                             <div class="text">
-                                <p>My Prospect Tracker gives you momentum — without the mental load.</p>
+                                <p>No more digging through notebooks or spreadsheets. With My Prospect Tracker, you’ll know exactly who to follow up with — and when — in just one tap.</p>
+                                <p class="mt-3">Every feature is designed to be lightweight, intuitive, and ADHD-friendly — without shouting it. It's smooth, fast, and focused like you need it to be.</p>
+                                <p class="mt-3">Daily streaks, follow-up nudges, and a dashboard that shows only what matters. It’s like your second brain — but smarter.</p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-12 col-sm-12 image-column">
                         <div class="image-box wow slideInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
-                            <figure class="image"><img src="/images/streak-preview.png" alt="App movement preview"></figure>
+                            <figure class="image"><img src="/images/app-dashboard-preview.png" alt="App movement preview"></figure>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
-
     </div>
 </section>
 <!-- solution-section end -->
