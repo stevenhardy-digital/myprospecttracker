@@ -19,6 +19,7 @@
 
     <!-- Compiled CSS (Laravel Mix) -->
     <link rel="stylesheet" href="{{ mix('css/all.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
     <!-- SEO Structured Data -->
     <script type="application/ld+json">
