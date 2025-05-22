@@ -49,3 +49,18 @@
         </div>
     </div>
 </header>
+<!-- Mobile Menu -->
+<div class="mobile-menu">
+    <div class="menu-backdrop"></div>
+    <nav class="menu-box">
+        <div class="close-btn">&times;</div>
+
+        <ul class="navigation">
+            <li><a href="/">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="/register" class="btn btn-primary">Get Started</a></li>
+        </ul>
+    </nav>
+</div>
