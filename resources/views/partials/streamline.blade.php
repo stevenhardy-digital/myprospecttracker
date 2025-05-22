@@ -16,18 +16,7 @@
                                    style="padding: 0.75rem 1rem; border-radius: 0.375rem; border: 1px solid #ccc; color: #1f2937;">
 
                             <button type="submit"
-                                    class="btn btn-outline-primary custom-outline-primary"
-                                    style="
-                background-color: #2563eb;
-                border: none;
-                padding: 0.75rem 1.25rem;
-                border-radius: 0.375rem;
-                font-weight: 600;
-                color: white;
-                transition: background-color 0.3s ease;
-            "
-                                    onmouseover="this.style.backgroundColor='#1e40af'"
-                                    onmouseout="this.style.backgroundColor='#2563eb'">
+                                    class="btn btn-outline-primary custom-outline-primary">
                                 Join Now
                             </button>
                         </form>
