@@ -18,7 +18,7 @@
 
             <!-- Nav & CTA -->
             <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 px-3">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
@@ -34,7 +34,7 @@
                 </ul>
 
                 <!-- Mobile CTA -->
-                <div class="d-lg-none px-3 mb-3">
+                <div class="d-lg-none mb-3">
                     <a href="/register" class="btn btn-outline-primary w-100 rounded-pill">Get Started</a>
                 </div>
 
