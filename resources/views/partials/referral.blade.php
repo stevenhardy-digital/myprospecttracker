@@ -1,12 +1,12 @@
-<section class="py-5 bg-light border-top" id="referral">
+<section class="py-5 bg-primary border-top border-bottom" id="referral">
     <div class="container">
         <div class="row align-items-center text-center text-lg-start">
             <div class="col-lg-6 mb-4 mb-lg-0">
-                <h2 class="h1 fw-bold text-primary mb-3">Earn While You Grow</h2>
-                <p class="lead text-muted mb-4">
+                <h2 class="h1 fw-bold text-white mb-3">Earn While You Grow</h2>
+                <p class="lead text-white mb-4">
                     Invite your team to join <strong>My Prospect Tracker</strong> and get paid every time someone signs up with your referral code.
                 </p>
-                <a href="/register" class="btn btn-primary rounded-pill px-4 py-2">
+                <a href="/register" class="btn btn-outline-primary custom-outline-primary">
                     Start Earning Now
                 </a>
             </div>
