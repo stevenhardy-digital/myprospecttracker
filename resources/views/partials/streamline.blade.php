@@ -26,7 +26,7 @@
             <div class="col-lg-6 col-md-12 col-sm-12 image-column">
                 <div id="image_block_33">
                     <div class="image-box wow slideInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
-                        <figure class="image clearfix js-tilt"><img src="images/resource/illustration-19.png" alt=""></figure>
+                        <figure class="image clearfix js-tilt"><img src="images/resource/mpt-5.png" alt=""></figure>
                     </div>
                 </div>
             </div>
