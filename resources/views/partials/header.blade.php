@@ -1,6 +1,5 @@
-<!-- Sticky + Responsive Header -->
-<header class="main-header position-sticky top-0 w-100 bg-white shadow-sm z-3">
-    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+<header class="main-header position-sticky top-0 w-100 bg-transparent z-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3">
         <div class="container">
 
             <!-- Logo -->
