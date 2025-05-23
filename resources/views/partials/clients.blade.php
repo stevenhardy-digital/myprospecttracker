@@ -21,7 +21,7 @@
 
             <!-- Image Column -->
             <div class="col-md-6 text-center">
-                <img src="/images/your-image.png" alt="App preview" class="img-fluid rounded shadow">
+                <img src="images/resource/mpt-1.png" alt="App preview" class="img-fluid rounded shadow">
             </div>
 
         </div>

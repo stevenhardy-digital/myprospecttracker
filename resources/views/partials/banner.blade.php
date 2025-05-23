@@ -17,7 +17,7 @@
                 <div class="image-box">
                     <div class="bg-layer" style="background-image: url(images/icons/shap-14.png);"></div>
                     <figure class="image wow slideInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
-                        <a href="images/resource/mpt-1.png" class="lightbox-image"><img src="images/resource/mpt-1.png" alt=""></a>
+                        <img src="images/resource/mpt-1.png" alt="">
                     </figure>
                 </div>
             </div>
