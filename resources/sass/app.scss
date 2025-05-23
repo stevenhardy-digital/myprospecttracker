@@ -45,3 +45,13 @@ a {
 .navbar-brand {
     font-size: 1.5rem
 }
+
+.main-header {
+    background-color: transparent;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-header.sticky {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
