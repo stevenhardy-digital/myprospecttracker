@@ -3,12 +3,14 @@
         <div class="container">
 
             <!-- Logo -->
-            <a class="navbar-brand fw-bold text-primary" href="/">My Prospect Tracker</a>
+            <a class="navbar-brand fw-bold text-primary ps-2 ps-md-0" href="/">My Prospect Tracker</a>
 
             <!-- Toggler -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                     aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                 <span class="navbar-toggler-icon">
+                    <div></div>
+                 </span>
             </button>
 
             <!-- Nav Links -->

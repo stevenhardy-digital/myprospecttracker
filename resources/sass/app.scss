@@ -46,6 +46,23 @@ a {
     font-size: 1.5rem
 }
 
+.navbar-toggler-icon {
+    background-image: none;
+    width: 1.5em;
+    height: 1.5em;
+    position: relative;
+}
+
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon div {
+    content: '';
+    display: block;
+    height: 2px;
+    background-color: #2563eb; /* Primary blue */
+    margin: 5px 0;
+}
+
 .main-header {
     background-color: transparent;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
