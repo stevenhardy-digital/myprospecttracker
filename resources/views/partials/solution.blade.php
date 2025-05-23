@@ -11,7 +11,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-12 col-sm-12 image-column">
                         <div class="image-box wow slideInLeft" data-wow-delay="00ms" data-wow-duration="1500ms">
-                            <figure class="image"><img src="/images/streak-preview.png" alt="Encryption preview"></figure>
+                            <figure class="image"><img src="images/resources/mpt-4.png" alt="Encryption preview"></figure>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-12 col-sm-12 content-column">
