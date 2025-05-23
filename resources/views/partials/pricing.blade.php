@@ -1,4 +1,4 @@
-<section class="bg-light py-5">
+<section class="bg-white py-5">
     <div class="container text-center">
         <h2 class="mb-4 fw-bold">Simple Pricing</h2>
         <p class="text-muted mb-5">Start free for 14 days. No credit card required.</p>
