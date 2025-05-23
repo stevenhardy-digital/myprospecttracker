@@ -1,53 +1,39 @@
-<!-- main header -->
-<header class="main-header home-12">
-    <div class="outer-container">
+<!-- Sticky + Responsive Header -->
+<header class="main-header position-sticky top-0 w-100 bg-white shadow-sm z-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
         <div class="container">
-            <div class="main-box clearfix d-flex justify-content-between align-items-center py-3">
-                <!-- Logo -->
-                <div class="logo-box pull-left">
-                    <a href="/" class="navbar-brand fw-bold text-primary m-0">My Prospect Tracker</a>
-                </div>
 
-                <!-- Menu -->
-                <div class="menu-area pull-right clearfix d-flex align-items-center">
-                    <!-- Mobile Navigation Toggler -->
-                    <div class="mobile-nav-toggler d-block d-md-none me-3">
-                        <i class="icon-bar"></i>
-                        <i class="icon-bar"></i>
-                        <i class="icon-bar"></i>
-                    </div>
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold text-primary" href="/">My Prospect Tracker</a>
 
-                    <!-- Navigation -->
-                    <nav class="main-menu navbar-expand-md navbar-light">
-                        <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                            <ul class="navigation navbar-nav d-flex gap-4">
-                                <li><a href="/">Home</a></li>
-                                <li><a href="#features">Features</a></li>
-                                <li><a href="#pricing">Pricing</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul>
-                        </div>
-                    </nav>
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                    aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    <!-- Call to Action -->
-                    <div class="btn-box ms-4">
-                        <a href="/register" class="btn btn-outline-primary rounded-pill px-4">Get Started</a>
-                    </div>
-                </div>
+            <!-- Nav Links -->
+            <div class="collapse navbar-collapse justify-content-end align-items-center" id="mainNavbar">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pricing">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- CTA -->
+                <a href="/register" class="btn btn-outline-primary ms-lg-4 mt-3 mt-lg-0 rounded-pill px-4">
+                    Get Started
+                </a>
             </div>
         </div>
-    </div>
-
-    <!-- Sticky Header -->
-    <div class="sticky-header">
-        <div class="container clearfix d-flex justify-content-between align-items-center py-2">
-            <div class="logo-box">
-                <a href="/"><span class="fw-bold text-primary">My Prospect Tracker</span></a>
-            </div>
-            <div class="menu-area">
-                <nav class="main-menu clearfix"><!-- Populated via JS --></nav>
-            </div>
-        </div>
-    </div>
+    </nav>
 </header>
-<!-- main-header end -->
