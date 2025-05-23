@@ -7,6 +7,7 @@
     @include('partials.clients')
     @include('partials.design-process')
     @include('partials.solution')
+    @include('partials.referral')
 {{--    @include('partials.design-process-three')--}}
     @include('partials.streamline')
 @endsection
