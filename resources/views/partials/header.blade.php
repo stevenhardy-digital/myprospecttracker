@@ -3,7 +3,7 @@
         <div class="container px-3 px-md-0 d-flex justify-content-between align-items-center">
 
             <!-- Brand -->
-            <a class="navbar-brand fw-bold text-primary m-0" href="/">My Prospect Tracker</a>
+            <a class="navbar-brand fw-bold text-primary m-0" href="/"><img src="images/mpt-logo.png" alt="My Prospect Tracker" /></a>
 
             <!-- Toggler -->
             <button class="navbar-toggler border-0 shadow-none p-0 ms-2" type="button" data-bs-toggle="collapse"
