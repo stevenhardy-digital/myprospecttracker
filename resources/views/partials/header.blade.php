@@ -13,8 +13,8 @@
             </button>
 
             <!-- Nav Links -->
-            <div class="collapse navbar-collapse justify-content-end align-items-center" id="mainNavbar">
-                <ul class="navbar-nav mb-2 mb-lg-0">
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 px-3">
                     <li class="nav-item">
                         <a class="nav-link" href="/">Home</a>
                     </li>
@@ -29,10 +29,15 @@
                     </li>
                 </ul>
 
-                <!-- CTA -->
-                <a href="/register" class="btn btn-outline-primary ms-lg-4 mt-3 mt-lg-0 rounded-pill px-4">
-                    Get Started
-                </a>
+                <!-- Full-width button for mobile -->
+                <div class="d-lg-none px-3 mb-3">
+                    <a href="/register" class="btn btn-outline-primary w-100 rounded-pill">Get Started</a>
+                </div>
+
+                <!-- Desktop CTA (hidden on mobile) -->
+                <div class="d-none d-lg-block ms-lg-4">
+                    <a href="/register" class="btn btn-outline-primary rounded-pill px-4">Get Started</a>
+                </div>
             </div>
         </div>
     </nav>
