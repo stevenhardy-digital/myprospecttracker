@@ -9,5 +9,6 @@
     @include('partials.referral')
     @include('partials.solution')
 {{--    @include('partials.design-process-three')--}}
+    @include('partials.pricing')
     @include('partials.streamline')
 @endsection
