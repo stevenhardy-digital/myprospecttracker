@@ -1,5 +1,5 @@
 <!-- designe-process -->
-<section class="designe-process">
+<section class="designe-process" id="features">
     <div class="container">
         <div class="sec-title center"><h2>Everything You Need — Nothing You Don’t</h2></div>
         <div class="row">

@@ -1,4 +1,4 @@
-<section class="streamline-section">
+<section class="streamline-section" id="contact">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 col-md-12 col-sm-12 content-column">
