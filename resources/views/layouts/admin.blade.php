@@ -21,40 +21,6 @@
     <link rel="stylesheet" href="{{ mix('css/all.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-    <!-- SEO Structured Data -->
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "My Prospect Tracker",
-            "url": "https://myprospecttracker.com",
-            "logo": "https://myprospecttracker.com/logo.png",
-            "sameAs": [
-                "https://facebook.com/myprospecttracker",
-                "https://instagram.com/myprospecttracker"
-            ]
-        }
-    </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "My Prospect Tracker",
-            "operatingSystem": "Web",
-            "applicationCategory": "BusinessApplication",
-            "offers": {
-                "@type": "Offer",
-                "price": "0.00",
-                "priceCurrency": "GBP"
-            },
-            "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.8",
-                "reviewCount": "134"
-            }
-        }
-    </script>
-
     @stack('styles')
 </head>
 
@@ -71,11 +37,6 @@
 
 <!-- Footer -->
 @include('partials.footer')
-
-<!-- Scroll to top -->
-<button class="scroll-top scroll-to-target" data-target="html">
-    <span class="fa fa-arrow-up"></span>
-</button>
 
 <!-- Compiled JS (Laravel Mix) -->
 <script src="{{ mix('js/all.js') }}"></script>

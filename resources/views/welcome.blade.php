@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 
 @section('title', 'My Prospect Tracker | Smart Follow-Up CRM for Network Marketing')
 

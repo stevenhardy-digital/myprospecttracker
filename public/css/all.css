@@ -3974,7 +3974,7 @@ readers do not read off random characters that represent icons */
 }
 
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
-[class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
   font-family: Flaticon;
   font-style: normal;
 }
@@ -4060,7 +4060,7 @@ readers do not read off random characters that represent icons */
 .flaticon-charity:before { content: "\f14e"; }
 .flaticon-house:before { content: "\f14f"; }
 .flaticon-world:before { content: "\f150"; }
-/*
+/* 
  *  Owl Carousel - Animate Plugin
  */
 .owl-carousel .animated {
@@ -4099,7 +4099,7 @@ readers do not read off random characters that represent icons */
   }
 }
 
-/*
+/* 
  * 	Owl Carousel - Auto Height Plugin
  */
 .owl-height {
@@ -4110,7 +4110,7 @@ readers do not read off random characters that represent icons */
   transition: height 500ms ease-in-out;
 }
 
-/*
+/* 
  *  Core Owl Carousel CSS File
  */
 .owl-carousel {
@@ -4205,7 +4205,7 @@ readers do not read off random characters that represent icons */
   display: block;
 }
 
-/*
+/* 
  * 	Owl Carousel - Lazy Load Plugin
  */
 .owl-carousel .owl-item .owl-lazy {
@@ -4220,7 +4220,7 @@ readers do not read off random characters that represent icons */
   transform-style: preserve-3d;
 }
 
-/*
+/* 
  * 	Owl Carousel - Video Plugin
  */
 .owl-carousel .owl-video-wrapper {
@@ -7059,7 +7059,7 @@ Copyright (c) 2015 Daniel Eden
 	-webkit-transform: scale3d(1.1, 1.1, 1.1);
     transform: scale3d(1.1, 1.1, 1.1);
   }
-
+  
   66.666666% {
     opacity: 1;
 	-webkit-transform: scale3d(1, 1, 1);
@@ -7079,7 +7079,7 @@ Copyright (c) 2015 Daniel Eden
 	-webkit-transform: scale3d(1.1, 1.1, 1.1);
     transform: scale3d(1.1, 1.1, 1.1);
   }
-
+  
   66.666666% {
     opacity: 1;
 	-webkit-transform: scale3d(1, 1, 1);
@@ -7930,28 +7930,28 @@ to {
 
 .banner .parallax-container div img,
 .fullwidth-video-section .play-link .icon-box{
-    animation-name: zoom-fade;
-    animation-duration: 5s;
+    animation-name: zoom-fade; 
+    animation-duration: 5s; 
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-
-  -webkit-animation-name: zoom-fade;
-    -webkit-animation-duration: 5s;
+  
+  -webkit-animation-name: zoom-fade; 
+    -webkit-animation-duration: 5s; 
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
-
-  -moz-animation-name: zoom-fade;
-    -moz-animation-duration: 5s;
+  
+  -moz-animation-name: zoom-fade; 
+    -moz-animation-duration: 5s; 
     -moz-animation-iteration-count: infinite;
     -moz-animation-timing-function: linear;
-
-  -ms-animation-name: zoom-fade;
-    -ms-animation-duration: 5s;
+  
+  -ms-animation-name: zoom-fade; 
+    -ms-animation-duration: 5s; 
     -ms-animation-iteration-count: infinite;
     -ms-animation-timing-function: linear;
-
-  -o-animation-name: zoom-fade;
-    -o-animation-duration: 5s;
+  
+  -o-animation-name: zoom-fade; 
+    -o-animation-duration: 5s; 
     -o-animation-iteration-count: infinite;
     -o-animation-timing-function: linear;
 }
@@ -7962,7 +7962,7 @@ to {
     from {
         transform: rotate(0deg);
     }
-    to {
+    to { 
         transform: rotate(360deg);
     }
 }
@@ -7970,7 +7970,7 @@ to {
     from {
         -webkit-transform: rotate(0deg);
     }
-    to {
+    to { 
         -webkit-transform: rotate(360deg);
     }
 }
@@ -7978,7 +7978,7 @@ to {
     from {
         -moz-transform: rotate(0deg);
     }
-    to {
+    to { 
         -moz-transform: rotate(360deg);
     }
 }
@@ -7986,36 +7986,36 @@ to {
     from {
         -o-transform: rotate(0deg);
     }
-    to {
+    to { 
         -o-transform: rotate(360deg);
     }
 }
 
 .page-banner .icon-one,
 .main-banner .icon-one{
-    animation-name: rotateme;
-    animation-duration: 7s;
+    animation-name: rotateme; 
+    animation-duration: 7s; 
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-
-  -webkit-animation-name: rotateme;
-    -webkit-animation-duration: 7s;
+  
+  -webkit-animation-name: rotateme; 
+    -webkit-animation-duration: 7s; 
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
-
-  -moz-animation-name: rotateme;
-    -moz-animation-duration: 7s;
+  
+  -moz-animation-name: rotateme; 
+    -moz-animation-duration: 7s; 
     -moz-animation-iteration-count: infinite;
     -moz-animation-timing-function: linear;
-
-  -ms-animation-name: rotateme;
-    -ms-animation-duration: 7s;
-
+  
+  -ms-animation-name: rotateme; 
+    -ms-animation-duration: 7s; 
+ 
  -ms-animation-iteration-count: infinite;
     -ms-animation-timing-function: linear;
-
-  -o-animation-name: rotateme;
-    -o-animation-duration: 7s;
+  
+  -o-animation-name: rotateme; 
+    -o-animation-duration: 7s; 
     -o-animation-iteration-count: infinite;
     -o-animation-timing-function: linear;
 }
@@ -8026,28 +8026,28 @@ to {
 .page-banner .icon-six,
 .page-banner .icon-two,
 .rotate-me {
-    animation-name: rotateme;
-    animation-duration: 24s;
+    animation-name: rotateme; 
+    animation-duration: 24s; 
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-
-  -webkit-animation-name: rotateme;
-    -webkit-animation-duration: 24s;
+  
+  -webkit-animation-name: rotateme; 
+    -webkit-animation-duration: 24s; 
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: linear;
-
-  -moz-animation-name: rotateme;
-    -moz-animation-duration: 24s;
+  
+  -moz-animation-name: rotateme; 
+    -moz-animation-duration: 24s; 
     -moz-animation-iteration-count: infinite;
     -moz-animation-timing-function: linear;
-
-  -ms-animation-name: rotateme;
-    -ms-animation-duration: 24s;
+  
+  -ms-animation-name: rotateme; 
+    -ms-animation-duration: 24s; 
     -ms-animation-iteration-count: infinite;
     -ms-animation-timing-function: linear;
-
-  -o-animation-name: rotateme;
-    -o-animation-duration: 24s;
+  
+  -o-animation-name: rotateme; 
+    -o-animation-duration: 24s; 
     -o-animation-iteration-count: infinite;
     -o-animation-timing-function: linear;
 }
@@ -8754,7 +8754,7 @@ img {
   position:relative;
   float:left;
   z-index:2;
-  padding:70px 0px 25px 0px;
+  padding:25px 0px 25px 0px;
   margin: 0px 25px;
   -webkit-transition:all 300ms ease;
   -moz-transition:all 300ms ease;
@@ -19073,47 +19073,7 @@ div#mCSB_1_container{
   z-index: -1;
 }
 
-.designe-process .single-column:nth-child(2) .single-item .inner-box .icon-box:before{
-  background: #34c700;
-}
-
-.designe-process .single-column:nth-child(2) .single-item .inner-box .icon-box:after{
-  border-color: #34c700;
-}
-
-.designe-process .single-column:nth-child(3) .single-item .inner-box .icon-box:before{
-  background: #ff0000;
-}
-
-.designe-process .single-column:nth-child(3) .single-item .inner-box .icon-box:after{
-  border-color: #ff0000;
-}
-
-.designe-process .single-column:nth-child(4) .single-item .inner-box .icon-box:before{
-  background: #ff8500;
-}
-
-.designe-process .single-column:nth-child(4) .single-item .inner-box .icon-box:after{
-  border-color: #ff8500;
-}
-
-.designe-process .single-column:nth-child(5) .single-item .inner-box .icon-box:before{
-  background: #ff00ff;
-}
-
-.designe-process .single-column:nth-child(5) .single-item .inner-box .icon-box:after{
-  border-color: #ff00ff;
-}
-
-.designe-process .single-column:last-child .single-item .inner-box .icon-box:before{
-  background: #00aeef;
-}
-
-.designe-process .single-column:last-child .single-item .inner-box .icon-box:after{
-  border-color: #00aeef;
-}
-
-.designe-process .single-item .inner-box .icon-box i{
+.designe-process .single-item .inner-box .icon-box svg{
   position: relative;
   display: inline-block;
   font-size: 20px;
