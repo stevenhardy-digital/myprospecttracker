@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-lg-7 col-md-12 col-sm-12 image-column">
                         <div class="image-box wow slideInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
-                            <figure class="image"><img src="images/resources/mpt-2.png" alt="App movement preview"></figure>
+                            <figure class="image"><img src="images/resources/mpt-3.png" alt="App movement preview"></figure>
                         </div>
                     </div>
                 </div>
