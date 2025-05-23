@@ -11,7 +11,7 @@
                 </a>
             </div>
             <div class="col-lg-6 text-center">
-                <img src="images/resource/mpt-6.png" alt="Referral system preview" class="img-fluid" style="max-height: 320px;">
+                <img src="images/resource/mpt-referral.png" alt="Referral system preview" class="img-fluid" style="max-height: 320px;">
             </div>
         </div>
     </div>
