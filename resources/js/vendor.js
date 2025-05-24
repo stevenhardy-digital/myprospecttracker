@@ -1,6 +1,8 @@
 // resources/js/vendor.js
 
-import '../../resources/assets/js/jquery.js';
+import jQuery from '../../resources/assets/js/jquery.js';
+window.$ = window.jQuery = jQuery;
+
 import '../../resources/assets/js/popper.min.js';
 import '../../resources/assets/js/bootstrap.min.js';
 import '../../resources/assets/js/owl.js';
