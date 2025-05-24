@@ -86,11 +86,11 @@
         <script src="{{ asset('js/wow.js') }}"></script>
         <script src="{{ asset('js/bxslider.js') }}"></script>
         <script src="{{ asset('js/circle-progress.js') }}"></script>
-        <script src="{{ asset('js/gmaps.js') }}"></script>
+{{--        <script src="{{ asset('js/gmaps.js') }}"></script>--}}
         <script src="{{ asset('js/isotope.js') }}"></script>
         <script src="{{ asset('js/jquery.countTo.js') }}"></script>
         <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
-        <script src="{{ asset('js/jquery.paroller.js') }}"></script>
+        <script src="{{ asset('js/jquery.paroller.min.js') }}"></script>
         <script src="{{ asset('js/jquery-ui.js') }}"></script>
         <script src="{{ asset('js/map-helper.js') }}"></script>
         <script src="{{ asset('js/nav-tool.js') }}"></script>
