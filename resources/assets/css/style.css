@@ -10956,6 +10956,8 @@ div#mCSB_1_container{
   line-height: 80px;
   margin-bottom: 46px;
   z-index: 1;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .designe-process .single-item .inner-box .icon-box:before{
