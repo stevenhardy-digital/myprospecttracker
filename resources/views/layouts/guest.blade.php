@@ -21,10 +21,7 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    @vite([
-        'resources/sass/app.scss'
-    ])
-
+    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
     <!-- SEO Structured Data -->
     <script type="application/ld+json">
         {
@@ -81,7 +78,26 @@
         <button class="scroll-top scroll-to-target" data-target="html">
             <span class="fa fa-arrow-up"></span>
         </button>
-        @vite(['resources/js/app.js', 'resources/js/vendor.js'])
+        {{-- Load legacy JS --}}
+        <script src="{{ asset('js/jquery.js') }}"></script>
+        <script src="{{ asset('js/popper.min.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/owl.js') }}"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('js/bxslider.js') }}"></script>
+        <script src="{{ asset('js/circle-progress.js') }}"></script>
+        <script src="{{ asset('js/gmaps.js') }}"></script>
+        <script src="{{ asset('js/isotope.js') }}"></script>
+        <script src="{{ asset('js/jquery.countTo.js') }}"></script>
+        <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
+        <script src="{{ asset('js/jquery.paroller.js') }}"></script>
+        <script src="{{ asset('js/jquery-ui.js') }}"></script>
+        <script src="{{ asset('js/map-helper.js') }}"></script>
+        <script src="{{ asset('js/nav-tool.js') }}"></script>
+        <script src="{{ asset('js/scrollbar.js') }}"></script>
+        <script src="{{ asset('js/tilt.jquery.js') }}"></script>
+        <script src="{{ asset('js/validation.js') }}"></script>
+        <script src="{{ asset('js/wow.js') }}"></script>
         @stack('scripts')
 
     </body>
