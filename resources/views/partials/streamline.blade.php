@@ -20,6 +20,15 @@
                                 Join Now
                             </button>
                         </form>
+                        @if(session('success'))
+                            <div class="alert alert-success mt-2">{{ session('success') }}</div>
+                        @endif
+
+                        @if($errors->any())
+                            <div class="alert alert-danger mt-2">
+                                {{ $errors->first() }}
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
