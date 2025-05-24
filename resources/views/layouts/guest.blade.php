@@ -22,6 +22,7 @@
 
     <!-- Styles -->
     @vite([
+        'resources/sass/app.scss',
         'resources/assets/css/style.css',
         'resources/assets/css/responsive.css',
         'resources/assets/css/bootstrap.css',

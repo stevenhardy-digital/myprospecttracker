@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/assets/css/jquery.fancybox.min.css',
                 'resources/assets/css/animate.css',
                 'resources/assets/css/style.css',
+                'resources/sass/app.scss',
                 'resources/assets/css/responsive.css',
                 'resources/assets/js/jquery.js',
                 'resources/assets/js/popper.min.js',
