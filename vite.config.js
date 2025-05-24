@@ -5,8 +5,6 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/js/app.js',
-                'resources/css/app.css',
                 'resources/assets/css/font-awesome-all.css',
                 'resources/assets/css/flaticon.css',
                 'resources/assets/css/owl.css',

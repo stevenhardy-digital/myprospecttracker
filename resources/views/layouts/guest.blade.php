@@ -22,8 +22,6 @@
 
     <!-- Styles -->
     @vite([
-        'resources/css/app.css',
-        'resources/js/app.js',
         'resources/assets/css/bootstrap.css',
         'resources/assets/css/style.css',
         'resources/assets/css/responsive.css',
@@ -33,7 +31,7 @@
         'resources/assets/css/jquery.fancybox.min.css',
         'resources/assets/css/owl.css',
     ])
- 
+
     <!-- SEO Structured Data -->
     <script type="application/ld+json">
         {
