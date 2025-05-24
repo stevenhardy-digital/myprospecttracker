@@ -83,7 +83,7 @@
         <script src="{{ asset('js/popper.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
         <script src="{{ asset('js/owl.js') }}"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
+        <script src="{{ asset('js/wow.js') }}"></script>
         <script src="{{ asset('js/bxslider.js') }}"></script>
         <script src="{{ asset('js/circle-progress.js') }}"></script>
         <script src="{{ asset('js/gmaps.js') }}"></script>
@@ -97,7 +97,7 @@
         <script src="{{ asset('js/scrollbar.js') }}"></script>
         <script src="{{ asset('js/tilt.jquery.js') }}"></script>
         <script src="{{ asset('js/validation.js') }}"></script>
-        <script src="{{ asset('js/wow.js') }}"></script>
+        <script src="{{ asset('js/script.js') }}"></script>
         @stack('scripts')
 
     </body>
