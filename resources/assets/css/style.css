@@ -10947,7 +10947,9 @@ div#mCSB_1_container{
 
 .designe-process .single-item .inner-box .icon-box{
   position: relative;
-  display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   height: 80px;
   width: 80px;
   text-align: center;
