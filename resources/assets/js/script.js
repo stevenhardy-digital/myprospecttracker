@@ -3,11 +3,17 @@
 	"use strict";
 
 	//Hide Loading Box (Preloader)
-	function handlePreloader() {
-		if($('.preloader').length){
-			$('.preloader').delay(200).fadeOut(500);
-		}
-	}
+    function handlePreloader() {
+        if ($('.preloader').length) {
+            // Ensure overflow is hidden during preload
+            $('html, body').css('overflow', 'hidden');
+
+            $('.preloader').delay(200).fadeOut(500, function () {
+                // Restore overflow once preloader is gone
+                $('html, body').css('overflow', '');
+            });
+        }
+    }
 
     function headerStyle() {
         if($('.main-header').length){
