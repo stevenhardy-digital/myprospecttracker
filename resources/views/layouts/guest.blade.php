@@ -22,9 +22,9 @@
 
     <!-- Styles -->
     @vite([
-        'resources/assets/css/bootstrap.css',
         'resources/assets/css/style.css',
         'resources/assets/css/responsive.css',
+        'resources/assets/css/bootstrap.css',
         'resources/assets/css/font-awesome-all.css',
         'resources/assets/css/animate.css',
         'resources/assets/css/flaticon.css',
