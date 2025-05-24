@@ -6,7 +6,7 @@
                 <p class="lead text-white mb-4">
                     Invite your team to join <strong>My Prospect Tracker</strong> and get paid every time someone signs up with your referral code.
                 </p>
-                <a href="/register" class="btn custom-outline-primary">
+                <a href="/register" class="custom-outline-primary">
                     Start Earning Now
                 </a>
             </div>
