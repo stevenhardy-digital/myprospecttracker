@@ -5,7 +5,6 @@
             <!-- Brand -->
             <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-primary m-0" href="/">
                 <img src="/images/mpt-logo.png" alt="My Prospect Tracker" style="height: 32px;">
-                <span class="fs-5 d-none d-md-inline">My Prospect Tracker</span>
             </a>
 
             <!-- Toggler -->
