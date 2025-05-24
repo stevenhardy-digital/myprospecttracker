@@ -19,18 +19,18 @@ a {
 
 .custom-outline-primary {
     color: #2563eb;
-    border-color: #2563eb;
-    background-color: #ffffff;
-    transition: 0.3s ease;
-    padding: 0.75rem 1.25rem;
-    font-weight: 600;
+    border-color: #2563eb !important;
+    background-color: #fff;
+    transition: .3s ease !important;
+    padding: .75rem 1.25rem !important;
+    font-weight: 600 !important;
 
     &:hover,
     &:focus {
-        color: #ffffff;
-        background-color: #2563eb;
-        border-color: #ffffff;
-        box-shadow: 0 0.5rem 1rem rgba(37, 99, 235, 0.15);
+        color: #ffffff !important;
+        background-color: #2563eb !important;
+        border-color: #ffffff !important;
+        box-shadow: 0 0.5rem 1rem rgba(37, 99, 235, 0.15) !important;
     }
 
     &:active {
