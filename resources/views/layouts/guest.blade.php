@@ -21,8 +21,19 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    @vite([
+        'resources/css/app.css',
+        'resources/js/app.js',
+        'resources/assets/css/bootstrap.css',
+        'resources/assets/css/style.css',
+        'resources/assets/css/responsive.css',
+        'resources/assets/css/font-awesome-all.css',
+        'resources/assets/css/animate.css',
+        'resources/assets/css/flaticon.css',
+        'resources/assets/css/jquery.fancybox.min.css',
+        'resources/assets/css/owl.css',
+    ])
+ 
     <!-- SEO Structured Data -->
     <script type="application/ld+json">
         {
