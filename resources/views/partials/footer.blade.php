@@ -7,7 +7,7 @@
             <!-- Logo & Description -->
             <div class="col-md-6">
                 <a href="/" class="navbar-brand fw-bold text-primary h5 m-0">
-                    <img src="images/mpt-logo.png" alt="My Prospect Tracker">
+                    <img src="images/mpt-logo.png" alt="My Prospect Tracker" class="img-fluid rounded">
                 </a>
                 <p class="small text-muted mt-2 mb-0">
                     A smarter way to manage your follow-ups.<br>

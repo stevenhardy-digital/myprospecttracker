@@ -11,7 +11,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-7 col-md-12 col-sm-12 image-column">
                         <div class="image-box wow slideInLeft" data-wow-delay="00ms" data-wow-duration="1500ms">
-                            <figure class="image"><img src="images/resource/mpt-4.png" alt="Encryption preview"></figure>
+                            <figure class="image"><img src="images/resource/mpt-4.png" alt="Encryption preview" class="img-fluid rounded shadow"></figure>
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-12 col-sm-12 content-column">
@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-lg-7 col-md-12 col-sm-12 image-column">
                         <div class="image-box wow slideInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
-                            <figure class="image"><img src="images/resource/mpt-3.png" alt="App movement preview"></figure>
+                            <figure class="image"><img src="images/resource/mpt-3.png" class="img-fluid rounded shadow" alt="App movement preview"></figure>
                         </div>
                     </div>
                 </div>
