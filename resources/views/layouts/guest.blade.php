@@ -78,7 +78,25 @@
         <button class="scroll-top scroll-to-target" data-target="html">
             <span class="fa fa-arrow-up"></span>
         </button>
-        {{-- Load legacy JS --}}
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const toggler = document.querySelector(".navbar-toggler");
+                const menu = document.querySelector("#mainNavbar");
+
+                if (toggler && menu) {
+                    toggler.addEventListener("click", function () {
+                        menu.classList.toggle("show");
+                    });
+                }
+            });
+
+            document.querySelectorAll("#mainNavbar .nav-link").forEach(link => {
+                link.addEventListener("click", () => {
+                    document.querySelector("#mainNavbar").classList.remove("show");
+                });
+            });
+
+        </script>
         <script src="{{ asset('js/jquery.js') }}"></script>
         <script src="{{ asset('js/popper.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>

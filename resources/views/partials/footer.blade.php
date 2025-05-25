@@ -35,25 +35,3 @@
         </div>
     </div>
 </footer>
-
-@section('scripts')
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const toggler = document.querySelector(".navbar-toggler");
-            const menu = document.querySelector("#mainNavbar");
-
-            if (toggler && menu) {
-                toggler.addEventListener("click", function () {
-                    menu.classList.toggle("show");
-                });
-            }
-        });
-
-        document.querySelectorAll("#mainNavbar .nav-link").forEach(link => {
-            link.addEventListener("click", () => {
-                document.querySelector("#mainNavbar").classList.remove("show");
-            });
-        });
-
-    </script>
-@endsection
