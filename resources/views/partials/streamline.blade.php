@@ -1,7 +1,7 @@
 <section class="streamline-section" id="contact">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-4 col-md-12 col-sm-12 content-column">
+            <div class="col-lg-5 col-md-12 col-sm-12 content-column">
                 <div id="content_block_33">
                     <div class="content-box">
                         <h2>Join the Waitlist for My Prospect Tracker</h2>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6 offset-lg-2 col-md-12 col-sm-12 image-column">
+            <div class="col-lg-7 col-md-12 col-sm-12 image-column">
                 <div id="image_block_33">
                     <div class="image-box wow slideInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
                         <figure class="image clearfix"><img src="images/resource/mpt-5.png" alt="My Prospect Tracker Preview" class="img-fluid rounded shadow" /></figure>

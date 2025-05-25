@@ -10906,6 +10906,7 @@ div#mCSB_1_container{
 .banner-style-12 .image-box img{
   position: relative;
   width: 100%;
+    max-width: 600px;
 }
 
 .clients-section.home-12{
