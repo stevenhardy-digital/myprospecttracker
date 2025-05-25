@@ -48,5 +48,12 @@
                 });
             }
         });
+
+        document.querySelectorAll("#mainNavbar .nav-link").forEach(link => {
+            link.addEventListener("click", () => {
+                document.querySelector("#mainNavbar").classList.remove("show");
+            });
+        });
+
     </script>
 @endsection
