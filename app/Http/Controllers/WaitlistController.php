@@ -23,7 +23,7 @@ class WaitlistController extends Controller
         ])->post('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', [
             'email' => $request->email,
             'attributes' => [
-                'FNAME' => $request->input('first_name', 'User'), // Optional
+                'FIRSTNAME' => $request->input('first_name', 'User'), // Optional
             ],
             'includeListIds' => [(int) env('BREVO_LIST_ID')],
             'templateId' => (int) env('BREVO_DOI_TEMPLATE_ID'),

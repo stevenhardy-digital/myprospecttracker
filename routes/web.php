@@ -9,6 +9,9 @@ Route::get('/', function () {
 });
 
 Route::post('/waitlist', [WaitlistController::class, 'store']);
+Route::get('/thank-you', function () {
+    return view('thank-you');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
