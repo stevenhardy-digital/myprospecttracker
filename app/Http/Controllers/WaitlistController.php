@@ -27,10 +27,8 @@ class WaitlistController extends Controller
             ],
             'includeListIds' => [(int) env('BREVO_LIST_ID')],
             'templateId' => (int) env('BREVO_DOI_TEMPLATE_ID'),
-            'redirectionUrl' => 'https://yourdomain.com/thank-you',
+            'redirectionUrl' => 'https://myprospecttracker.com/thank-you',
         ]);
-
-        Log::error('Brevo Response', $response->json());
 
         if ($response->successful()) {
             return back()->with('success', 'Please check your email to confirm subscription.');
