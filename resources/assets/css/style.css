@@ -10909,8 +10909,15 @@ div#mCSB_1_container{
     max-width: 600px;
 }
 
-.clients-section.home-12{
-  position: relative;
+.clients-section.home-12 {
+    position: relative;
+    margin-top: 0;
+}
+
+@media (min-width: 992px) {
+    .clients-section.home-12 {
+        margin-top: 120px;
+    }
 }
 
 .clients-section.home-12 .clients-carousel{
