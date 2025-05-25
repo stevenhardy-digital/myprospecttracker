@@ -47,7 +47,7 @@
             <div class="col-lg-7 col-md-12 col-sm-12 image-column">
                 <div id="image_block_33">
                     <div class="image-box wow slideInRight" data-wow-delay="300ms" data-wow-duration="1500ms">
-                        <figure class="image clearfix"><img src="images/resource/mpt-5.png" alt="My Prospect Tracker Preview" class="img-fluid rounded shadow" /></figure>
+                        <figure class="image clearfix"><img src="images/resource/mpt-5.png" alt="My Prospect Tracker Preview" class="img-fluid rounded" /></figure>
                     </div>
                 </div>
             </div>
