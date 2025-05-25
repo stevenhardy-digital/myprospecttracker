@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class WaitlistController extends Controller
 {
@@ -28,6 +29,8 @@ class WaitlistController extends Controller
             'templateId' => (int) env('BREVO_DOI_TEMPLATE_ID'),
             'redirectionUrl' => 'https://yourdomain.com/thank-you',
         ]);
+
+        Log::error('Brevo Response', $response->json());
 
         if ($response->successful()) {
             return back()->with('success', 'Please check your email to confirm subscription.');
