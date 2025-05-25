@@ -15,22 +15,24 @@ class WaitlistController extends Controller
             'email' => 'required|email',
         ]);
 
-        $email = $request->email;
-
         $response = Http::withHeaders([
             'api-key' => env('BREVO_API_KEY'),
             'accept' => 'application/json',
             'content-type' => 'application/json',
-        ])->post('https://api.brevo.com/v3/contacts', [
-            'email' => $email,
-            'listIds' => [intval(env('BREVO_LIST_ID'))],
-            'updateEnabled' => true
+        ])->post('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', [
+            'email' => $request->email,
+            'attributes' => [
+                'FNAME' => $request->input('first_name', 'User'), // Optional
+            ],
+            'includeListIds' => [(int) env('BREVO_LIST_ID')],
+            'templateId' => (int) env('BREVO_DOI_TEMPLATE_ID'),
+            'redirectionUrl' => 'https://yourdomain.com/thank-you',
         ]);
 
         if ($response->successful()) {
-            return back()->with('success', 'You’ve joined the waitlist!');
+            return back()->with('success', 'Please check your email to confirm subscription.');
         }
 
-        return back()->withErrors(['email' => 'There was an issue adding you.']);
+        return back()->withErrors(['email' => 'There was an issue with the subscription.']);
     }
 }

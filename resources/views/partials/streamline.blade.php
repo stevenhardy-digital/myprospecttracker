@@ -6,21 +6,33 @@
                     <div class="content-box">
                         <h2>Join the Waitlist for My Prospect Tracker</h2>
                         <div class="text">Be the first to try My Prospect Tracker and start organising your network marketing business.</div>
-                        <form action="/waitlist" method="POST" class="max-w-md mx-auto d-flex flex-column flex-sm-row gap-2 align-items-start">
+                        <form action="/waitlist" method="POST" class="max-w-md mx-auto">
                             @csrf
-                            <input type="email"
-                                   name="email"
-                                   required
-                                   placeholder="Your email"
-                                   class="form-control me-sm-2 mb-2 mb-sm-0 w-100"
-                                   style="padding: 0.75rem 1rem; border-radius: 0.375rem; border: 1px solid #ccc; color: #1f2937;">
+
+                            <div class="mb-3">
+                                <input type="text"
+                                       name="first_name"
+                                       required
+                                       placeholder="Your first name"
+                                       class="form-control w-100"
+                                       style="padding: 0.75rem 1rem; border-radius: 0.375rem; border: 1px solid #ccc; color: #1f2937;">
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="email"
+                                       name="email"
+                                       required
+                                       placeholder="Your email"
+                                       class="form-control w-100"
+                                       style="padding: 0.75rem 1rem; border-radius: 0.375rem; border: 1px solid #ccc; color: #1f2937;">
+                            </div>
 
                             <button type="submit"
-                                    class="btn custom-outline-primary">
+                                    class="btn custom-outline-primary w-100">
                                 Join Now
                             </button>
                         </form>
-                        @if(session('success'))
+                    @if(session('success'))
                             <div class="alert alert-success mt-2">{{ session('success') }}</div>
                         @endif
 
