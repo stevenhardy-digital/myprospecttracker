@@ -72,6 +72,7 @@
         </main>
 
         <!-- Footer -->
+        @include('partials.streamline')
         @include('partials.footer')
 
         <!-- Scroll to top -->
