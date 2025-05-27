@@ -92,24 +92,24 @@
         <script src="{{ asset('js/script.js') }}" defer></script>
 
         <!-- Optional: your custom nav toggle script -->
-        <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const toggler = document.querySelector(".navbar-toggler");
-                const menu = document.querySelector("#mainNavbar");
+{{--        <script>--}}
+{{--            document.addEventListener("DOMContentLoaded", function () {--}}
+{{--                const toggler = document.querySelector(".navbar-toggler");--}}
+{{--                const menu = document.querySelector("#mainNavbar");--}}
 
-                if (toggler && menu) {
-                    toggler.addEventListener("click", () => {
-                        menu.classList.toggle("show");
-                    });
+{{--                if (toggler && menu) {--}}
+{{--                    toggler.addEventListener("click", () => {--}}
+{{--                        menu.classList.toggle("show");--}}
+{{--                    });--}}
 
-                    document.querySelectorAll("#mainNavbar .nav-link").forEach(link => {
-                        link.addEventListener("click", () => {
-                            menu.classList.remove("show");
-                        });
-                    });
-                }
-            });
-        </script>
+{{--                    document.querySelectorAll("#mainNavbar .nav-link").forEach(link => {--}}
+{{--                        link.addEventListener("click", () => {--}}
+{{--                            menu.classList.remove("show");--}}
+{{--                        });--}}
+{{--                    });--}}
+{{--                }--}}
+{{--            });--}}
+{{--        </script>--}}
         @stack('scripts')
     </body>
 </html>
