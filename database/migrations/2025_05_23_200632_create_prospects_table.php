@@ -17,7 +17,15 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->string('social_handle')->nullable();
             $table->text('pain_points')->nullable();
-            $table->enum('status', ['new', 'contacted', 'invited', 'presented', 'followed_up', 'signed_up'])->default('new');
+            $table->enum('stage', [
+                'expand_network',
+                'relationship_building',
+                'ask_question',
+                'qualify_pain',
+                'expose_tool',
+                'follow_up',
+                'close',
+            ])->default('expand_network');
             $table->date('last_contacted')->nullable();
             $table->date('next_follow_up')->nullable();
             $table->timestamps();

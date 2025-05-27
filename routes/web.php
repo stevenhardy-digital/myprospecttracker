@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogAdminController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WaitlistController;
 use Illuminate\Support\Facades\Route;
+use Laravel\Cashier\Http\Controllers\WebhookController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,11 +16,25 @@ Route::get('/thank-you', function () {
     return view('thank-you');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::view('/changelog', 'changelog')->name('changelog');
 
-Route::middleware('auth')->group(function () {
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+// Admin blog routes
+Route::middleware(['auth', \App\Http\Middleware\AdminOnly::class])->prefix('admin')->group(function () {
+    Route::get('/posts', [BlogAdminController::class, 'index'])->name('admin.posts');
+    Route::get('/posts/create', [BlogAdminController::class, 'create'])->name('admin.posts.create');
+    Route::post('/posts', [BlogAdminController::class, 'store'])->name('admin.posts.store');
+});
+
+Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook']);
+
+// Pro-only feature example
+Route::middleware(['auth', \App\Http\Middleware\ProOnly::class])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

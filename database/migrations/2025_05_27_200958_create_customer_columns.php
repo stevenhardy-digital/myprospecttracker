@@ -12,11 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('username');
-            $table->string('ref_code')->nullable()->unique();
-            $table->unsignedBigInteger('referrer_id')->nullable()->after('id');
-            $table->integer('streak')->default(0)->after('password');
-            $table->timestamp('last_login_at')->nullable();
+            $table->string('stripe_id')->nullable()->index();
+            $table->string('pm_type')->nullable();
+            $table->string('pm_last_four', 4)->nullable();
+            $table->timestamp('trial_ends_at')->nullable();
         });
     }
 
@@ -26,9 +25,16 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('streak');
-            $table->dropColumn('last_login_date');
-            $table->dropColumn('referrer_id');
+            $table->dropIndex([
+                'stripe_id',
+            ]);
+
+            $table->dropColumn([
+                'stripe_id',
+                'pm_type',
+                'pm_last_four',
+                'trial_ends_at',
+            ]);
         });
     }
 };
