@@ -79,45 +79,37 @@
         <button class="scroll-top scroll-to-target" data-target="html">
             <span class="fa fa-arrow-up"></span>
         </button>
+        <!-- Bootstrap bundle (includes Popper) -->
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}" defer></script>
+
+        <!-- jQuery & plugins -->
+        <script src="{{ asset('js/jquery.js') }}" defer></script>
+        <script src="{{ asset('js/owl.js') }}" defer></script>
+        <script src="{{ asset('js/wow.js') }}" defer></script>
+        <script src="{{ asset('js/jquery.fancybox.js') }}" defer></script>
+        <script src="{{ asset('js/tilt.jquery.js') }}" defer></script>
+        <script src="{{ asset('js/validation.js') }}" defer></script>
+        <script src="{{ asset('js/script.js') }}" defer></script>
+
+        <!-- Optional: your custom nav toggle script -->
         <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const toggler = document.querySelector(".navbar-toggler");
                 const menu = document.querySelector("#mainNavbar");
 
                 if (toggler && menu) {
-                    toggler.addEventListener("click", function () {
+                    toggler.addEventListener("click", () => {
                         menu.classList.toggle("show");
+                    });
+
+                    document.querySelectorAll("#mainNavbar .nav-link").forEach(link => {
+                        link.addEventListener("click", () => {
+                            menu.classList.remove("show");
+                        });
                     });
                 }
             });
-
-            document.querySelectorAll("#mainNavbar .nav-link").forEach(link => {
-                link.addEventListener("click", () => {
-                    document.querySelector("#mainNavbar").classList.remove("show");
-                });
-            });
-
         </script>
-        <script src="{{ asset('js/jquery.js') }}"></script>
-        <script src="{{ asset('js/popper.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('js/owl.js') }}"></script>
-        <script src="{{ asset('js/wow.js') }}"></script>
-        <script src="{{ asset('js/bxslider.js') }}"></script>
-        <script src="{{ asset('js/circle-progress.js') }}"></script>
-{{--        <script src="{{ asset('js/gmaps.js') }}"></script>--}}
-        <script src="{{ asset('js/isotope.js') }}"></script>
-        <script src="{{ asset('js/jquery.countTo.js') }}"></script>
-        <script src="{{ asset('js/jquery.fancybox.js') }}"></script>
-        <script src="{{ asset('js/jquery.paroller.min.js') }}"></script>
-        <script src="{{ asset('js/jquery-ui.js') }}"></script>
-        <script src="{{ asset('js/map-helper.js') }}"></script>
-        <script src="{{ asset('js/nav-tool.js') }}"></script>
-        <script src="{{ asset('js/scrollbar.js') }}"></script>
-        <script src="{{ asset('js/tilt.jquery.js') }}"></script>
-        <script src="{{ asset('js/validation.js') }}"></script>
-        <script src="{{ asset('js/script.js') }}"></script>
         @stack('scripts')
-
     </body>
 </html>
