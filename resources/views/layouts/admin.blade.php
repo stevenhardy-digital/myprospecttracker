@@ -33,7 +33,7 @@
 <div class="preloader"></div>
 
 <!-- Header -->
-@include('partials.header')
+@include('partials.header-logged-in')
 <!-- Page Content -->
 <main>
     {{ $slot }}
