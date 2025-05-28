@@ -119,16 +119,19 @@
                 <div class="bg-green-100 p-4 rounded text-green-800">
                     <p class="font-semibold">This week vs. last week:</p>
                     <ul class="mt-2">
+                        @php
+                            $followupDelta = $analytics['delta']['followups'] ?? 0;
+                            $newDelta = $analytics['delta']['new'] ?? 0;
+                        @endphp
                         <li>
-                            {{ $analytics['delta']['followups'] >= 0 ? '+' : '' }}{{ $analytics['delta']['followups'] }}
-                            follow-ups this week
+                            {{ $followupDelta >= 0 ? '+' : '' }}{{ $followupDelta }} follow-ups this week
                         </li>
                         <li>
-                            {{ $analytics['delta']['new'] >= 0 ? '+' : '' }}{{ $analytics['delta']['new'] }}
-                            new prospects added
+                            {{ $newDelta >= 0 ? '+' : '' }}{{ $newDelta }} new prospects added
                         </li>
                     </ul>
-                    @if($analytics['delta']['followups'] > 0 || $analytics['delta']['new'] > 0)
+
+                    @if($followupDelta > 0 || $newDelta > 0)
                         <p class="mt-2 text-sm text-green-700">You're making progress! Keep it up!</p>
                     @else
                         <p class="mt-2 text-sm text-red-700">Momentum dipped. Let’s pick it back up!</p>

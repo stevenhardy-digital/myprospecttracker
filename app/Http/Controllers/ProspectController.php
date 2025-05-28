@@ -39,6 +39,12 @@ class ProspectController extends Controller
             ],
         ];
 
+        $analytics['delta'] = [
+            'followups' => $analytics['weekly_followups'] - $analytics['last_week_followups'],
+            'new' => $analytics['new_this_week'] - $analytics['new_last_week'],
+        ];
+
+
         return view('dashboard', compact('prospects', 'todayFollowUps', 'overdue', 'analytics'));
     }
 
