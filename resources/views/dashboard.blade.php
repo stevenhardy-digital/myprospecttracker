@@ -15,14 +15,14 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
                 <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Today’s Follow-ups</h3>
                 <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
-                    @forelse($todayTasks as $task)
+                    @forelse($todayFollowUps as $task)
                         <li>{{ $task->name }} – {{ ucfirst($task->status) }}</li>
                     @empty
                         {{-- We leave this block intentionally empty --}}
                     @endforelse
                 </ul>
 
-                @if($todayTasks->isEmpty())
+                @if($todayFollowUps->isEmpty())
                     <div class="bg-yellow-100 text-yellow-800 p-4 rounded mt-4">
                         You're all caught up! Go find 3 new people to prospect today.
                     </div>
