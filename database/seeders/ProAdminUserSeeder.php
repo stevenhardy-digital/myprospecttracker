@@ -14,7 +14,7 @@ class ProAdminUserSeeder extends Seeder
             ['email' => 'steven@add-digital.co.uk'],
             [
                 'name' => 'Steven Hardy',
-                'email' => 'admin@example.com',
+                'email' => 'steven@add-digital.co.uk',
                 'username' => 'steven.hardy',
                 'password' => Hash::make('G01Dx6CrnbQ3'), // Change this in production
                 'role' => 'admin',
