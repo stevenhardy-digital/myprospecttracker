@@ -143,7 +143,7 @@
                     <p class="font-semibold">Focus Zone</p>
                     <p class="mt-2">
                         You have the most people stuck in:
-                        <span class="font-bold">{{ ucwords(str_replace('_', ' ', $analytics['focus_zone'])) }}</span>
+                        <span class="font-bold">{{ ucwords(str_replace('_', ' ', $analytics['focus_zone']['stage'] ?? 'unknown')) }}</span>
                     </p>
                     <p class="text-sm mt-1">Try moving a few of them forward today.</p>
                 </div>
