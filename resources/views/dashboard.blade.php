@@ -17,8 +17,11 @@
                 <ul class="list-disc list-inside text-gray-700 dark:text-gray-300">
                     @forelse($todayTasks as $task)
                         <li>{{ $task->name }} – {{ ucfirst($task->status) }}</li>
+                    @empty
+                        {{-- We leave this block intentionally empty --}}
                     @endforelse
                 </ul>
+
                 @if($todayTasks->isEmpty())
                     <div class="bg-yellow-100 text-yellow-800 p-4 rounded mt-4">
                         You're all caught up! Go find 3 new people to prospect today.
