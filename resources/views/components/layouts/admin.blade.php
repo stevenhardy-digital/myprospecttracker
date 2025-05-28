@@ -35,8 +35,9 @@
 <!-- Header -->
 @include('partials.header')
 <!-- Page Content -->
-@yield('content')
-
+<main>
+    {{ $slot }}
+</main>
 <!-- Footer -->
 @include('partials.footer')
 
