@@ -2,7 +2,7 @@
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-12">
-                <h1>Register</h1>
+                <h1 class="text-center">Register</h1>
             </div>
         </div>
     </div>
