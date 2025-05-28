@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Prospect Dashboard') }}
@@ -19,7 +19,7 @@
                         <li>{{ $task->name }} – {{ ucfirst($task->status) }}</li>
                     @endforelse
                 </ul>
-                @if($todayFollowUps->isEmpty())
+                @if($todayTasks->isEmpty())
                     <div class="bg-yellow-100 text-yellow-800 p-4 rounded mt-4">
                         You're all caught up! Go find 3 new people to prospect today.
                     </div>
@@ -144,4 +144,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-admin-layout>
