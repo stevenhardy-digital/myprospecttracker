@@ -11,8 +11,6 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->append(\App\Http\Middleware\AdminOnly::class);
-        $middleware->append(\App\Http\Middleware\ProOnly::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
