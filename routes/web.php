@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BlogAdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\WaitlistController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Cashier\Http\Controllers\WebhookController;
@@ -29,12 +30,10 @@ Route::middleware(['auth', \App\Http\Middleware\AdminOnly::class])->prefix('admi
 });
 
 Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook']);
+Route::get('/dashboard', [ProspectController::class, 'index'])->name('dashboard');
 
 // Pro-only feature example
 Route::middleware(['auth', \App\Http\Middleware\ProOnly::class])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
