@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    <title>@yield('title', 'Appway - HTML5 Template')</title>
+    <title>@yield('title', 'My Prospect Tracker')</title>
     <meta name="description" content="A clean, intuitive prospect tracker built for modern network marketers. Track conversations, automate follow-ups, and build streaks that drive consistent results." />
     <meta property="og:title" content="My Prospect Tracker" />
     <meta property="og:description" content="Smart follow-up CRM designed for network marketers. Track prospects, build daily consistency, and never miss a follow-up again." />
