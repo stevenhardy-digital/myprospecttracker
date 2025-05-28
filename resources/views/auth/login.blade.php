@@ -1,6 +1,11 @@
 <x-guest-layout>
     <div class="container py-5">
         <div class="row justify-content-center">
+            <div class="col-12">
+                <h1>Login</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
             <div class="col-md-6 col-lg-5">
                 @if (session('status'))
                     <div class="alert alert-success">

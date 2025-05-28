@@ -1,4 +1,11 @@
 <x-guest-layout>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h1>Register</h1>
+            </div>
+        </div>
+    </div>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
