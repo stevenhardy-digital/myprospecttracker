@@ -71,8 +71,8 @@ class HandleStripeWebhook
     {
         $subscription = $user->subscription('default');
 
-        if ($subscription && !$subscription->cancelled()) {
-            $subscription->markAsCancelled();
+        if ($subscription && !$subscription->canceled()) {
+            $subscription->markAsCanceled();
             $subscription->grace_ends_at = now()->addDays(7);
             $subscription->save();
 
