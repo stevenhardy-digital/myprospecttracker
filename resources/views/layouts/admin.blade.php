@@ -34,7 +34,11 @@
 
 <!-- Header -->
 @include('partials.header-logged-in')
-<!-- Page Content -->
+@if (isset($header))
+    <div class="container py-4">
+        {{ $header }}
+    </div>
+@endif
 <main>
     {{ $slot }}
 </main>

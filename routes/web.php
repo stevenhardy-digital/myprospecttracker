@@ -29,8 +29,11 @@ Route::middleware(['auth', \App\Http\Middleware\AdminOnly::class])->prefix('admi
     Route::post('/posts', [BlogAdminController::class, 'store'])->name('admin.posts.store');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [ProspectController::class, 'index'])->name('dashboard');
+});
+
 Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook']);
-Route::get('/dashboard', [ProspectController::class, 'index'])->name('dashboard');
 
 // Pro-only feature example
 Route::middleware(['auth', \App\Http\Middleware\ProOnly::class])->group(function () {

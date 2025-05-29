@@ -3,6 +3,10 @@
         <h2 class="fw-semibold fs-4 text-dark">
             {{ __('Prospect Dashboard') }}
         </h2>
+        <p class="small text-muted mt-1">
+            Role: <strong>{{ Auth::user()->role }}</strong> |
+            Plan: <strong>{{ ucfirst(Auth::user()->plan) }}</strong>
+        </p>
     </x-slot>
 
     <div class="py-4">
