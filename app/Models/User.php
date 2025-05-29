@@ -141,6 +141,11 @@ class User extends Authenticatable
 
         return $accountLink->url;
     }
+    public function prospects()
+    {
+        return $this->hasMany(Prospect::class);
+    }
+
 
 
 }

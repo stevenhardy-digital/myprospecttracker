@@ -21,13 +21,12 @@ class ProspectController extends Controller
         $lastWeekStart = now()->subWeek()->startOfWeek();
         $lastWeekEnd = now()->subWeek()->endOfWeek();
 
-        $prospects = Prospect::orderBy('next_follow_up')->get();
+        $prospects = Prospect::where('user_id', $user->id)->orderBy('next_follow_up')->get();
+
         $todayFollowUps = $prospects->filter(fn($p) => $p->next_follow_up == $today);
         $overdue = $prospects->filter(fn($p) => $p->next_follow_up < $today && $p->status !== 'signed_up');
 
         $stageCounts = $prospects->groupBy('stage')->map->count();
-
-        // Focus zone: Stage with highest count
         $focusZoneStage = $stageCounts->sortDesc()->keys()->first();
         $focusZoneCount = $stageCounts[$focusZoneStage] ?? 0;
 
@@ -43,6 +42,7 @@ class ProspectController extends Controller
                 'stage' => $focusZoneStage,
                 'count' => $focusZoneCount,
             ],
+            'delta' => [],
         ];
 
         $analytics['delta'] = [
@@ -56,14 +56,18 @@ class ProspectController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required',
-            'social_handle' => 'nullable|string',
-            'pain_points' => 'nullable|string',
-            'status' => 'required|in:new,contacted,invited,presented,followed_up,signed_up',
+            'name' => 'required|string|max:255',
+            'phone' => 'nullable|string',
+            'email' => 'nullable|email',
+            'notes' => 'nullable|string',
+            'stage' => 'required|in:expand_network,relationship_building,ask_question,qualify_pain,expose_tool,follow_up,close',
+            'follow_up_date' => 'nullable|date',
         ]);
 
+        $data['user_id'] = $request->user()->id;
+        $data['stage'] = 'relationship_building';
         $data['last_contacted'] = now();
-        $data['next_follow_up'] = $this->calculateNextFollowUp($data['status']);
+        $data['next_follow_up'] = $data['follow_up_date'] ?? now()->addDays(2);
 
         Prospect::create($data);
 
@@ -72,9 +76,11 @@ class ProspectController extends Controller
 
     public function update(Request $request, Prospect $prospect)
     {
+        $this->authorize('update', $prospect);
+
         $data = $request->validate([
-            'status' => 'required',
-            'last_contacted' => 'required|date'
+            'stage' => 'required|in:expand_network,relationship_building,ask_question,qualify_pain,expose_tool,follow_up,close',
+            'last_contacted' => 'required|date',
         ]);
 
         $prospect->update([
@@ -85,16 +91,16 @@ class ProspectController extends Controller
             'streak' => $prospect->streak + 1,
         ]);
 
-
         return redirect()->route('dashboard')->with('success', 'Prospect updated!');
     }
 
     private function calculateNextFollowUp($stage)
     {
         return match ($stage) {
-            'expand_network', 'relationship_building', 'qualify_pain', 'expose_tool' => now()->addDays(2),
-            'ask_question' => now()->addDay(),
-            'follow_up' => now()->addDays(3),
+            'expand_network', 'relationship_building' => now()->addDay(),
+            'ask_question', 'qualify_pain' => now()->addDays(2),
+            'expose_tool', 'follow_up' => now()->addDays(3),
+            'close' => null,
             default => null,
         };
     }
@@ -111,5 +117,4 @@ class ProspectController extends Controller
             default => 'close',
         };
     }
-
 }

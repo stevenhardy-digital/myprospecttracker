@@ -15,4 +15,17 @@ class Prospect extends Model
         'last_contacted',
         'next_follow_up',
     ];
+
+    protected $casts = [
+        'name' => 'encrypted',
+        'email' => 'encrypted',
+        'phone' => 'encrypted',
+        'notes' => 'encrypted',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

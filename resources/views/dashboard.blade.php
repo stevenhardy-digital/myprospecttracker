@@ -1,4 +1,18 @@
 <x-admin-layout>
+    @php
+        function getStageColor($stage) {
+            return match ($stage) {
+                'expand_network' => 'bg-info text-white',
+                'relationship_building' => 'bg-primary text-white',
+                'ask_question' => 'bg-warning text-dark',
+                'qualify_pain' => 'bg-danger text-white',
+                'expose_tool' => 'bg-secondary text-white',
+                'follow_up' => 'bg-success text-white',
+                'close' => 'bg-dark text-white',
+                default => 'bg-light text-dark',
+            };
+        }
+    @endphp
     <x-slot name="header">
         <h1 class="fw-semibold fs-4 text-dark">
             {{ __('Prospect Dashboard') }}
@@ -87,73 +101,111 @@
                 </div>
             </div>
 
-            {{-- Add New Prospect --}}
-            <div class="card mb-4">
+            {{-- 🔵 Add New Prospect --}}
+            <div class="card mb-4 shadow-sm border-0 bg-light">
                 <div class="card-body">
-                    <h3 class="h5 fw-semibold mb-3">Add New Prospect</h3>
+                    <h3 class="h5 fw-bold text-primary mb-3">➕ Add New Prospect</h3>
                     <form action="{{ route('prospects.store') }}" method="POST">
                         @csrf
                         <div class="row g-3">
                             <div class="col-md-6">
-                                <input type="text" name="name" placeholder="Name" required class="form-control">
+                                <input type="text" name="name" placeholder="Full Name" required class="form-control form-control-lg">
                             </div>
                             <div class="col-md-6">
-                                <input type="text" name="phone" placeholder="Phone" class="form-control">
+                                <input type="text" name="phone" placeholder="Phone (optional)" class="form-control form-control-lg">
                             </div>
                             <div class="col-md-6">
-                                <input type="email" name="email" placeholder="Email" class="form-control">
+                                <input type="email" name="email" placeholder="Email (optional)" class="form-control form-control-lg">
                             </div>
                             <div class="col-md-6">
-                                <select name="status" class="form-select">
-                                    <option value="new">New</option>
-                                    <option value="contacted">Contacted</option>
-                                    <option value="invited">Invited</option>
-                                    <option value="presented">Presented</option>
-                                    <option value="followed_up">Followed Up</option>
-                                    <option value="signed_up">Signed Up</option>
+                                <select name="stage" class="form-select form-select-lg" required>
+                                    <option value="expand_network">🌐 Expand Network</option>
+                                    <option value="relationship_building">💬 Relationship Building</option>
+                                    <option value="ask_question">❓ Ask Question</option>
+                                    <option value="qualify_pain">💢 Qualify Pain</option>
+                                    <option value="expose_tool">🛠️ Expose Tool</option>
+                                    <option value="follow_up">🔁 Follow Up</option>
+                                    <option value="close">✅ Close</option>
                                 </select>
                             </div>
                             <div class="col-md-6">
-                                <input type="date" name="follow_up_date" class="form-control">
+                                <input type="date" name="follow_up_date" class="form-control form-control-lg" placeholder="Next Follow-Up Date (optional)">
                             </div>
                             <div class="col-12">
-                                <textarea name="notes" placeholder="Notes" class="form-control"></textarea>
+                                <textarea name="notes" rows="3" placeholder="Quick notes..." class="form-control"></textarea>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Add</button>
+                        <button type="submit" class="btn btn-success btn-lg mt-3 w-100 fw-semibold">Save Prospect</button>
                     </form>
                 </div>
             </div>
 
-            {{-- All Prospects --}}
-            <div class="card mb-4">
+            {{-- 🗂️ All Prospects --}}
+            <div class="card mb-4 shadow-sm border-0">
                 <div class="card-body">
-                    <h3 class="h5 fw-semibold mb-3">All Prospects</h3>
+                    <h3 class="h5 fw-bold text-dark mb-3">📋 All Prospects</h3>
                     @forelse($prospects as $prospect)
-                        <div class="border rounded p-3 mb-3">
-                            <div class="fw-bold">{{ $prospect->name }}</div>
-                            <div class="text-muted">Status: {{ ucfirst($prospect->status) }}</div>
-                            <p class="mb-1">
-                                Next Action:
-                                @switch($p->stage)
-                                    @case('expand_network') Reach out and connect. @break
-                                    @case('relationship_building') Build rapport. @break
-                                    @case('ask_question') Ask about their goals. @break
-                                    @case('qualify_pain') Find pain points. @break
-                                    @case('expose_tool') Share video/landing page. @break
-                                    @case('follow_up') Follow up & answer objections. @break
-                                    @case('close') Ask for decision. @break
-                                @endswitch
+                        <div class="border rounded p-3 mb-3 bg-white shadow-sm">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <div class="fw-bold fs-5">{{ $prospect->name }}</div>
+                                    <span class="badge {{ getStageColor($prospect->stage) }}">
+                            {{ ucfirst(str_replace('_', ' ', $prospect->stage)) }}
+                        </span>
+                                </div>
+                                <!-- Inline Edit Button -->
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProspectModal{{ $prospect->id }}">
+                                    <i class="bi bi-pencil"></i> Edit
+                                </button>
+                            </div>
+                            <p class="mb-1 text-muted small">
+                                @include('partials.prospect-stage-instructions', ['stage' => $prospect->stage])
                             </p>
-                            <p class="mb-0">{{ $prospect->notes }}</p>
-                            <small class="text-muted">Follow up: {{ $prospect->follow_up_date ?? 'None' }}</small>
+                            <p class="mb-1 text-muted">{{ $prospect->notes }}</p>
                         </div>
+
+                        <!-- Modal Form for Inline Edit -->
+                        <div class="modal fade" id="editProspectModal{{ $prospect->id }}" tabindex="-1" aria-labelledby="editLabel{{ $prospect->id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <form class="modal-content" method="POST" action="{{ route('prospects.update', $prospect) }}">
+                                    @csrf
+                                    @method('PUT')
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="editLabel{{ $prospect->id }}">Edit {{ $prospect->name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label class="form-label">Stage</label>
+                                            <select name="status" class="form-select" required>
+                                                <option value="expand_network" {{ $prospect->stage === 'expand_network' ? 'selected' : '' }}>🌐 Expand Network</option>
+                                                <option value="relationship_building" {{ $prospect->stage === 'relationship_building' ? 'selected' : '' }}>💬 Relationship Building</option>
+                                                <option value="ask_question" {{ $prospect->stage === 'ask_question' ? 'selected' : '' }}>❓ Ask Question</option>
+                                                <option value="qualify_pain" {{ $prospect->stage === 'qualify_pain' ? 'selected' : '' }}>💢 Qualify Pain</option>
+                                                <option value="expose_tool" {{ $prospect->stage === 'expose_tool' ? 'selected' : '' }}>🛠️ Expose Tool</option>
+                                                <option value="follow_up" {{ $prospect->stage === 'follow_up' ? 'selected' : '' }}>🔁 Follow Up</option>
+                                                <option value="close" {{ $prospect->stage === 'close' ? 'selected' : '' }}>✅ Close</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Last Contacted</label>
+                                            <input type="date" name="last_contacted" class="form-control" value="{{ \Illuminate\Support\Carbon::parse($prospect->last_contacted)->format('Y-m-d') }}" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
                     @empty
-                        <p class="text-muted">No prospects found.</p>
+                        <div class="alert alert-info text-center">
+                            No prospects yet. Start adding now!
+                        </div>
                     @endforelse
                 </div>
             </div>
-
             {{-- Analytics Overview --}}
             <div class="card mb-4">
                 <div class="card-body">
