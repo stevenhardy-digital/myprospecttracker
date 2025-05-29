@@ -174,7 +174,7 @@
 
             {{-- Motivation Delta and Focus Zone --}}
             <div class="row mt-4">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="alert alert-success p-4 rounded">
                         <p class="fw-semibold">This week vs. last week:</p>
                         <ul class="mb-2">
@@ -193,7 +193,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="alert alert-warning p-4 rounded">
                         <p class="fw-semibold">Focus Zone</p>
                         <p class="mb-1">
@@ -203,7 +203,7 @@
                         <p class="small">Try moving a few of them forward today.</p>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="alert alert-info p-4 rounded text-center">
                         <h5 class="fw-bold mb-2">🔥 Your Streak</h5>
                         <p class="display-6 mb-2">{{ Auth::user()->streak }} day{{ Auth::user()->streak == 1 ? '' : 's' }}</p>
