@@ -33,7 +33,8 @@ class HandleStripeWebhook
 
             'customer.subscription.deleted',
             'invoice.payment_failed' => $this->handleSubscriptionCancelled($user),
-            'checkout.session.completed' => $this->handleCheckoutCompleted($object),
+            'checkout.session.completed',
+            'invoice.payment_succeeded'=> $this->handleCheckoutCompleted($object),
 
             default => null,
         };
