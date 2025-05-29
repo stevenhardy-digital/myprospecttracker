@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Stripe\Stripe;
+use Stripe\Subscription;
 
 class RegisteredUserController extends Controller
 {
@@ -32,8 +34,9 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'plan' => ['required', 'in:monthly,yearly'],
         ]);
 
         // Handle referral logic
@@ -50,12 +53,33 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'username' => Str::slug($request->name),
             'password' => Hash::make($request->password),
+            'plan' => $request->plan,
             'referrer_id' => $referrerId,
         ]);
 
         event(new Registered($user));
         Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
+        // Stripe setup
+        $user->createAsStripeCustomer(); // creates stripe_id if not present
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        // Price ID lookup
+        $priceId = $request->plan === 'yearly' ? 'price_1RU4v8PdkhfPJgwWLL80BsHU' : 'price_1RTUImPdkhfPJgwW6LbbkTqW';
+
+        // Optional billing anchor (e.g., next 1st of month)
+        $trialEnd = now()->addDays(14)->timestamp;
+        $billingAnchor = now()->addMonth()->startOfMonth()->timestamp;
+
+        // Create subscription manually via API
+        Subscription::create([
+            'customer' => $user->stripe_id,
+            'items' => [['price' => $priceId]],
+            'trial_end' => $trialEnd,
+            'billing_cycle_anchor' => $billingAnchor,
+            'proration_behavior' => 'create_prorations',
+        ]);
+
+        return redirect()->route('dashboard');
     }
 }

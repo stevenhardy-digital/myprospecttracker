@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\BlogAdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\WaitlistController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,13 @@ Route::middleware(['auth'])->group(function () {
             'invoices' => Auth::user()->invoices()
         ]);
     })->name('billing');
+    Route::post('/subscribe/monthly', [SubscriptionController::class, 'subscribeMonthly'])->name('subscribe.monthly');
+    Route::post('/subscribe/yearly', [SubscriptionController::class, 'subscribeYearly'])->name('subscribe.yearly');
 });
+
+Route::get('/pricing', function () {
+    return view('pricing');
+})->name('pricing');
 
 Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook']);
 

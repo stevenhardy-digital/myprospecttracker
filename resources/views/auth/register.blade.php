@@ -37,6 +37,17 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="invalid-feedback d-block mt-1" />
         </div>
 
+        <!-- Plan Selection -->
+        <div class="mb-4">
+            <label for="plan" class="form-label">Choose Your Plan</label>
+            <select id="plan" name="plan" class="form-select" required>
+                <option value="monthly">Monthly - $12/mo</option>
+                <option value="yearly">Yearly - $99/yr</option>
+            </select>
+            <x-input-error :messages="$errors->get('plan')" class="invalid-feedback d-block mt-1" />
+        </div>
+
+
         <div class="d-flex justify-content-between align-items-center mt-4">
             <a class="small text-decoration-none" href="{{ route('login') }}">
                 {{ __('Already registered?') }}

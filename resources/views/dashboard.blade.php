@@ -20,18 +20,21 @@
                 </div>
             @endif
 
-            @if(Auth::user()->inGracePeriod())
-                <div class="alert alert-warning border border-warning-subtle mb-4">
-                    <div class="fw-semibold mb-1">Your subscription has been cancelled.</div>
-                    <p class="mb-2 small text-warning">
-                        You have <strong>{{ Auth::user()->daysLeftInGrace() }}</strong> day{{ Auth::user()->daysLeftInGrace() > 1 ? 's' : '' }} left in your grace period.
-                    </p>
-                    <a href="{{ route('pricing') }}" class="text-decoration-underline fw-semibold">
-                        Re-subscribe now
-                    </a> to keep Pro access.
-                </div>
-            @endif
-            <p class="text-muted">
+                @if(Auth::user()->inGracePeriod())
+                    <div class="alert alert-warning d-flex align-items-start gap-3 border border-warning-subtle shadow-sm mb-4">
+                        <i class="bi bi-exclamation-triangle-fill fs-3 text-warning mt-1"></i>
+                        <div>
+                            <div class="fw-bold mb-1">⚠️ Your Pro subscription has been cancelled.</div>
+                            <p class="mb-2 small text-warning">
+                                You have <strong>{{ Auth::user()->daysLeftInGrace() }}</strong> day{{ Auth::user()->daysLeftInGrace() > 1 ? 's' : '' }} left in your grace period.
+                            </p>
+                            <a href="{{ route('pricing') }}" class="btn btn-sm btn-warning fw-semibold">
+                                Re-subscribe Now
+                            </a>
+                        </div>
+                    </div>
+                @endif
+                <p class="text-muted">
             Share My Prospect Tracker:
                 <span class="font-monospace">{{ url('/r/' . Auth::user()->username) }}</span>
             </p>

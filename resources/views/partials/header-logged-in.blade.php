@@ -23,6 +23,7 @@
                 <ul class="navbar-nav align-items-center mb-2 mb-lg-0">
                     <li class="nav-item px-2"><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
                     <li class="nav-item px-2"><a class="nav-link" href="{{ route('profile.edit') }}">Profile</a></li>
+                    <li class="nav-item px-2"><a class="nav-link" href="{{ route('billing') }}">Billing History</a></li>
                     <li class="nav-item px-2"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
 
