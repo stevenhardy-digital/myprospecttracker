@@ -100,7 +100,6 @@
                     @endif
                 </div>
             </div>
-
             {{-- 🔵 Add New Prospect --}}
             <div class="card mb-4 shadow-sm border-0 bg-light">
                 <div class="card-body">
@@ -115,7 +114,7 @@
                                 <input type="text" name="phone" placeholder="Phone (optional)" class="form-control form-control-lg">
                             </div>
                             <div class="col-md-6">
-                                <input type="email" name="email" placeholder="Email (optional)" class="form-control form-control-lg">
+                                <input type="text" name="social_handle" placeholder="Social Handle (optional)" class="form-control form-control-lg">
                             </div>
                             <div class="col-md-6">
                                 <select name="stage" class="form-select form-select-lg" required>
@@ -132,14 +131,13 @@
                                 <input type="date" name="follow_up_date" class="form-control form-control-lg" placeholder="Next Follow-Up Date (optional)">
                             </div>
                             <div class="col-12">
-                                <textarea name="notes" rows="3" placeholder="Quick notes..." class="form-control"></textarea>
+                                <textarea name="pain_points" rows="3" placeholder="Pain points or notes (optional)" class="form-control"></textarea>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success btn-lg mt-3 w-100 fw-semibold">Save Prospect</button>
                     </form>
                 </div>
             </div>
-
             {{-- 🗂️ All Prospects --}}
             <div class="card mb-4 shadow-sm border-0">
                 <div class="card-body">
@@ -158,13 +156,24 @@
                                     <i class="bi bi-pencil"></i> Edit
                                 </button>
                             </div>
-                            <p class="mb-1 text-muted small">
-                                @include('partials.prospect-stage-instructions', ['stage' => $prospect->stage])
-                            </p>
-                            <p class="mb-1 text-muted">{{ $prospect->notes }}</p>
+
+                            @if($prospect->social_handle)
+                                <div class="mb-1 text-muted"><i class="bi bi-person-circle me-1"></i> {{ $prospect->social_handle }}</div>
+                            @endif
+
+                            @if($prospect->pain_points)
+                                <div class="mb-1 text-muted small"><strong>Pain:</strong> {{ $prospect->pain_points }}</div>
+                            @endif
+
+                            <div class="small text-muted">
+                                <i class="bi bi-calendar-event me-1"></i>
+                                Last Contacted: {{ \Carbon\Carbon::parse($prospect->last_contacted)->toFormattedDateString() }}
+                                |
+                                Next Follow-up: {{ $prospect->next_follow_up ? \Carbon\Carbon::parse($prospect->next_follow_up)->toFormattedDateString() : 'N/A' }}
+                            </div>
                         </div>
 
-                        <!-- Modal Form for Inline Edit -->
+                        <!-- Modal Edit Form -->
                         <div class="modal fade" id="editProspectModal{{ $prospect->id }}" tabindex="-1" aria-labelledby="editLabel{{ $prospect->id }}" aria-hidden="true">
                             <div class="modal-dialog">
                                 <form class="modal-content" method="POST" action="{{ route('prospects.update', $prospect) }}">
@@ -189,7 +198,8 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Last Contacted</label>
-                                            <input type="date" name="last_contacted" class="form-control" value="{{ \Illuminate\Support\Carbon::parse($prospect->last_contacted)->format('Y-m-d') }}" required>
+                                            <input type="date" name="last_contacted" class="form-control"
+                                                   value="{{ \Carbon\Carbon::parse($prospect->last_contacted)->format('Y-m-d') }}" required>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -198,7 +208,6 @@
                                 </form>
                             </div>
                         </div>
-
                     @empty
                         <div class="alert alert-info text-center">
                             No prospects yet. Start adding now!
