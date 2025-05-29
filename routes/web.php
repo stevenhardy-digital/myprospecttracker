@@ -51,7 +51,7 @@ Route::get('/pricing', function () {
     return view('pricing');
 })->name('pricing');
 
-Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook']);
+Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook'])->name('cashier.webhook');
 
 // Pro-only feature example
 Route::middleware(['auth', \App\Http\Middleware\ProOnly::class])->group(function () {
