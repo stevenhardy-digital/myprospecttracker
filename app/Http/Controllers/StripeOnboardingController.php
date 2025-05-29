@@ -46,4 +46,10 @@ class StripeOnboardingController extends Controller
     {
         return redirect()->route('stripe.connect');
     }
+
+    public function retryOnboarding(Request $request)
+    {
+        $url = $request->user()->stripeOnboardingLink();
+        return redirect()->away($url);
+    }
 }

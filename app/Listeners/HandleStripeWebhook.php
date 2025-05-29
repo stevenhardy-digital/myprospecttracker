@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Notifications\CompleteStripeVerification;
 use App\Notifications\OnboardingReminder;
 use Laravel\Cashier\Events\WebhookReceived;
 use App\Models\User;
@@ -56,6 +57,11 @@ class HandleStripeWebhook
             'invoice.paid' => tap(
                 $this->handleInvoicePaid($object),
                 fn () => Log::info("Handled invoice paid", ['stripe_customer_id' => $object['customer'] ?? null])
+            ),
+
+            'account.updated' =>  tap(
+                $this->handleAccountUpdated($object),
+                fn () => Log::info("Handled Account Updated", ['stripe_customer_id' => $object['customer'] ?? null])
             ),
 
             default => Log::info("No handler defined for this webhook type", ['type' => $type]),
@@ -155,5 +161,32 @@ class HandleStripeWebhook
             'interval' => $interval,
             'earned_at' => now(),
         ]);
+    }
+
+    public function handleAccountUpdated(array $payload)
+    {
+        $account = $payload['data']['object'];
+
+        $user = User::where('stripe_connect_id', $account['id'])->first();
+
+        if (!$user) return;
+
+        $requirements = $account['requirements']['currently_due'] ?? [];
+
+        if (!empty($requirements)) {
+            // Store verification status
+            $user->stripe_requires_verification = true;
+            $user->save();
+
+            // Send reminder
+            if (!$user->notified_onboarding_reminder_at || now()->diffInHours($user->notified_onboarding_reminder_at) > 24) {
+                $user->notify(new CompleteStripeVerification($account));
+                $user->notified_onboarding_reminder_at = now();
+                $user->save();
+            }
+        } else {
+            $user->stripe_requires_verification = false;
+            $user->save();
+        }
     }
 }

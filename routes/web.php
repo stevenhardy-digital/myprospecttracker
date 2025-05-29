@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/commissions', [CommissionsController::class, 'index'])->name('commissions.index');
     Route::get('/stripe/connect', [StripeOnboardingController::class, 'redirect'])->name('stripe.connect');
     Route::get('/stripe/refresh', [StripeOnboardingController::class, 'refresh'])->name('stripe.refresh');
+    Route::get('/stripe/verification', [StripeOnboardingController::class, 'retryOnboarding'])->name('stripe.onboarding.retry');
 
 });
 

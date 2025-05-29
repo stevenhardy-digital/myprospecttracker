@@ -1,13 +1,29 @@
 <x-admin-layout>
     <div class="container py-5">
         <x-slot name="header">
-            <h2 class="fw-semibold fs-4 text-dark mb-0">
-                {{ __('My Commissions') }}
-            </h2>
+            <h1 class="fw-semibold fs-4 text-dark">
+                {{ __('Prospect Dashboard') }}
+            </h1>
             <p class="small text-muted mt-1">
                 Role: <strong>{{ ucfirst(Auth::user()->role) }}</strong> |
                 Plan: <strong>{{ ucfirst(Auth::user()->plan) }}</strong>
             </p>
+            @if(Auth::user()->plan === 'pro' && !Auth::user()->stripe_connect_id)
+                <div class="alert alert-danger d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>🔴 Action Required:</strong> You must complete your Stripe setup to receive referral payouts.
+                    </div>
+                    <a href="{{ route('stripe.connect') }}" class="btn btn-sm btn-light fw-bold">
+                        Complete Onboarding
+                    </a>
+                </div>
+            @endif
+            @if(Auth::user()->stripe_requires_verification)
+                <div class="alert alert-danger">
+                    Your Stripe account requires verification.
+                    <a href="{{ route('stripe.onboarding.retry') }}" class="btn btn-sm btn-danger ms-2">Complete Now</a>
+                </div>
+            @endif
         </x-slot>
 
         @if($commissions->isEmpty())

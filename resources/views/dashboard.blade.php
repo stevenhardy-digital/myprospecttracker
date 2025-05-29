@@ -17,6 +17,12 @@
                 </a>
             </div>
         @endif
+        @if(Auth::user()->stripe_requires_verification)
+            <div class="alert alert-danger">
+                Your Stripe account requires verification.
+                <a href="{{ route('stripe.onboarding.retry') }}" class="btn btn-sm btn-danger ms-2">Complete Now</a>
+            </div>
+        @endif
     </x-slot>
 
     <div class="py-4">

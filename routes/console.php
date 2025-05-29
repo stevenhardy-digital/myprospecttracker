@@ -10,3 +10,4 @@ Artisan::command('inspire', function () {
 
 Schedule::command('users:downgrade-expired-grace')->dailyAt('03:00');
 Schedule::command('pay:commissions')->weeklyOn(1, '04:00');;
+Schedule::command('stripe:check-verifications')->everySixHours();

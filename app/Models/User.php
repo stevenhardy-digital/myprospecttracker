@@ -130,5 +130,17 @@ class User extends Authenticatable
         return $subscription && $subscription->valid() && ! $subscription->onTrial();
     }
 
+    public function stripeOnboardingLink(): string
+    {
+        $accountLink = \Stripe\AccountLink::create([
+            'account' => $this->stripe_connect_id,
+            'refresh_url' => route('stripe.onboarding.retry'),
+            'return_url' => route('dashboard'),
+            'type' => 'account_onboarding',
+        ]);
+
+        return $accountLink->url;
+    }
+
 
 }
