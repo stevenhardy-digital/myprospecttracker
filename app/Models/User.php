@@ -61,14 +61,28 @@ class User extends Authenticatable
     {
         $subscription = $this->subscription('default');
 
-        return $subscription && $subscription->onGracePeriod();
+        return $subscription &&
+            $subscription->ended() &&
+            $this->gracePeriodEndsAt() &&
+            now()->lt($this->gracePeriodEndsAt());
     }
 
-    public function daysLeftInGrace(): ?int
+    public function gracePeriodEndsAt(): ?\Carbon\Carbon
     {
-        if (!$this->subscription()?->ends_at) return null;
+        $subscription = $this->subscription('default');
 
-        return max(0, 7 - now()->diffInDays($this->subscription()->ends_at));
+        if (! $subscription || ! $subscription->ended()) {
+            return null;
+        }
+
+        return $subscription->updated_at->addDays(7); // custom 7-day grace period
+    }
+
+    public function daysLeftInGrace(): int
+    {
+        $end = $this->gracePeriodEndsAt();
+
+        return $end ? now()->diffInDays($end, false) : 0;
     }
 
     public function hasProAccess(): bool
