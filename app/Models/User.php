@@ -59,7 +59,9 @@ class User extends Authenticatable
 
     public function inGracePeriod(): bool
     {
-        return optional($this->subscription())->onGracePeriod();
+        $subscription = $this->subscription('default');
+
+        return $subscription && $subscription->onGracePeriod();
     }
 
     public function daysLeftInGrace(): ?int
