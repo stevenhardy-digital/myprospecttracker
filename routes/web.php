@@ -18,6 +18,11 @@ Route::get('/thank-you', function () {
     return view('thank-you');
 });
 
+Route::get('/r/{username}', function ($username) {
+   session(['referrer' => $username]);
+   return redirect()->route('register');
+})->name('referral');
+
 Route::view('/changelog', 'changelog')->name('changelog');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');

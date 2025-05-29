@@ -33,7 +33,7 @@
             @endif
             <p class="text-muted">
             Share My Prospect Tracker:
-                <span class="font-monospace">{{ url('/register?ref=' . Auth::user()->username) }}</span>
+                <span class="font-monospace">{{ url('/r/' . Auth::user()->username) }}</span>
             </p>
 
             {{-- Today’s Follow-ups --}}
@@ -198,6 +198,20 @@
                             <strong>{{ ucwords(str_replace('_', ' ', $analytics['focus_zone']['stage'] ?? 'unknown')) }}</strong>
                         </p>
                         <p class="small">Try moving a few of them forward today.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-info p-4 rounded text-center">
+                        <h5 class="fw-bold mb-2">🔥 Your Streak</h5>
+                        <p class="display-6 mb-2">{{ Auth::user()->streak }} day{{ Auth::user()->streak == 1 ? '' : 's' }}</p>
+
+                        @if(Auth::user()->streak >= 7)
+                            <p class="small text-success mb-0">Amazing consistency! You’re building real momentum! 💪</p>
+                        @elseif(Auth::user()->streak >= 3)
+                            <p class="small text-primary mb-0">Nice streak! Keep showing up! 👏</p>
+                        @else
+                            <p class="small text-muted mb-0">Just getting started — let’s build that streak! 🚀</p>
+                        @endif
                     </div>
                 </div>
             </div>

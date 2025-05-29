@@ -28,6 +28,16 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        $user = $request->user();
+        $today = now()->startOfDay();
+        $lastLogin = $user->last_login_at ? $user->last_login_at->startOfDay() : null;
+
+        if($lastLogin === $today->copy()->subDay()) {
+            $user->streak += 1;
+        } elseif($lastLogin !== $today) {
+            $user->streak = 1;
+        }
+
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
