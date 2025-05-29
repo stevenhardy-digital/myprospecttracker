@@ -63,19 +63,15 @@ class User extends Authenticatable
 
         return $subscription &&
             $subscription->ended() &&
-            $this->gracePeriodEndsAt() &&
-            now()->lt($this->gracePeriodEndsAt());
+            $subscription->grace_ends_at &&
+            now()->lt($subscription->grace_ends_at);
     }
 
     public function gracePeriodEndsAt(): ?\Carbon\Carbon
     {
         $subscription = $this->subscription('default');
 
-        if (! $subscription || ! $subscription->ended()) {
-            return null;
-        }
-
-        return $subscription->updated_at->addDays(7); // custom 7-day grace period
+        return $subscription?->grace_ends_at;
     }
 
     public function daysLeftInGrace(): int
