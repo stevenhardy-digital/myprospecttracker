@@ -14,7 +14,7 @@ class SubscriptionController extends Controller
             $user->createAsStripeCustomer();
         }
 
-        return $user->newSubscription('default', 'price_monthly_id_here')->checkout([
+        return $user->newSubscription('default', 'price_1RTUImPdkhfPJgwW6LbbkTqW')->checkout([
             'success_url' => route('dashboard'),
             'cancel_url' => route('pricing'),
         ]);
@@ -28,7 +28,7 @@ class SubscriptionController extends Controller
             $user->createAsStripeCustomer();
         }
 
-        return $user->newSubscription('default', 'price_yearly_id_here')->checkout([
+        return $user->newSubscription('default', 'price_1RU4v8PdkhfPJgwWLL80BsHU')->checkout([
             'success_url' => route('dashboard'),
             'cancel_url' => route('pricing'),
         ]);
