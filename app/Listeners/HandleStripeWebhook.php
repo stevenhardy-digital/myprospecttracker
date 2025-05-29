@@ -33,6 +33,7 @@ class HandleStripeWebhook
 
             'customer.subscription.deleted',
             'invoice.payment_failed' => $this->handleSubscriptionCancelled($user),
+            'checkout.session.completed' => $this->handleCheckoutCompleted($object),
 
             default => null,
         };
@@ -56,6 +57,24 @@ class HandleStripeWebhook
             $user->save();
 
             $user->notify(new DowngradedToFree);
+        }
+    }
+
+    protected function handleCheckoutCompleted(array $session)
+    {
+        $stripeCustomerId = $session['customer'] ?? null;
+        $clientReferenceId = $session['client_reference_id'] ?? null;
+
+        if (!$stripeCustomerId || !$clientReferenceId) {
+            return;
+        }
+
+        $user = \App\Models\User::find($clientReferenceId); // client_reference_id must be the user's ID
+
+        if ($user) {
+            $user->stripe_id = $stripeCustomerId;
+            $user->plan = 'pro';
+            $user->save();
         }
     }
 }
