@@ -10,9 +10,8 @@ class Prospect extends Model
         'user_id',
         'name',
         'phone',
-        'email',
-        'notes',
-        'status',
+        'social_handle',
+        'pain_points',
         'stage',
         'last_contacted',
         'next_follow_up',
@@ -20,9 +19,9 @@ class Prospect extends Model
 
     protected $casts = [
         'name' => 'encrypted',
-        'email' => 'encrypted',
         'phone' => 'encrypted',
-        'notes' => 'encrypted',
+        'social_handle' => 'encrypted',
+        'pain_points' => 'encrypted',
     ];
 
     public function user()
