@@ -11,19 +11,22 @@ class HandleSubscriptionCancellation
 {
     public function handle(WebhookReceived $event)
     {
-        // Optional: Extract customer ID or user
         $payload = $event->payload;
-        $customerId = $payload['data']['object']['customer'] ?? null;
 
-        // Example: Find the user via Stripe customer ID
-        $user = User::where('stripe_id', $customerId)->first();
+        // Only act on subscription deleted or failed payment
+        if (
+            $payload['type'] === 'customer.subscription.deleted' ||
+            $payload['type'] === 'invoice.payment_failed'
+        ) {
+            $stripeId = $payload['data']['object']['customer'];
 
-        if ($user) {
-            // Notify the user (or yourself/admin)
-            $user->notify(new SubscriptionCancelled());
+            $user = User::where('stripe_id', $stripeId)->first();
+
+            if ($user && $user->plan === 'pro') {
+                $user->plan = 'free';
+                $user->save();
+            }
+            $user->notify(new \App\Notifications\DowngradedToFree);
         }
-
-        // OR notify an admin:
-        // Notification::route('mail', 'admin@example.com')->notify(new SubscriptionCancelled());
     }
 }

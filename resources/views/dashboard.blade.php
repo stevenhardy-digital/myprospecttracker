@@ -1,18 +1,38 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="fw-semibold fs-4 text-dark">
+        <h1 class="fw-semibold fs-4 text-dark">
             {{ __('Prospect Dashboard') }}
-        </h2>
+        </h1>
         <p class="small text-muted mt-1">
-            Role: <strong>{{ Auth::user()->role }}</strong> |
+            Role: <strong>{{ ucfirst(Auth::user()->role) }}</strong> |
             Plan: <strong>{{ ucfirst(Auth::user()->plan) }}</strong>
         </p>
     </x-slot>
 
     <div class="py-4">
         <div class="container">
+            @if(Auth::user()->plan === 'free' && !Auth::user()->isAdmin())
+                <div class="alert alert-danger border border-danger-subtle mb-4">
+                    <strong>Your Pro Plan has ended.</strong>
+                    You’re now on the free plan.
+                    <a href="{{ route('billing') }}" class="fw-semibold text-decoration-underline">View billing</a> or
+                    <a href="{{ route('pricing') }}" class="fw-semibold text-decoration-underline">upgrade again</a>.
+                </div>
+            @endif
+
+            @if(Auth::user()->inGracePeriod())
+                <div class="alert alert-warning border border-warning-subtle mb-4">
+                    <div class="fw-semibold mb-1">Your subscription has been cancelled.</div>
+                    <p class="mb-2 small text-warning">
+                        You have <strong>{{ Auth::user()->daysLeftInGrace() }}</strong> day{{ Auth::user()->daysLeftInGrace() > 1 ? 's' : '' }} left in your grace period.
+                    </p>
+                    <a href="{{ route('pricing') }}" class="text-decoration-underline fw-semibold">
+                        Re-subscribe now
+                    </a> to keep Pro access.
+                </div>
+            @endif
             <p class="text-muted">
-                Share My Prospect Tracker:
+            Share My Prospect Tracker:
                 <span class="font-monospace">{{ url('/register?ref=' . Auth::user()->username) }}</span>
             </p>
 

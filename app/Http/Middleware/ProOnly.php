@@ -15,9 +15,10 @@ class ProOnly
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->check() || !auth()->user()->isPro()) {
-            return redirect('/pricing')->with('error', 'Upgrade to access this feature.');
+        if (!auth()->check() || !auth()->user()->hasProAccess()) {
+            return redirect('/pricing')->with('error', 'Your Pro access has expired. Please renew.');
         }
+
         return $next($request);
     }
 }

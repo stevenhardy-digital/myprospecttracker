@@ -57,4 +57,22 @@ class User extends Authenticatable
         return $this->plan === 'pro';
     }
 
+    public function inGracePeriod(): bool
+    {
+        return optional($this->subscription())->onGracePeriod();
+    }
+
+    public function daysLeftInGrace(): ?int
+    {
+        if (!$this->subscription()?->ends_at) return null;
+
+        return max(0, 7 - now()->diffInDays($this->subscription()->ends_at));
+    }
+
+    public function hasProAccess(): bool
+    {
+        return $this->plan === 'pro' || $this->inGracePeriod();
+    }
+
+
 }

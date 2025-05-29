@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\WaitlistController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Laravel\Cashier\Http\Controllers\WebhookController;
 
@@ -31,6 +32,11 @@ Route::middleware(['auth', \App\Http\Middleware\AdminOnly::class])->prefix('admi
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [ProspectController::class, 'index'])->name('dashboard');
+    Route::get('/billing', function () {
+        return view('billing.history', [
+            'invoices' => Auth::user()->invoices()
+        ]);
+    })->name('billing');
 });
 
 Route::post('/stripe/webhook', [WebhookController::class, 'handleWebhook']);
