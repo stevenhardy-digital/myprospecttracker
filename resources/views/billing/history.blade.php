@@ -34,7 +34,7 @@
                                     </span>
                             </td>
                             <td>
-                                <a href="{{ $invoice->invoice_pdf }}" class="btn btn-sm btn-outline-primary">
+                                <a href="{{ $invoice->asStripeInvoice()->invoice_pdf }}" class="btn btn-sm btn-outline-primary">
                                     Download
                                 </a>
                             </td>
