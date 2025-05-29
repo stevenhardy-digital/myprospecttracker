@@ -2,10 +2,12 @@
 
 namespace App\Listeners;
 
+use App\Notifications\OnboardingReminder;
 use Laravel\Cashier\Events\WebhookReceived;
 use App\Models\User;
 use App\Notifications\DowngradedToFree;
 use Illuminate\Support\Facades\Log;
+use App\Models\Commission;
 
 class HandleStripeWebhook
 {
@@ -45,11 +47,15 @@ class HandleStripeWebhook
                 fn () => Log::info("Handled subscription cancelled/payment failed", ['user_id' => $user->id])
             ),
 
-            'checkout.session.completed',
+            'checkout.session.completed' => tap(
+                $this->handleCheckoutCompleted($object),
+                fn () => Log::info("Handled checkout session", ['stripe_customer_id' => $object['customer'] ?? null])
+            ),
+
             'invoice.payment_succeeded',
             'invoice.paid' => tap(
-                $this->handleCheckoutCompleted($object),
-                fn () => Log::info("Handled checkout/invoice success", ['stripe_customer_id' => $object['customer'] ?? null])
+                $this->handleInvoicePaid($object),
+                fn () => Log::info("Handled invoice paid", ['stripe_customer_id' => $object['customer'] ?? null])
             ),
 
             default => Log::info("No handler defined for this webhook type", ['type' => $type]),
@@ -89,12 +95,65 @@ class HandleStripeWebhook
             return;
         }
 
-        $user = \App\Models\User::find($clientReferenceId); // client_reference_id must be the user's ID
+        $user = User::find($clientReferenceId);
 
         if ($user) {
             $user->stripe_id = $stripeCustomerId;
             $user->plan = 'pro';
             $user->save();
         }
+    }
+
+    protected function handleInvoicePaid(array $invoice)
+    {
+        $customer = $invoice['customer'] ?? null;
+        $amount = ($invoice['amount_paid'] ?? 0) / 100;
+
+        if (!$customer || $amount < 1) return; // Ignore $0 invoices
+
+        $user = User::where('stripe_id', $customer)->first();
+
+        if (!$user || !$user->referrer_id || $user->referrer_id === $user->id) return;
+
+        $referrer = $user->referrer;
+
+        if (
+            !$referrer ||
+            $referrer->plan !== 'pro' ||
+            !$referrer->stripe_connect_id
+        ) {
+            Log::info("Referrer #{$referrer->id} skipped — not onboarded or not eligible");
+
+            if ($referrer && !$referrer->stripe_connect_id && !$referrer->notified_onboarding_reminder_at?->isCurrentMonth()) {
+                $referrer->notify(new OnboardingReminder);
+                $referrer->notified_onboarding_reminder_at = now();
+                $referrer->save();
+            }
+
+            return;
+        }
+
+        $interval = $invoice['lines']['data'][0]['price']['recurring']['interval'] ?? null;
+        if (!in_array($interval, ['month', 'year'])) return;
+
+        // Check if already rewarded this period
+        $alreadyRewarded = Commission::where('referrer_id', $referrer->id)
+            ->where('referred_user_id', $user->id)
+            ->where('interval', $interval)
+            ->whereMonth('earned_at', now()->month)
+            ->exists();
+
+        if ($alreadyRewarded) return;
+
+        // Calculate commission
+        $commissionAmount = $interval === 'month' ? 2.00 : 20.00;
+
+        Commission::create([
+            'referrer_id' => $referrer->id,
+            'referred_user_id' => $user->id,
+            'amount' => $commissionAmount,
+            'interval' => $interval,
+            'earned_at' => now(),
+        ]);
     }
 }

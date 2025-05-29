@@ -7,10 +7,30 @@
             Role: <strong>{{ ucfirst(Auth::user()->role) }}</strong> |
             Plan: <strong>{{ ucfirst(Auth::user()->plan) }}</strong>
         </p>
+        @if(Auth::user()->plan === 'pro' && !Auth::user()->stripe_connect_id)
+            <div class="alert alert-danger d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>🔴 Action Required:</strong> You must complete your Stripe setup to receive referral payouts.
+                </div>
+                <a href="{{ route('stripe.connect') }}" class="btn btn-sm btn-light fw-bold">
+                    Complete Onboarding
+                </a>
+            </div>
+        @endif
     </x-slot>
 
     <div class="py-4">
         <div class="container">
+            {{-- Trial Notice --}}
+            @if(Auth::user()->onTrial())
+                <div class="alert alert-info mb-4">
+                    You're currently on a <strong>14-day trial</strong>. You have
+                    <strong>{{ Auth::user()->daysLeftInTrial() }}</strong>
+                    day{{ Auth::user()->daysLeftInTrial() !== 1 ? 's' : '' }} left.
+                    <br>
+                    After this, your plan will auto-renew unless canceled.
+                </div>
+            @endif
             @if(Auth::user()->plan === 'free' && !Auth::user()->isAdmin())
                 <div class="alert alert-danger border border-danger-subtle mb-4">
                     <strong>Your Pro Plan has ended.</strong>
@@ -20,22 +40,24 @@
                 </div>
             @endif
 
-                @if(Auth::user()->inGracePeriod())
-                    <div class="alert alert-warning d-flex align-items-start gap-3 border border-warning-subtle shadow-sm mb-4">
-                        <i class="bi bi-exclamation-triangle-fill fs-3 text-warning mt-1"></i>
-                        <div>
-                            <div class="fw-bold mb-1">⚠️ Your Pro subscription has been cancelled.</div>
-                            <p class="mb-2 small text-warning">
-                                You have <strong>{{ Auth::user()->daysLeftInGrace() }}</strong> day{{ Auth::user()->daysLeftInGrace() > 1 ? 's' : '' }} left in your grace period.
-                            </p>
-                            <a href="{{ route('pricing') }}" class="btn btn-sm btn-warning fw-semibold">
-                                Re-subscribe Now
-                            </a>
-                        </div>
+            @if(Auth::user()->inGracePeriod())
+                <div
+                    class="alert alert-warning d-flex align-items-start gap-3 border border-warning-subtle shadow-sm mb-4">
+                    <i class="bi bi-exclamation-triangle-fill fs-3 text-warning mt-1"></i>
+                    <div>
+                        <div class="fw-bold mb-1">⚠️ Your Pro subscription has been cancelled.</div>
+                        <p class="mb-2 small text-warning">
+                            You have <strong>{{ Auth::user()->daysLeftInGrace() }}</strong>
+                            day{{ Auth::user()->daysLeftInGrace() > 1 ? 's' : '' }} left in your grace period.
+                        </p>
+                        <a href="{{ route('pricing') }}" class="btn btn-sm btn-warning fw-semibold">
+                            Re-subscribe Now
+                        </a>
                     </div>
-                @endif
-                <p class="text-muted">
-            Share My Prospect Tracker:
+                </div>
+            @endif
+            <p class="text-muted">
+                Share My Prospect Tracker:
                 <span class="font-monospace">{{ url('/r/' . Auth::user()->username) }}</span>
             </p>
 
@@ -206,7 +228,8 @@
                 <div class="col-md-4">
                     <div class="alert alert-info p-4 rounded text-center">
                         <h5 class="fw-bold mb-2">🔥 Your Streak</h5>
-                        <p class="display-6 mb-2">{{ Auth::user()->streak }} day{{ Auth::user()->streak == 1 ? '' : 's' }}</p>
+                        <p class="display-6 mb-2">{{ Auth::user()->streak }}
+                            day{{ Auth::user()->streak == 1 ? '' : 's' }}</p>
 
                         @if(Auth::user()->streak >= 7)
                             <p class="small text-success mb-0">Amazing consistency! You’re building real momentum! 💪</p>
@@ -215,6 +238,42 @@
                         @else
                             <p class="small text-muted mb-0">Just getting started — let’s build that streak! 🚀</p>
                         @endif
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="alert alert-primary p-4 rounded text-center">
+                        <h5 class="fw-bold mb-2">💸 Your Commissions</h5>
+
+                        @php
+                            $earnedThisWeek = Auth::user()->commissions()
+                                ->whereBetween('earned_at', [now()->startOfWeek(), now()->endOfWeek()])
+                                ->sum('amount');
+
+                            $nextMonday = now()->next('Monday');
+                            $nextPayout = Auth::user()->commissions()
+                                ->whereBetween('earned_at', [now()->startOfWeek(), now()->endOfWeek()])
+                                ->sum('amount'); // same as earnedThisWeek
+
+                            $predictedNext = Auth::user()->commissions()
+                                ->whereBetween('earned_at', [now()->startOfWeek()->addWeek(), now()->endOfWeek()->addWeek()])
+                                ->sum('amount');
+                        @endphp
+
+                        <p class="mb-1">
+                            <strong>✅ Paid so far this week:</strong><br>
+                            <span class="display-6">${{ number_format($earnedThisWeek, 2) }}</span>
+                        </p>
+
+                        <p class="mb-1">
+                            <strong>📅 Next payout on {{ $nextMonday->format('M j') }}:</strong><br>
+                            <span class="fs-5">${{ number_format($nextPayout, 2) }}</span>
+                        </p>
+
+                        <p class="mb-0 small text-muted">
+                            🎯 Est. next week’s commission: ${{ number_format($predictedNext, 2) }}
+                        </p>
                     </div>
                 </div>
             </div>

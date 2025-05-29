@@ -86,5 +86,49 @@ class User extends Authenticatable
         return $this->plan === 'pro' || $this->inGracePeriod();
     }
 
+    public function commissions()
+    {
+        return $this->hasMany(Commission::class, 'referrer_id');
+    }
+
+    public function nextExpectedCommission()
+    {
+        return $this->commissions()
+            ->where('paid', false)
+            ->whereDate('earned_at', '>', now()->subDays(7))
+            ->orderBy('earned_at')
+            ->first();
+    }
+
+    // Check if on active trial
+    public function onTrial(): bool
+    {
+        $subscription = $this->subscription('default');
+        return $subscription && $subscription->onTrial();
+    }
+
+// Trial end date
+    public function trialEndsAt(): ?\Carbon\Carbon
+    {
+        $subscription = $this->subscription('default');
+        return $subscription && $subscription->onTrial()
+            ? \Carbon\Carbon::createFromTimestamp($subscription->trial_ends_at)
+            : null;
+    }
+
+// Days left in trial
+    public function daysLeftInTrial(): int
+    {
+        $endsAt = $this->trialEndsAt();
+        return $endsAt ? now()->diffInDays($endsAt, false) : 0;
+    }
+
+// Check if subscription is active (paid)
+    public function isSubscribedAndActive(): bool
+    {
+        $subscription = $this->subscription('default');
+        return $subscription && $subscription->valid() && ! $subscription->onTrial();
+    }
+
 
 }

@@ -9,6 +9,12 @@ class ProspectController extends Controller
 {
     public function index(Request $request)
     {
+        $user = $request->user()->fresh();
+
+        if (! $user->onTrial() && ! $user->isSubscribedAndActive()) {
+            return redirect()->route('pricing')->with('error', 'You must subscribe to access the dashboard.');
+        }
+
         $today = now()->toDateString();
         $weekStart = now()->startOfWeek();
         $weekEnd = now()->endOfWeek();
@@ -43,8 +49,6 @@ class ProspectController extends Controller
             'followups' => $analytics['weekly_followups'] - $analytics['last_week_followups'],
             'new' => $analytics['new_this_week'] - $analytics['new_last_week'],
         ];
-
-        $user = $request->user()->fresh(); // pulls latest subscription info
 
         return view('dashboard', compact('prospects', 'todayFollowUps', 'overdue', 'analytics', 'user'));
     }

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Admin\BlogAdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommissionsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\StripeOnboardingController;
 use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\WaitlistController;
 use Illuminate\Support\Facades\Auth;
@@ -45,6 +47,10 @@ Route::middleware(['auth'])->group(function () {
     })->name('billing');
     Route::post('/subscribe/monthly', [SubscriptionController::class, 'subscribeMonthly'])->name('subscribe.monthly');
     Route::post('/subscribe/yearly', [SubscriptionController::class, 'subscribeYearly'])->name('subscribe.yearly');
+    Route::get('/commissions', [CommissionsController::class, 'index'])->name('commissions.index');
+    Route::get('/stripe/connect', [StripeOnboardingController::class, 'redirect'])->name('stripe.connect');
+    Route::get('/stripe/refresh', [StripeOnboardingController::class, 'refresh'])->name('stripe.refresh');
+
 });
 
 Route::get('/pricing', function () {
