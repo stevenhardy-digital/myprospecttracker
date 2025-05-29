@@ -75,7 +75,7 @@ class HandleStripeWebhook
             $subscription->markAsCancelled();
             $subscription->grace_ends_at = now()->addDays(7);
             $subscription->save();
-            
+
             $user->notify(new DowngradedToFree);
         }
     }
