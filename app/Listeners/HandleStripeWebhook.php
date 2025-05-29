@@ -71,13 +71,11 @@ class HandleStripeWebhook
     {
         $subscription = $user->subscription('default');
 
-        if ($subscription && $user->plan !== 'free') {
+        if ($subscription && !$subscription->cancelled()) {
+            $subscription->markAsCancelled();
             $subscription->grace_ends_at = now()->addDays(7);
             $subscription->save();
-
-//            $user->plan = 'free';
-//            $user->save();
-
+            
             $user->notify(new DowngradedToFree);
         }
     }
