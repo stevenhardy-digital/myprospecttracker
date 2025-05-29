@@ -46,7 +46,8 @@ class HandleStripeWebhook
             ),
 
             'checkout.session.completed',
-            'invoice.payment_succeeded' => tap(
+            'invoice.payment_succeeded',
+            'invoice.paid' => tap(
                 $this->handleCheckoutCompleted($object),
                 fn () => Log::info("Handled checkout/invoice success", ['stripe_customer_id' => $object['customer'] ?? null])
             ),
