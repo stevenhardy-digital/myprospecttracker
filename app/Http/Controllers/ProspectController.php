@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class ProspectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $today = now()->toDateString();
         $weekStart = now()->startOfWeek();
@@ -44,8 +44,9 @@ class ProspectController extends Controller
             'new' => $analytics['new_this_week'] - $analytics['new_last_week'],
         ];
 
+        $user = $request->user()->fresh(); // pulls latest subscription info
 
-        return view('dashboard', compact('prospects', 'todayFollowUps', 'overdue', 'analytics'));
+        return view('dashboard', compact('prospects', 'todayFollowUps', 'overdue', 'analytics', 'user'));
     }
 
     public function store(Request $request)
