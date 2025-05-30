@@ -80,20 +80,25 @@ class ProspectController extends Controller
 
     public function update(Request $request, Prospect $prospect)
     {
-        dd(auth()->id(), $prospect->user_id);
-
         $this->authorize('update', $prospect);
+
+        logger('Incoming update for prospect ID: ' . $prospect->id);
+        logger('Request data:', $request->all());
 
         $data = $request->validate([
             'stage' => 'required|in:expand_network,relationship_building,ask_question,qualify_pain,expose_tool,follow_up,close',
             'last_contacted' => 'required|date',
         ]);
 
-        $prospect->update([
+        logger('Validated data:', $data);
+
+        $updated = $prospect->update([
             'stage' => $data['stage'],
             'last_contacted' => $data['last_contacted'],
             'next_follow_up' => $this->calculateNextFollowUp($data['stage']),
         ]);
+
+        logger('Update success: ' . ($updated ? 'yes' : 'no'));
 
         return redirect()->route('dashboard')->with('success', 'Prospect updated!');
     }
