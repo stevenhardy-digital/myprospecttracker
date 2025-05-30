@@ -80,6 +80,8 @@ class ProspectController extends Controller
 
     public function update(Request $request, Prospect $prospect)
     {
+        dd(auth()->id(), $prospect->user_id);
+
         $this->authorize('update', $prospect);
 
         $data = $request->validate([
