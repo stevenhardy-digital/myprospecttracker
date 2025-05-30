@@ -8,7 +8,7 @@ export default defineConfig({
         viteStaticCopy({
             targets: [
                 {
-                    src: 'node_modules/bootstrap-icons/font/*',
+                    src: 'node_modules/bootstrap-icons/font/*.{woff,woff2}', // Only fonts
                     dest: 'assets/fonts'
                 }
             ]
