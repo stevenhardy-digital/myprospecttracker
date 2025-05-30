@@ -197,7 +197,7 @@
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <label class="form-label">Stage</label>
-                                            <select name="status" class="form-select" required>
+                                            <select name="stage" class="form-select" required>
                                                 <option value="expand_network" {{ $prospect->stage === 'expand_network' ? 'selected' : '' }}>🌐 Expand Network</option>
                                                 <option value="relationship_building" {{ $prospect->stage === 'relationship_building' ? 'selected' : '' }}>💬 Relationship Building</option>
                                                 <option value="ask_question" {{ $prospect->stage === 'ask_question' ? 'selected' : '' }}>❓ Ask Question</option>
