@@ -59,6 +59,7 @@
                         {{ session('referrer') }}
                     </div>
                 </div>
+                <input type="hidden" name="referrer" value="{{ session('referrer') }}">
             @endif
 
             <div class="d-flex justify-content-between align-items-center mt-4">

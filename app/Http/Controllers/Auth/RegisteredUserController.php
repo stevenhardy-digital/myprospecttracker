@@ -14,7 +14,7 @@ use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
 use Stripe\Stripe;
-use Stripe\Subscription;
+use Stripe\Checkout\Session as CheckoutSession;
 
 class RegisteredUserController extends Controller
 {
@@ -33,67 +33,103 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'plan' => ['required', 'in:monthly,yearly'],
+            'referrer' => ['nullable', 'string'],
         ]);
 
-        // Handle referral logic
-        if (session()->has('referrer')) {
-            $referrer = User::where('username', session('referrer'))->first();
-            if ($referrer) {
-                $referrerId = $referrer->id;
-            }
+        // Save to session (we'll use this after Stripe Checkout)
+        session([
+            'registration_payload' => [
+                'name' => $validated['name'],
+                'email' => $validated['email'],
+                'password' => bcrypt($validated['password']),
+                'plan_choice' => $validated['plan'],
+                'referrer_username' => $validated['referrer'] ?? null,
+            ]
+        ]);
+
+        // Create temporary customer
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $priceId = $validated['plan'] === 'yearly'
+            ? 'price_1RU4v8PdkhfPJgwWLL80BsHU'
+            : 'price_1RTUImPdkhfPJgwW6LbbkTqW';
+
+        $checkoutSession = CheckoutSession::create([
+            'client_reference_id' => Str::uuid(), // reference for user creation
+            'mode' => 'subscription',
+            'payment_method_types' => ['card'],
+            'line_items' => [[
+                'price' => $priceId,
+                'quantity' => 1,
+            ]],
+            'subscription_data' => [
+                'trial_period_days' => 14,
+            ],
+            'success_url' => route('register.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('register'),
+        ]);
+
+        // Save session ID
+        session(['stripe_checkout_id' => $checkoutSession->id]);
+
+        return redirect($checkoutSession->url);
+    }
+
+    public function success(Request $request)
+    {
+        Stripe::setApiKey(config('services.stripe.secret'));
+
+        $sessionId = $request->get('session_id');
+        $session = CheckoutSession::retrieve($sessionId);
+
+        $customerId = $session->customer;
+        $clientRef = $session->client_reference_id;
+
+        $payload = session('registration_payload');
+
+        if (!$payload || !$sessionId) {
+            return redirect()->route('register')->withErrors('Missing session.');
         }
 
-        $username = Str::slug($request->name);
+        // Ensure user does not already exist
+        if (User::where('email', $payload['email'])->exists()) {
+            return redirect()->route('login')->with('status', 'You already have an account.');
+        }
+
+        // Generate unique username
+        $username = Str::slug($payload['name']);
         if (User::where('username', $username)->exists()) {
             $username .= '-' . Str::random(4);
         }
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $username, // ✅ this is critical
-            'password' => Hash::make($request->password),
-            'plan' => 'pro',
-            'billing_interval' => $request->plan,
-            'referrer_id' => $referrerId ?? null,
-        ]);
-
-        if (isset($referrer)) {
-            $referrer->notify(new ReferredUserSignedUp($user));
+        // Find referrer if exists
+        $referrerId = null;
+        if ($payload['referrer_username']) {
+            $referrer = User::where('username', $payload['referrer_username'])->first();
+            if ($referrer) $referrerId = $referrer->id;
         }
 
-        event(new Registered($user));
-        Auth::login($user);
-        session()->forget('referrer');
-
-        // Stripe setup
-        $user->createAsStripeCustomer(); // creates stripe_id if not present
-        Stripe::setApiKey(config('services.stripe.secret'));
-
-        // Price ID lookup
-        $priceId = $request->plan === 'yearly' ? 'price_1RU4v8PdkhfPJgwWLL80BsHU' : 'price_1RTUImPdkhfPJgwW6LbbkTqW';
-
-        // Optional billing anchor (e.g., next 1st of month)
-        $trialEnd = now()->addDays(14)->timestamp;
-        $billingAnchor = now()->addMonth()->startOfMonth()->timestamp;
-
-        // Create subscription manually via API
-        Subscription::create([
-            'customer' => $user->stripe_id,
-            'items' => [['price' => $priceId]],
-            'trial_end' => now()->addDays(14)->timestamp,
-            'proration_behavior' => 'create_prorations',
-        ]);
-
-        $user->update([
+        // Create the user now
+        $user = User::create([
+            'name' => $payload['name'],
+            'email' => $payload['email'],
+            'password' => $payload['password'],
+            'username' => $username,
+            'stripe_id' => $customerId,
+            'plan' => 'pro',
+            'billing_interval' => $payload['plan_choice'],
+            'referrer_id' => $referrerId,
             'payment_status' => 'trial',
         ]);
 
-        return redirect()->route('dashboard');
+        Auth::login($user);
+        session()->forget(['registration_payload', 'stripe_checkout_id']);
+
+        return redirect()->route('dashboard')->with('success', 'Welcome!');
     }
 }
