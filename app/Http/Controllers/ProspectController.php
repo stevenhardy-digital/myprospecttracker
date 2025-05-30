@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prospect;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class ProspectController extends Controller
 {
+    use AuthorizesRequests;
+
     public function index(Request $request)
     {
         $user = $request->user()->fresh();
