@@ -9,7 +9,7 @@ export default defineConfig({
             targets: [
                 {
                     src: 'node_modules/bootstrap-icons/font/*',
-                    dest: 'assets/fonts/bootstrap-icons'
+                    dest: 'assets/fonts'
                 }
             ]
         })
