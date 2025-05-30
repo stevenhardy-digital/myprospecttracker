@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\ReferredUserSignedUp;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,7 +23,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('waitlist');
+        return view('auth.register');
     }
 
     /**
@@ -40,7 +41,6 @@ class RegisteredUserController extends Controller
         ]);
 
         // Handle referral logic
-        $referrerId = null;
         if (session()->has('referrer')) {
             $referrer = User::where('username', session('referrer'))->first();
             if ($referrer) {
@@ -57,8 +57,13 @@ class RegisteredUserController extends Controller
             'referrer_id' => $referrerId,
         ]);
 
+        if (isset($referrer)) {
+            $referrer->notify(new ReferredUserSignedUp($user));
+        }
+
         event(new Registered($user));
         Auth::login($user);
+        session()->forget('referrer');
 
         // Stripe setup
         $user->createAsStripeCustomer(); // creates stripe_id if not present
@@ -78,6 +83,10 @@ class RegisteredUserController extends Controller
             'trial_end' => $trialEnd,
             'billing_cycle_anchor' => $billingAnchor,
             'proration_behavior' => 'create_prorations',
+        ]);
+
+        $user->update([
+            'payment_status' => 'trial',
         ]);
 
         return redirect()->route('dashboard');

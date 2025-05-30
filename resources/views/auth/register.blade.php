@@ -3,6 +3,12 @@
         <div class="row justify-content-center">
             <div class="col-12">
                 <h1 class="text-center">Register</h1>
+
+                @if(session('referrer'))
+                    <p class="text-center text-muted mt-2">
+                        🎉 You've been referred by <strong>{{ session('referrer') }}</strong>
+                    </p>
+                @endif
             </div>
         </div>
     </div>
@@ -47,6 +53,14 @@
             <x-input-error :messages="$errors->get('plan')" class="invalid-feedback d-block mt-1" />
         </div>
 
+        @if(session('referrer'))
+            <div class="mb-3">
+                <label class="form-label">Referred by</label>
+                <div class="alert alert-secondary mb-0 py-2">
+                    {{ session('referrer') }}
+                </div>
+            </div>
+        @endif
 
         <div class="d-flex justify-content-between align-items-center mt-4">
             <a class="small text-decoration-none" href="{{ route('login') }}">

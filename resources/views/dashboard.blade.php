@@ -326,15 +326,16 @@
 
                         @php
                             $earnedThisWeek = Auth::user()->commissions()
+                                ->whereHas('referredUser', fn($q) => $q->where('payment_status', 'paid'))
                                 ->whereBetween('earned_at', [now()->startOfWeek(), now()->endOfWeek()])
                                 ->sum('amount');
 
+                            $nextPayout = $earnedThisWeek;
+
                             $nextMonday = now()->next('Monday');
-                            $nextPayout = Auth::user()->commissions()
-                                ->whereBetween('earned_at', [now()->startOfWeek(), now()->endOfWeek()])
-                                ->sum('amount'); // same as earnedThisWeek
 
                             $predictedNext = Auth::user()->commissions()
+                                ->whereHas('referredUser', fn($q) => $q->where('payment_status', 'paid'))
                                 ->whereBetween('earned_at', [now()->startOfWeek()->addWeek(), now()->endOfWeek()->addWeek()])
                                 ->sum('amount');
                         @endphp

@@ -34,6 +34,7 @@
                 <tr>
                     <th>Referred User</th>
                     <th>Amount</th>
+                    <th>Payment Status</th>
                     <th>Status</th>
                     <th>Earned At</th>
                 </tr>
@@ -43,6 +44,11 @@
                     <tr>
                         <td>{{ $commission->referredUser->email }}</td>
                         <td>${{ number_format($commission->amount, 2) }}</td>
+                        <td>
+                            <span class="badge {{ $commission->referredUser->payment_status === 'paid' ? 'bg-success' : 'bg-warning' }}">
+                                {{ ucfirst($commission->referredUser->payment_status) }}
+                            </span>
+                        </td>
                         <td>{{ ucfirst($commission->status) }}</td>
                         <td>{{ $commission->earned_at->format('Y-m-d') }}</td>
                     </tr>

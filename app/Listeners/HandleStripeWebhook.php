@@ -115,34 +115,32 @@ class HandleStripeWebhook
         $customer = $invoice['customer'] ?? null;
         $amount = ($invoice['amount_paid'] ?? 0) / 100;
 
-        if (!$customer || $amount < 1) return; // Ignore $0 invoices
+        if (!$customer || $amount < 1) return;
 
         $user = User::where('stripe_id', $customer)->first();
 
-        if (!$user || !$user->referrer_id || $user->referrer_id === $user->id) return;
+        if (!$user) return;
 
+        // ✅ Mark user as paid
+        $user->payment_status = 'paid';
+        $user->save();
+
+        // ⬇️ Continue with commission logic...
+        if (!$user->referrer_id || $user->referrer_id === $user->id) return;
         $referrer = $user->referrer;
 
-        if (
-            !$referrer ||
-            $referrer->plan !== 'pro' ||
-            !$referrer->stripe_connect_id
-        ) {
-            Log::info("Referrer #{$referrer->id} skipped — not onboarded or not eligible");
-
+        if (!$referrer || $referrer->plan !== 'pro' || !$referrer->stripe_connect_id) {
             if ($referrer && !$referrer->stripe_connect_id && !$referrer->notified_onboarding_reminder_at?->isCurrentMonth()) {
                 $referrer->notify(new OnboardingReminder);
                 $referrer->notified_onboarding_reminder_at = now();
                 $referrer->save();
             }
-
             return;
         }
 
         $interval = $invoice['lines']['data'][0]['price']['recurring']['interval'] ?? null;
         if (!in_array($interval, ['month', 'year'])) return;
 
-        // Check if already rewarded this period
         $alreadyRewarded = Commission::where('referrer_id', $referrer->id)
             ->where('referred_user_id', $user->id)
             ->where('interval', $interval)
@@ -151,7 +149,6 @@ class HandleStripeWebhook
 
         if ($alreadyRewarded) return;
 
-        // Calculate commission
         $commissionAmount = $interval === 'month' ? 2.00 : 20.00;
 
         Commission::create([
