@@ -109,12 +109,12 @@ class RegisteredUserController extends Controller
             return redirect()->route('register')->withErrors('User not found.');
         }
 
-        // Update Stripe info & mark trial
-        $user->update([
-            'stripe_id' => $session->customer,
-            'payment_status' => 'trial',
-            'trial_ends_at' => now()->addDays(14)
-        ]);
+        $user->stripe_id = $session->customer;
+        $user->payment_status = 'trial';
+        $user->trial_ends_at = now()->addDays(14);
+        $user->save();
+
+        Log::info('User updated with trial end', ['user_id' => $user->id, 'trial_ends_at' => $user->trial_ends_at]);
 
         return redirect()->route('dashboard')->with('success', 'Welcome! Your 14-day trial has started.');
     }
