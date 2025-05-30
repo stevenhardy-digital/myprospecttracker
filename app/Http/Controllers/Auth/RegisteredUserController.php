@@ -113,6 +113,7 @@ class RegisteredUserController extends Controller
         $user->update([
             'stripe_id' => $session->customer,
             'payment_status' => 'trial',
+            'trial_ends_at' => now()->addDays(14)
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Welcome! Your 14-day trial has started.');
