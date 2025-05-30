@@ -84,11 +84,9 @@ class ProspectController extends Controller
         ]);
 
         $prospect->update([
-            'status' => $data['status'],
+            'stage' => $data['stage'],
             'last_contacted' => $data['last_contacted'],
-            'next_follow_up' => $this->calculateNextFollowUp($data['status']),
-            'stage' => $this->getNextStage($prospect->stage),
-            'streak' => $prospect->streak + 1,
+            'next_follow_up' => $this->calculateNextFollowUp($data['stage']),
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Prospect updated!');
@@ -97,9 +95,9 @@ class ProspectController extends Controller
     private function calculateNextFollowUp($stage)
     {
         return match ($stage) {
-            'expand_network', 'relationship_building' => now()->addDay(),
-            'ask_question', 'qualify_pain' => now()->addDays(2),
-            'expose_tool', 'follow_up' => now()->addDays(3),
+            'expand_network', 'relationship_building', 'qualify_pain', 'expose_tool' => now()->addDays(2),
+            'ask_question' => now()->addDay(),
+            'follow_up' => now()->addDays(3),
             'close' => null,
             default => null,
         };

@@ -68,6 +68,8 @@ Route::middleware(['auth', \App\Http\Middleware\ProOnly::class])->group(function
 
     //Prospects
     Route::post('/prospects', [ProspectController::class, 'store'])->name('prospects.store');
+    Route::put('/prospects/{prospect}', [ProspectController::class, 'update'])->name('prospects.update');
+
 });
 
 require __DIR__.'/auth.php';
