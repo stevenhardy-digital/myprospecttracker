@@ -20,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])   
+    @vite(['resources/js/app.js', 'resources/sass/admin.scss'])
 
     @stack('styles')
 </head>
