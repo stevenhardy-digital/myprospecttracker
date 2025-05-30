@@ -19,13 +19,26 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
+        'referrer_id',
         'name',
         'email',
         'username',
         'password',
+        'last_login_at',
+        'stripe_id',
+        'stripe_connect_id',
+        'notified_onboarding_reminder_at',
+        'pm_type',
+        'pm_last_four',
+        'trial_ends_at',
+        'role',
         'plan',
-        'referrer_id',
+        'payment_status',
+        'stripe_requires_verification',
+        'billing_interval',
     ];
+
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,6 +59,10 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'last_login_at' => 'datetime',
+            'trial_ends_at' => 'datetime',
+            'notified_onboarding_reminder_at' => 'datetime',
+            'stripe_requires_verification' => 'boolean',
             'password' => 'hashed',
         ];
     }
@@ -57,7 +74,7 @@ class User extends Authenticatable
 
     public function isPro()
     {
-        return $this->plan === 'pro';
+        return $this->plan === 'pro' && in_array($this->payment_status, ['trial', 'paid']);
     }
 
     public function inGracePeriod(): bool

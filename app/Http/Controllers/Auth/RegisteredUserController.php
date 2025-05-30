@@ -10,7 +10,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
@@ -19,49 +18,62 @@ use Stripe\Checkout\Session as CheckoutSession;
 
 class RegisteredUserController extends Controller
 {
-    /**
-     * Display the registration view.
-     */
     public function create(): View
     {
         return view('auth.register');
     }
 
-    /**
-     * Handle an incoming registration request.
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'plan' => ['required', 'in:monthly,yearly'],
             'referrer' => ['nullable', 'string'],
         ]);
 
-        // Save to session (we'll use this after Stripe Checkout)
-        session([
-            'registration_payload' => [
-                'name' => $validated['name'],
-                'email' => $validated['email'],
-                'password' => bcrypt($validated['password']),
-                'plan_choice' => $validated['plan'],
-                'referrer_username' => $validated['referrer'] ?? null,
-            ]
+        // Generate unique username
+        $username = Str::slug($validated['name']);
+        if (User::where('username', $username)->exists()) {
+            $username .= '-' . Str::random(4);
+        }
+
+        // Find referrer
+        $referrerId = null;
+        if (!empty($validated['referrer'])) {
+            $referrer = User::where('username', $validated['referrer'])->first();
+            if ($referrer) {
+                $referrerId = $referrer->id;
+            }
+        }
+
+        // Create user immediately
+        $user = User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'username' => $username,
+            'plan' => 'pro',
+            'billing_interval' => $validated['plan'],
+            'referrer_id' => $referrerId,
+            'payment_status' => 'incomplete',
         ]);
 
-        // Create temporary customer
+        event(new Registered($user));
+        Auth::login($user); // Log them in immediately if needed
+
+        // Stripe setup
         Stripe::setApiKey(config('services.stripe.secret'));
+        $user->createAsStripeCustomer();
 
         $priceId = $validated['plan'] === 'yearly'
             ? 'price_1RU4v8PdkhfPJgwWLL80BsHU'
             : 'price_1RTUImPdkhfPJgwW6LbbkTqW';
 
         $checkoutSession = CheckoutSession::create([
-            'client_reference_id' => Str::uuid(), // reference for user creation
+            'customer' => $user->stripe_id,
+            'client_reference_id' => $user->id,
             'mode' => 'subscription',
             'payment_method_types' => ['card'],
             'line_items' => [[
@@ -75,67 +87,34 @@ class RegisteredUserController extends Controller
             'cancel_url' => route('register'),
         ]);
 
-        // Save session ID
-        session(['stripe_checkout_id' => $checkoutSession->id]);
-
         return redirect($checkoutSession->url);
     }
 
-    public function success(Request $request)
+    public function success(Request $request): RedirectResponse
     {
-        Log::debug('Success route hit', [
-            'session_id' => $request->get('session_id'),
-            'registration_payload' => session('registration_payload'),
-        ]);
-
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $sessionId = $request->get('session_id');
         $session = CheckoutSession::retrieve($sessionId);
 
-        $customerId = $session->customer;
-        $clientRef = $session->client_reference_id;
+        $userId = $session->client_reference_id ?? null;
 
-        $payload = session('registration_payload');
-
-        if (!$payload || !$sessionId) {
-            return redirect()->route('register')->withErrors('Missing session.');
+        if (!$userId || !$session->customer) {
+            return redirect()->route('register')->withErrors('Missing Stripe session or user.');
         }
 
-        // Ensure user does not already exist
-        if (User::where('email', $payload['email'])->exists()) {
-            return redirect()->route('login')->with('status', 'You already have an account.');
+        $user = User::find($userId);
+
+        if (!$user) {
+            return redirect()->route('register')->withErrors('User not found.');
         }
 
-        // Generate unique username
-        $username = Str::slug($payload['name']);
-        if (User::where('username', $username)->exists()) {
-            $username .= '-' . Str::random(4);
-        }
-
-        // Find referrer if exists
-        $referrerId = null;
-        if ($payload['referrer_username']) {
-            $referrer = User::where('username', $payload['referrer_username'])->first();
-            if ($referrer) $referrerId = $referrer->id;
-        }
-
-        // Create the user now
-        $user = User::create([
-            'name' => $payload['name'],
-            'email' => $payload['email'],
-            'password' => $payload['password'],
-            'username' => $username,
-            'stripe_id' => $customerId,
-            'plan' => 'pro',
-            'billing_interval' => $payload['plan_choice'],
-            'referrer_id' => $referrerId,
+        // Update Stripe info & mark trial
+        $user->update([
+            'stripe_id' => $session->customer,
             'payment_status' => 'trial',
         ]);
 
-        Auth::login($user);
-        session()->forget(['registration_payload', 'stripe_checkout_id']);
-
-        return redirect()->route('dashboard')->with('success', 'Welcome!');
+        return redirect()->route('dashboard')->with('success', 'Welcome! Your 14-day trial has started.');
     }
 }

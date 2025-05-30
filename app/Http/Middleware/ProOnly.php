@@ -13,10 +13,12 @@ class ProOnly
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
-        if (!auth()->check() || !auth()->user()->hasProAccess()) {
-            return redirect('/pricing')->with('error', 'Your Pro access has expired. Please renew.');
+        $user = auth()->user();
+
+        if (!$user || !$user->isPro()) {
+            return redirect('/pricing')->with('error', 'Your Pro access is not active. Please complete payment.');
         }
 
         return $next($request);
