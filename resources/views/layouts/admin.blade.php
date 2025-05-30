@@ -19,9 +19,8 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
 
-    <!-- Compiled CSS (Laravel Mix) -->
-    <link rel="stylesheet" href="{{ mix('css/all.css') }}">
-    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <!-- Styles -->
+    @vite(['resources/js/app.js', 'resources/sass/app.scss'])   
 
     @stack('styles')
 </head>
