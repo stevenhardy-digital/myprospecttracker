@@ -40,6 +40,8 @@ class RegisteredUserController extends Controller
             'plan' => ['required', 'in:monthly,yearly'],
         ]);
 
+        $referrerId = null;
+
         // Handle referral logic
         if (session()->has('referrer')) {
             $referrer = User::where('username', session('referrer'))->first();
@@ -51,7 +53,7 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'username' => Str::slug($request->name),
+            'username' => Str::slug($request->name) . '-' . Str::random(5),
             'password' => Hash::make($request->password),
             'plan' => $request->plan,
             'referrer_id' => $referrerId,
