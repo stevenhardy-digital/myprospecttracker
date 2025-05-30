@@ -148,13 +148,24 @@
                                 <div>
                                     <div class="fw-bold fs-5">{{ $prospect->name }}</div>
                                     <span class="badge {{ getStageColor($prospect->stage) }}">
-                            {{ ucfirst(str_replace('_', ' ', $prospect->stage)) }}
-                        </span>
+                                        {{ ucfirst(str_replace('_', ' ', $prospect->stage)) }}
+                                    </span>
                                 </div>
-                                <!-- Inline Edit Button -->
-                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProspectModal{{ $prospect->id }}">
-                                    <i class="bi bi-pencil"></i> Edit
-                                </button>
+                                <div class="d-flex gap-2">
+                                    <!-- Edit Button -->
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProspectModal{{ $prospect->id }}">
+                                        <i class="bi bi-pencil"></i>
+                                    </button>
+
+                                    <!-- Delete Button -->
+                                    <form action="{{ route('prospects.destroy', $prospect) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this prospect?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
 
                             @if($prospect->social_handle)

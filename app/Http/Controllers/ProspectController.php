@@ -58,6 +58,8 @@ class ProspectController extends Controller
 
     public function store(Request $request)
     {
+        $this->authorize('create', Prospect::class);
+
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'phone' => 'nullable|string',
@@ -68,7 +70,6 @@ class ProspectController extends Controller
         ]);
 
         $data['user_id'] = $request->user()->id;
-        $data['stage'] = 'relationship_building';
         $data['last_contacted'] = now();
         $data['next_follow_up'] = $data['follow_up_date'] ?? now()->addDays(2);
 
@@ -93,6 +94,15 @@ class ProspectController extends Controller
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Prospect updated!');
+    }
+
+    public function destroy(Request $request, Prospect $prospect)
+    {
+        $this->authorize('delete', $prospect);
+
+        $prospect->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Prospect deleted.');
     }
 
     private function calculateNextFollowUp($stage)

@@ -69,6 +69,7 @@ Route::middleware(['auth', \App\Http\Middleware\ProOnly::class])->group(function
     //Prospects
     Route::post('/prospects', [ProspectController::class, 'store'])->name('prospects.store');
     Route::put('/prospects/{prospect}', [ProspectController::class, 'update'])->name('prospects.update');
+    Route::delete('/prospects/{prospect}', [ProspectController::class, 'destroy'])->name('prospects.destroy');
 
 });
 
