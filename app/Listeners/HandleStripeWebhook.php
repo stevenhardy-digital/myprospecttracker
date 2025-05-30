@@ -74,7 +74,10 @@ class HandleStripeWebhook
 
         if ($status === 'active' || $status === 'trialing') {
             $user->plan = 'pro';
-            $user->trial_ends_at = isset($subscription['trial_end']) ? now()->setTimestamp($subscription['trial_end']) : null;
+            $user->trial_ends_at = isset($subscription['trial_end'])
+                ? now()->setTimestamp($subscription['trial_end'])
+                : null;
+            $user->payment_status = $status === 'trialing' ? 'trial' : 'paid';
             $user->save();
         }
     }
@@ -106,9 +109,12 @@ class HandleStripeWebhook
         if ($user) {
             $user->stripe_id = $stripeCustomerId;
             $user->plan = 'pro';
+            $user->payment_status = 'trial';
+
             $user->save();
         }
     }
+
 
     protected function handleInvoicePaid(array $invoice)
     {
