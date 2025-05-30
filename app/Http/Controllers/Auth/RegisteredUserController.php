@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
@@ -82,6 +83,11 @@ class RegisteredUserController extends Controller
 
     public function success(Request $request)
     {
+        Log::debug('Success route hit', [
+            'session_id' => $request->get('session_id'),
+            'registration_payload' => session('registration_payload'),
+        ]);
+
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $sessionId = $request->get('session_id');
