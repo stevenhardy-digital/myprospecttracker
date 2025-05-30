@@ -4,12 +4,24 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
     plugins: [
-        laravel(['resources/sass/app.scss', 'resources/sass/admin.scss', 'resources/js/app.js']),
+        laravel([
+            'resources/sass/app.scss',
+            'resources/sass/admin.scss',
+            'resources/js/app.js',
+        ]),
         viteStaticCopy({
             targets: [
                 {
-                    src: 'node_modules/bootstrap-icons/font/*.{woff,woff2}', // Only fonts
+                    src: 'node_modules/bootstrap-icons/font/*.woff2',
                     dest: 'assets/fonts'
+                },
+                {
+                    src: 'node_modules/bootstrap-icons/font/*.woff',
+                    dest: 'assets/fonts'
+                },
+                {
+                    src: 'node_modules/bootstrap-icons/font/bootstrap-icons.min.css',
+                    dest: 'assets/css'
                 }
             ]
         })
