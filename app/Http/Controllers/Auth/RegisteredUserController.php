@@ -58,7 +58,8 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'username' => $username, // ✅ this is critical
             'password' => Hash::make($request->password),
-            'plan' => $request->plan,
+            'plan' => 'pro',
+            'billing_interval' => $request->plan,
             'referrer_id' => $referrerId ?? null,
         ]);
 
