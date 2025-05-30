@@ -86,8 +86,7 @@ class RegisteredUserController extends Controller
         Subscription::create([
             'customer' => $user->stripe_id,
             'items' => [['price' => $priceId]],
-            'trial_end' => $trialEnd,
-            'billing_cycle_anchor' => $billingAnchor,
+            'trial_end' => now()->addDays(14)->timestamp,
             'proration_behavior' => 'create_prorations',
         ]);
 
