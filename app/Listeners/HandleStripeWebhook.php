@@ -72,10 +72,12 @@ class HandleStripeWebhook
     {
         $status = $subscription['status'] ?? 'incomplete';
 
-        if (in_array($status, ['active', 'trialing'])) {
+        if ($status === 'active' || $status === 'trialing') {
             $user->plan = 'pro';
+            $user->trial_ends_at = isset($subscription['trial_end'])
+                ? now()->setTimestamp($subscription['trial_end'])
+                : null;
             $user->payment_status = $status === 'trialing' ? 'trial' : 'paid';
-            $user->trial_ends_at = now()->addDays(14);
             $user->save();
         }
     }
