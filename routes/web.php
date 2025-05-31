@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BlogAdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommissionsController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProspectController;
 use App\Http\Controllers\StripeOnboardingController;
@@ -30,6 +31,7 @@ Route::view('/changelog', 'changelog')->name('changelog');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
 // Admin blog routes
 Route::middleware(['auth', \App\Http\Middleware\AdminOnly::class])->prefix('admin')->group(function () {

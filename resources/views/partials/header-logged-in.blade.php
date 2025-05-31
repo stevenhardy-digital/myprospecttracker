@@ -25,7 +25,7 @@
                     <li class="nav-item px-2"><a class="nav-link" href="{{ route('profile.edit') }}">Profile</a></li>
                     <li class="nav-item px-2"><a class="nav-link" href="{{ route('billing') }}">Billing History</a></li>
                     <li class="nav-item px-2"><a class="nav-link" href="{{ route('commissions.index') }}">My Commissions</a></li>
-                    <li class="nav-item px-2"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item px-2"><a class="nav-link" href="{{ route('contact') }}" target="_blank">Contact</a></li>
                 </ul>
 
                 <!-- Logout -->
