@@ -110,25 +110,50 @@ class HandleStripeWebhook
 
         $user = User::find($clientReferenceId);
 
-        if ($user) {
-            $user->stripe_id = $stripeCustomerId;
-
-            // Only set these if not already set
-            if (is_null($user->plan)) {
-                $user->plan = 'pro';
-            }
-
-            if ($user->payment_status !== 'paid') {
-                $user->payment_status = 'trial';
-            }
-
-            $user->save();
-
-            Log::info('Saving user in checkout handler', [
-                'user_id' => $user->id,
-                'trial_ends_at' => $user->trial_ends_at,
-            ]);
+        if (!$user) {
+            return;
         }
+
+        $user->stripe_id = $stripeCustomerId;
+
+        // Only set these if not already set
+        if (is_null($user->plan)) {
+            $user->plan = 'pro';
+        }
+
+        if ($user->payment_status !== 'paid') {
+            $user->payment_status = 'trial';
+        }
+
+        // Optional: fetch subscription and set trial end date early
+        if (isset($session['subscription'])) {
+            try {
+                \Stripe\Stripe::setApiKey(config('services.stripe.secret'));
+                $subscription = \Stripe\Subscription::retrieve($session['subscription']);
+
+                if (isset($subscription->trial_end)) {
+                    $trialEnd = \Carbon\Carbon::createFromTimestamp($subscription->trial_end);
+                    $user->trial_ends_at = $trialEnd;
+                    Log::info('Fetched trial_end from subscription in checkout handler', [
+                        'user_id' => $user->id,
+                        'trial_end' => $trialEnd,
+                    ]);
+                }
+            } catch (\Exception $e) {
+                Log::error('Failed to retrieve subscription from Stripe during checkout', [
+                    'error' => $e->getMessage(),
+                    'user_id' => $user->id,
+                    'subscription_id' => $session['subscription'] ?? null,
+                ]);
+            }
+        }
+
+        $user->save();
+
+        Log::info('Saving user in checkout handler', [
+            'user_id' => $user->id,
+            'trial_ends_at' => $user->trial_ends_at,
+        ]);
     }
 
 
