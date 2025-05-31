@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="{{ mix('css/all.css') }}">
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Styles -->
-    @vite(['resources/js/app.js', 'resources/sass/app.scss'])
+{{--    @vite(['resources/js/app.js', 'resources/sass/app.scss'])--}}
 
     <!-- Structured Data -->
     <script type="application/ld+json">
