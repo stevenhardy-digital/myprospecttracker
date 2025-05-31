@@ -21,11 +21,29 @@
             <!-- Nav & CTA -->
             <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
                 <ul class="navbar-nav align-items-center mb-2 mb-lg-0">
-                    <li class="nav-item px-2"><a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="nav-item px-2"><a class="nav-link" href="{{ route('profile.edit') }}">Profile</a></li>
-                    <li class="nav-item px-2"><a class="nav-link" href="{{ route('billing') }}">Billing History</a></li>
-                    <li class="nav-item px-2"><a class="nav-link" href="{{ route('commissions.index') }}">My Commissions</a></li>
-                    <li class="nav-item px-2"><a class="nav-link" href="{{ route('contact') }}" target="_blank">Contact</a></li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="{{ route('profile.edit') }}">Profile</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="{{ route('billing') }}">Billing History</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="{{ route('commissions.index') }}">My Commissions</a>
+                    </li>
+
+                    {{-- Only show “Blogs” link if the authenticated user is an admin --}}
+                    @if(Auth::user() && Auth::user()->isAdmin())
+                        <li class="nav-item px-2">
+                            <a class="nav-link" href="{{ route('blog.index') }}">Blogs</a>
+                        </li>
+                    @endif
+
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="{{ route('contact') }}" target="_blank">Contact</a>
+                    </li>
                 </ul>
 
                 <!-- Logout -->
