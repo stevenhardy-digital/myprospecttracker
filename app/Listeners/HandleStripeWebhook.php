@@ -80,16 +80,20 @@ class HandleStripeWebhook
         $status = $subscription['status'] ?? 'incomplete';
 
         if ($status === 'active' || $status === 'trialing') {
-            $trialEnd = isset($subscription['trial_end']) ? now()->setTimestamp($subscription['trial_end']) : null;
+            if (!empty($subscription['trial_end'])) {
+                $user->trial_ends_at = \Carbon\Carbon::createFromTimestamp($subscription['trial_end']);
 
-            Log::info('Updating trial end', ['user_id' => $user->id, 'trial_end' => $trialEnd]);
+                Log::info('Set trial_ends_at from Stripe subscription', [
+                    'user_id' => $user->id,
+                    'trial_end' => $user->trial_ends_at,
+                ]);
+            }
 
             $user->plan = 'pro';
             $user->payment_status = $status === 'trialing' ? 'trial' : 'paid';
-            $user->trial_ends_at = $trialEnd;
             $user->save();
 
-            Log::info('User saved with updated trial_end', ['user_id' => $user->id]);
+            Log::info('User saved with updated subscription info', ['user_id' => $user->id]);
         }
     }
 
