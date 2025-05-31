@@ -20,7 +20,8 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ mix('css/all.css') }}">
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <!-- Styles -->
     @vite(['resources/js/app.js', 'resources/sass/app.scss'])
 
