@@ -112,10 +112,22 @@ class HandleStripeWebhook
 
         if ($user) {
             $user->stripe_id = $stripeCustomerId;
-            $user->plan = 'pro';
-            $user->payment_status = 'trial';
+
+            // Only set these if not already set
+            if (is_null($user->plan)) {
+                $user->plan = 'pro';
+            }
+
+            if ($user->payment_status !== 'paid') {
+                $user->payment_status = 'trial';
+            }
 
             $user->save();
+
+            Log::info('Saving user in checkout handler', [
+                'user_id' => $user->id,
+                'trial_ends_at' => $user->trial_ends_at,
+            ]);
         }
     }
 
