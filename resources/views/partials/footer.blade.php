@@ -20,9 +20,9 @@
                 <h6 class="fw-bold mb-3">Quick Links</h6>
                 <ul class="list-unstyled small">
                     <li><a href="/" class="text-muted text-decoration-none">Home</a></li>
-                    <li><a href="#features" class="text-muted text-decoration-none">Features</a></li>
-                    <li><a href="#pricing" class="text-muted text-decoration-none">Pricing</a></li>
-                    <li><a href="#contact" class="text-muted text-decoration-none">Contact</a></li>
+                    <li><a href="/#features" class="text-muted text-decoration-none">Features</a></li>
+                    <li><a href="/#pricing" class="text-muted text-decoration-none">Pricing</a></li>
+                    <li><a href="{{ route('contact') }}" class="text-muted text-decoration-none">Contact</a></li>
                     <li><a href="{{ route('blog.index') }}" class="text-muted text-decoration-none">Blog</a></li>
                     <li><a href="{{ route('changelog') }}" class="text-muted text-decoration-none">Changelog</a></li>
                 </ul>

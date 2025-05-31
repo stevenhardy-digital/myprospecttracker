@@ -22,8 +22,8 @@
             <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
                 <ul class="navbar-nav align-items-center mb-2 mb-lg-0">
                     <li class="nav-item px-2"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item px-2"><a class="nav-link" href="#features">Features</a></li>
-                    <li class="nav-item px-2"><a class="nav-link" href="#pricing">Pricing</a></li>
+                    <li class="nav-item px-2"><a class="nav-link" href="/#features">Features</a></li>
+                    <li class="nav-item px-2"><a class="nav-link" href="/#pricing">Pricing</a></li>
                     <li class="nav-item px-2"><a class="nav-link" href="{{route('contact')}}" target="_blank">Contact</a></li>
                 </ul>
 
