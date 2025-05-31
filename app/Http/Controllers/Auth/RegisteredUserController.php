@@ -112,7 +112,6 @@ class RegisteredUserController extends Controller
 
         $user->stripe_id = $session->customer;
         $user->payment_status = 'trial';
-        $user->trial_ends_at = now()->addDays(14);
         $user->save();
 
         Log::info('User updated with trial end', ['user_id' => $user->id, 'trial_ends_at' => $user->trial_ends_at]);

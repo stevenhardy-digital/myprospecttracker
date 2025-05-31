@@ -70,15 +70,25 @@ class HandleStripeWebhook
 
     protected function handleSubscriptionCreatedOrUpdated(User $user, array $subscription)
     {
+        Log::info('Full subscription payload', ['subscription' => $subscription]);
+
         $status = $subscription['status'] ?? 'incomplete';
 
         if ($status === 'active' || $status === 'trialing') {
             $user->plan = 'pro';
-            $user->trial_ends_at = isset($subscription['trial_end'])
-                ? now()->setTimestamp($subscription['trial_end'])
-                : null;
             $user->payment_status = $status === 'trialing' ? 'trial' : 'paid';
+
+            if (!empty($subscription['trial_end'])) {
+                $user->trial_ends_at = now()->setTimestamp($subscription['trial_end']);
+            }
+
             $user->save();
+
+            Log::info('Updated user with subscription status and trial end', [
+                'user_id' => $user->id,
+                'status' => $status,
+                'trial_ends_at' => $user->trial_ends_at,
+            ]);
         }
     }
 
