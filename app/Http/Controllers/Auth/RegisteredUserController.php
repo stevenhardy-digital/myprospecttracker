@@ -96,7 +96,7 @@ class RegisteredUserController extends Controller
         Stripe::setApiKey(config('services.stripe.secret'));
 
         $sessionId = $request->get('session_id');
-        $session = CheckoutSession::retrieve($sessionId);
+        $session   = CheckoutSession::retrieve($sessionId);
 
         $userId = $session->client_reference_id ?? null;
 
@@ -110,17 +110,18 @@ class RegisteredUserController extends Controller
             return redirect()->route('register')->withErrors('User not found.');
         }
 
-        // Only update stripe_id if not already set
-        if (is_null($user->stripe_id)) {
+        // Only set Stripe ID if it’s not already set
+        if (!$user->stripe_id) {
             $user->stripe_id = $session->customer;
             $user->save();
 
-            Log::info('Set Stripe ID for user during success redirect', [
-                'user_id' => $user->id,
+            Log::info('Set Stripe ID from checkout success redirect', [
+                'user_id'   => $user->id,
                 'stripe_id' => $user->stripe_id,
             ]);
         }
 
-        return redirect()->route('dashboard')->with('success', 'Welcome! Your 14-day trial has started.');
+        return redirect()->route('dashboard')
+            ->with('success', 'Welcome! Your 14-day trial has started.');
     }
 }

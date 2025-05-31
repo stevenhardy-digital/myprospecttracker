@@ -93,7 +93,7 @@ class HandleStripeWebhook
             $user->payment_status = $status === 'trialing' ? 'trial' : 'paid';
             $user->save();
 
-            Log::info('User saved with updated subscription info', ['user_id' => $user->id]);
+            Log::info('User saved with updated subscription info', ['user' => $user]);
         }
     }
 
