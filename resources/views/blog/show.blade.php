@@ -1,12 +1,23 @@
 <x-guest-layout>
-    <div class="max-w-3xl mx-auto py-12">
-        <h1 class="text-3xl font-bold mb-4">{{ $post->title }}</h1>
-        <p class="text-sm text-gray-500 mb-6">Published {{ $post->created_at->format('F j, Y') }}</p>
-        <div class="prose max-w-none">
+    <div class="container py-5">
+        <!-- Post Title -->
+        <h1 class="display-4 fw-bold mb-3">{{ $post->title }}</h1>
+
+        <!-- Published Date -->
+        <p class="text-muted small mb-4">
+            Published {{ $post->created_at->format('F j, Y') }}
+        </p>
+
+        <!-- Post Body -->
+        <div class="mb-5">
             {!! nl2br(e($post->body)) !!}
         </div>
-        <div class="mt-10">
-            <a href="{{ route('blog.index') }}" class="text-blue-600 hover:underline">← Back to Blog</a>
+
+        <!-- Back Link -->
+        <div class="mt-4">
+            <a href="{{ route('blog.index') }}" class="link-primary">
+                ← Back to Blog
+            </a>
         </div>
     </div>
 </x-guest-layout>
