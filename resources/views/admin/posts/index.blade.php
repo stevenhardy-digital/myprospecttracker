@@ -1,14 +1,34 @@
-<x-app-layout>
-    <div class="max-w-3xl mx-auto py-12">
-        <h1 class="text-2xl font-bold mb-6">Your Blog Posts</h1>
-        <a href="{{ route('admin.posts.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded">+ New Post</a>
-        <ul class="mt-6 space-y-3">
+<x-admin-layout>
+    <div class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="display-5 fw-bold mb-0">Your Blog Posts</h1>
+            <a href="{{ route('admin.posts.create') }}" class="btn btn-primary">
+                + New Post
+            </a>
+        </div>
+
+        <ul class="list-group">
             @foreach($posts as $post)
-                <li>
-                    <a href="{{ route('blog.show', $post->slug) }}" class="text-blue-700 hover:underline font-semibold">{{ $post->title }}</a>
-                    <span class="text-gray-500 text-sm"> — {{ $post->created_at->format('M j, Y') }}</span>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <a
+                            href="{{ route('blog.show', $post->slug) }}"
+                            class="link-primary fw-semibold"
+                        >
+                            {{ $post->title }}
+                        </a>
+                        <span class="text-muted small">
+                            &mdash; {{ $post->created_at->format('M j, Y') }}
+                        </span>
+                    </div>
+                    <a
+                        href="{{ route('admin.posts.edit', $post->id) }}"
+                        class="btn btn-outline-secondary btn-sm"
+                    >
+                        Edit
+                    </a>
                 </li>
             @endforeach
         </ul>
     </div>
-</x-app-layout>
+</x-admin-layout>

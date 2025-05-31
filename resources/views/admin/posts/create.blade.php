@@ -1,26 +1,46 @@
-<x-app-layout>
-    <div class="max-w-2xl mx-auto py-12">
-        <h1 class="text-2xl font-bold mb-6">New Blog Post</h1>
+<x-admin-layout>
+    <div class="container py-5">
+        <h1 class="display-5 fw-bold mb-4">New Blog Post</h1>
         <form method="POST" action="{{ route('admin.posts.store') }}">
             @csrf
 
-            <div class="mb-4">
-                <label class="block font-semibold mb-1">Title</label>
-                <input type="text" name="title" required class="w-full p-2 border rounded">
+            <!-- Title Field -->
+            <div class="mb-3">
+                <label for="title" class="form-label fw-semibold">Title</label>
+                <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    required
+                    class="form-control"
+                    placeholder="Enter post title"
+                >
             </div>
 
-            <div class="mb-4">
-                <label class="block font-semibold mb-1">Excerpt</label>
-                <textarea name="excerpt" required rows="2" class="w-full p-2 border rounded"></textarea>
+            <!-- Excerpt Field -->
+            <div class="mb-3">
+                <label for="excerpt" class="form-label fw-semibold">Excerpt</label>
+                <textarea
+                    name="excerpt"
+                    id="excerpt"
+                    rows="3"
+                    required
+                    class="form-control"
+                    placeholder="Enter a short excerpt"
+                ></textarea>
             </div>
 
+            <!-- Body Field (Trix Editor) -->
             <div class="mb-4">
-                <label class="block font-semibold mb-1">Body</label>
+                <label for="body" class="form-label fw-semibold">Body</label>
                 <input id="body" type="hidden" name="body">
-                <trix-editor input="body"></trix-editor>
+                <trix-editor input="body" class="form-control" style="min-height: 200px;"></trix-editor>
             </div>
 
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Publish</button>
+            <!-- Publish Button -->
+            <button type="submit" class="btn btn-primary btn-lg">
+                Publish
+            </button>
         </form>
     </div>
-</x-app-layout>
+</x-admin-layout>
