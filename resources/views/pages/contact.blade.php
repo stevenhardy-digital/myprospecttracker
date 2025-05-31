@@ -1,94 +1,119 @@
 {{-- resources/views/contact.blade.php --}}
 <x-guest-layout title="Contact Us | My Prospect Tracker">
-    <section class="pt-20 pb-12 bg-white">
-        <div class="max-w-3xl mx-auto text-center px-4">
-            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4 text-gray-900 font-heading">
-                📨 Contact Us
-            </h1>
-            <p class="text-lg text-gray-600 mb-8">
-                Have a question or feedback? Fill out the form below and we’ll get back to you as soon as possible.
-            </p>
+    <div class="container py-5">
+        <!-- Hero / Page Header -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-4 fw-bold mb-3">✉️ Contact Us</h1>
+                <p class="text-secondary fs-5">
+                    Have a question, feedback, or need assistance?<br>
+                    Fill out the form below and we’ll get back to you shortly.
+                </p>
+            </div>
         </div>
-    </section>
 
-    <!-- Contact Form Section -->
-    <section class="bg-gray-50 pb-20 px-4">
-        <div class="max-w-3xl mx-auto bg-white rounded-lg shadow-lg p-8">
-            @if(session('status'))
-                <div class="mb-6 px-4 py-3 bg-green-100 border border-green-300 text-green-700 rounded">
-                    {{ session('status') }}
+        <!-- Contact Form -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                {{-- Success Flash Message --}}
+                @if(session('status'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('status') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <form action="{{ route('contact.send') }}" method="POST" novalidate>
+                            @csrf
+
+                            {{-- Optional Username Field --}}
+                            <div class="mb-3">
+                                <label for="username" class="form-label">
+                                    Username <small class="text-muted">(optional)</small>
+                                </label>
+                                <input
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    value="{{ old('username') }}"
+                                    class="form-control @error('username') is-invalid @enderror"
+                                    placeholder="Your MyProspectTracker username"
+                                >
+                                @error('username')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            {{-- Name Field --}}
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                                <input
+                                    type="text"
+                                    name="name"
+                                    id="name"
+                                    value="{{ old('name') }}"
+                                    required
+                                    class="form-control @error('name') is-invalid @enderror"
+                                    placeholder="Your full name"
+                                >
+                                @error('name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            {{-- Email Field --}}
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    value="{{ old('email') }}"
+                                    required
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    placeholder="you@example.com"
+                                >
+                                @error('email')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            {{-- Message Field --}}
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    rows="6"
+                                    required
+                                    class="form-control @error('message') is-invalid @enderror"
+                                    placeholder="How can we help you?"
+                                >{{ old('message') }}</textarea>
+                                @error('message')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+
+                            {{-- Submit Button --}}
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            @endif
-
-            <form action="{{ route('contact.send') }}" method="POST" class="space-y-6">
-                @csrf
-
-                {{-- Name Field --}}
-                <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">
-                        {{ __('Name') }}
-                    </label>
-                    <input
-                        type="text"
-                        name="name"
-                        id="name"
-                        value="{{ old('name') }}"
-                        required
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="Your full name"
-                    />
-                    @error('name')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                {{-- Email Field --}}
-                <div>
-                    <label for="email" class="block text-sm font-medium text-gray-700">
-                        {{ __('Email') }}
-                    </label>
-                    <input
-                        type="email"
-                        name="email"
-                        id="email"
-                        value="{{ old('email') }}"
-                        required
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="you@example.com"
-                    />
-                    @error('email')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                {{-- Message Field --}}
-                <div>
-                    <label for="message" class="block text-sm font-medium text-gray-700">
-                        {{ __('Message') }}
-                    </label>
-                    <textarea
-                        name="message"
-                        id="message"
-                        rows="6"
-                        required
-                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary"
-                        placeholder="How can we help you?"
-                    >{{ old('message') }}</textarea>
-                    @error('message')
-                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                </div>
-
-                {{-- Submit Button --}}
-                <div>
-                    <button
-                        type="submit"
-                        class="w-full bg-primary text-white px-6 py-3 rounded text-lg font-semibold hover:bg-primary-dark transition"
-                    >
-                        {{ __('Send Message') }}
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
-    </section>
+    </div>
 </x-guest-layout>
