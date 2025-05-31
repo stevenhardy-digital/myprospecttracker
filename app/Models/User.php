@@ -121,30 +121,42 @@ class User extends Authenticatable
             ->first();
     }
 
-    // Check if on active trial
+    /**
+     * Check if the user is currently on a Cashier trial.
+     */
     public function onTrial(): bool
     {
         $subscription = $this->subscription('default');
         return $subscription && $subscription->onTrial();
     }
 
-// Trial end date
-    public function trialEndsAt(): ?\Carbon\Carbon
+    /**
+     * Return the trial_ends_at (Carbon) if the subscription is on trial, or null otherwise.
+     */
+    public function trialEndsAt(): ?Carbon
     {
         $subscription = $this->subscription('default');
-        return $subscription && $subscription->onTrial()
-            ? \Carbon\Carbon::createFromTimestamp($subscription->trial_ends_at)
+
+        return ($subscription && $subscription->onTrial())
+            ? $subscription->trial_ends_at
             : null;
     }
 
-// Days left in trial
+    /**
+     * How many whole days are left in the current trial? 0 if none.
+     */
     public function daysLeftInTrial(): int
     {
         $endsAt = $this->trialEndsAt();
-        return $endsAt ? now()->diffInDays($endsAt, false) : 0;
+
+        return $endsAt
+            ? now()->diffInDays($endsAt, false)
+            : 0;
     }
 
-// Check if subscription is active (paid)
+    /**
+     * Check if the user’s subscription is active (i.e. paid) and not on trial.
+     */
     public function isSubscribedAndActive(): bool
     {
         $subscription = $this->subscription('default');
