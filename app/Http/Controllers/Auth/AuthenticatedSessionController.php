@@ -25,18 +25,21 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
         $user = $request->user();
         $today = now()->startOfDay();
         $lastLogin = $user->last_login_at ? $user->last_login_at->startOfDay() : null;
 
-        if($lastLogin === $today->copy()->subDay()) {
+        if ($lastLogin === $today->copy()->subDay()) {
             $user->streak += 1;
-        } elseif($lastLogin !== $today) {
+        } elseif ($lastLogin !== $today) {
             $user->streak = 1;
         }
+
+        // ✅ Always update last login timestamp
+        $user->last_login_at = now();
+        $user->save();
 
         return redirect()->intended(route('dashboard', absolute: false));
     }

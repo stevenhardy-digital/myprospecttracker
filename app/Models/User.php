@@ -36,6 +36,7 @@ class User extends Authenticatable
         'payment_status',
         'stripe_requires_verification',
         'billing_interval',
+        'streak'
     ];
 
     protected $guarded = [];
