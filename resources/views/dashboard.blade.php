@@ -118,7 +118,6 @@
                             </div>
                             <div class="col-md-6">
                                 <select name="stage" class="form-select form-select-lg" required>
-                                    <option value="expand_network">🌐 Expand Network</option>
                                     <option value="relationship_building">💬 Relationship Building</option>
                                     <option value="ask_question">❓ Ask Question</option>
                                     <option value="qualify_pain">💢 Qualify Pain</option>
