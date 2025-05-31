@@ -112,9 +112,18 @@ class RegisteredUserController extends Controller
 
         $user->stripe_id = $session->customer;
         $user->payment_status = 'trial';
+
+        // ⚠️ Only set trial_ends_at if it's still null
+        if (is_null($user->trial_ends_at)) {
+            $user->trial_ends_at = now()->addDays(14);
+        }
+
         $user->save();
 
-        Log::info('User updated with trial end', ['user_id' => $user->id, 'trial_ends_at' => $user->trial_ends_at]);
+        Log::info('User updated with trial end', [
+            'user_id' => $user->id,
+            'trial_ends_at' => $user->trial_ends_at,
+        ]);
 
         return redirect()->route('dashboard')->with('success', 'Welcome! Your 14-day trial has started.');
     }
