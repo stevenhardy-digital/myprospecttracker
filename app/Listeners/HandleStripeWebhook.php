@@ -21,12 +21,19 @@ class HandleStripeWebhook
 
         Log::info("Stripe webhook received: {$type}", ['payload' => $payload]);
 
-        if (!isset($object['customer'])) {
+        $customerId = match ($type) {
+            'customer.updated',
+            'customer.deleted',
+            'customer.created' => $object['id'] ?? null,
+            default => $object['customer'] ?? null,
+        };
+
+        if (!$customerId) {
             Log::warning("Webhook received without customer ID", ['type' => $type, 'object' => $object]);
             return;
         }
 
-        $user = User::where('stripe_id', $object['customer'])->first();
+        $user = User::where('stripe_id', $customerId)->first();
 
         if (!$user) {
             Log::warning("Stripe webhook received but user not found: {$object['customer']}");
