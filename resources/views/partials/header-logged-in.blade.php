@@ -37,7 +37,7 @@
                     {{-- Only show “Blogs” link if the authenticated user is an admin --}}
                     @if(Auth::user() && Auth::user()->isAdmin())
                         <li class="nav-item px-2">
-                            <a class="nav-link" href="{{ route('blog.index') }}">Blogs</a>
+                            <a class="nav-link" href="{{ route('admin.posts') }}">Blogs</a>
                         </li>
                     @endif
 
